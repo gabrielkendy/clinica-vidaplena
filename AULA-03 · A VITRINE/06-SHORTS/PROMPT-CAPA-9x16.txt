@@ -1,0 +1,27 @@
+VERTICAL 9:16 YouTube Shorts / Instagram Reels cover, 1080x1920, for a tech channel. COMPLETE, FINAL, production-ready artwork — NOT a mockup. Elite agency quality.
+
+VISUAL HIERARCHY: 1) THE FACE (brightest, sharpest); 2) HEADLINE 3D text line 1 (yellow #FFD400, massive); 3) HEADLINE 3D text line 2 (white); 4) TAG badge; 5) background. Nothing competes with the face.
+
+IDENTITY: Keep the EXACT identity of the man in the attached photo (same face, beard, jawline, proportions). Never invent another person, never beautify, never make younger or older.
+
+PHOTO QUALITY: Canon EOS R5 + RF 85mm f/1.2L, elite photographer. Realistic soft skin: pores, beard filaments, subsurface scattering — no wax, no CGI, no beauty filter.
+
+SUBJECT: upper body vertical portrait, man occupying the TOP 55% of the frame, black premium t-shirt, confident satisfied smile ("found the treasure" energy), one open hand presenting something invisible.
+
+LIGHTING: frontal octabox, high exposure, catchlights in both pupils, blue rim light #3D5BFF separating from background. The face MUST be the brightest object.
+
+LENS: 85mm, f/1.8, creamy bokeh, eyes perfectly sharp.
+
+BACKGROUND: near-black #090909 with deep blue #3D5BFF atmosphere. Blurred background element (secondary, never stealing attention): a large glowing GOLDEN 3D key floating above a dark database cylinder, warm golden light with subtle blue rim.
+
+TYPOGRAPHY: real physical 3D letters — massive extrusion, thick side faces, ambient occlusion, perspective. NOT flat, NOT vector, NOT Canva.
+
+TEXT MATERIAL: painted metal semi-gloss, micro-scratches, bevel, thick matte black outline, electric blue neon glow, large soft drop shadow.
+
+TEXT CONTENT (centered on the BOTTOM 35% of the vertical frame, stacked in 2 lines): TAG (top, white plate with blue #2B60DE border, dark uppercase): "PARTE FINAL". HEADLINE line 1 (yellow #FFD400, GIGANTIC): "ACHEI A CHAVE". HEADLINE line 2 (white, slightly smaller): "DO SISTEMA". PERFECT Portuguese spelling.
+
+COLOR GRADING: Hollywood key art, warm skin vs cool blue environment, deep blacks, soft bloom, subtle vignette. No oversaturation, no fake HDR.
+
+NEGATIVE PROMPT: no flat text, no Canva look, no plastic skin, no CGI, no anime, no dark face, no wrong identity, no extra fingers, no deformed hands, no watermarks, no wrong spelling, no low-res, no real brand logos, no clutter at the bottom text area.
+
+OUTPUT: ONE finished vertical 9:16 cover (1080x1920), readable at 120px, no editing required.

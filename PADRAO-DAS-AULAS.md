@@ -22,9 +22,10 @@
 ```
 AULA-0X · TEMA/
 ├── 01-ROTEIRO/              ← ROTEIRO.md (o que falar) + EXECUCAO.md (o que fazer na tela) — NÃO vão pro repo público
-├── 02-MATERIAL-DO-ALUNO/    ← MATERIAL-DO-ALUNO.html — conteúdos + prompts DA AULA (o entregável do aluno)
+├── 02-MATERIAL-DO-ALUNO/    ← MATERIAL-DO-ALUNO.html + MATERIAL-DO-ALUNO.md (os DOIS) — conteúdos + prompts DA AULA
 ├── 03-THUMBNAIL/            ← PROMPT-THUMB-*.txt (17 blocos) + THUMB-FINAL.png (base Codex + foto de identidade, aprovada)
-└── 05-DESCRICAO/            ← DESCRICAO.md: título + alternativas + descrição + capítulos + tags + comentário fixado
+├── 05-DESCRICAO/            ← DESCRICAO.md: título + alternativas + descrição + capítulos + tags + comentário fixado
+└── 06-SHORTS/               ← ROTEIRO-SHORT.md (~50s: gancho+corpo+CTA duplo, keyword, b-roll e legenda/hashtags) + PROMPT-CAPA-9x16.txt (1080x1920)
 ```
 
 ## O padrão do MATERIAL-DO-ALUNO.html (5 seções, sempre nesta ordem)
