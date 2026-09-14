@@ -306,7 +306,7 @@ Material completo + casos reais: <a href="https://materiais-aulas.vercel.app/seg
 <script>
 function cp(id,btn){
   // innerHTML aqui só restaura o rótulo fixo do próprio botão (conteúdo nosso) — sem entrada de usuário.
-  // textContent (não innerText): copia o prompt completo mesmo se o <details> estiver fechado.
+  // textContent (não innerText): copia o prompt completo mesmo com a caixinha fechada.
   var t=document.getElementById(id).textContent;
   function done(){var o=btn.innerHTML;btn.innerHTML='✅ Copiado!';btn.classList.add('ok');setTimeout(function(){btn.innerHTML=o;btn.classList.remove('ok')},1600);}
   function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();done();}

@@ -3,13 +3,13 @@
 ## 🎙️ 1. ROTEIRO.md — o que você FALA no vídeo
 Abre, lê, grava. Cada falha: **história → ataque → correção (com o prompt) → teste.**
 
-→ `01-ROTEIRO/ROTEIRO.md`
+→ `AULA-01 · A INVASAO/ROTEIRO.md`
 
 ## 🖥️ 2. EXECUCAO.md — o que você FAZ na tela
 **Passo a passo cego:** um quadradinho por vez (faz → marca → segue). Tudo no **site oficial + Cursor.**
 Onde tiver 🎙️, você fala a fala do roteiro.
 
-→ `01-ROTEIRO/EXECUCAO.md`
+→ `AULA-01 · A INVASAO/EXECUCAO.md`
 
 ---
 
@@ -41,13 +41,13 @@ Onde tiver 🎙️, você fala a fala do roteiro.
 
 | Se precisar de... | Vai em... |
 |---|---|
-| **Material do Aluno da AULA 1** (com os prompts) | `MATERIAL-DO-ALUNO.html` (na raiz do projeto — é O entregável) |
+| **Material do Aluno da AULA 1** (com os prompts) | `AULA-01 · A INVASAO/MATERIAL-DO-ALUNO.html` (é O entregável) |
 | Os prompts pro espectador (você mostra e usa na tela) | `materiais-aulas.vercel.app/seguranca-com-ia` → PROMPTS (mestre + 8 + manual) |
 | Ver o resultado esperado das correções | `02-BLINDAGEM/server-blindado.js` (é o "mapa" do que a IA deve fazer) |
 | Voltar o lab pras falhas (resetar) | `RESET-LAB.cmd` |
 | A versão blindada pronta (referência no ar) | `clinica-vidaplena-blindado.vercel.app` |
 | O site no ar (é o cenário do vídeo) | `clinica-vidaplena.vercel.app` |
 | O círcuito completo de teste das 8 portas | `02-BLINDAGEM/reteste.py` (ou `reteste.py <URL>`) |
-| Versões antigas dos roteiros | `01-ROTEIRO/_HISTORICO/` |
+| O padrão das aulas (estrutura + divisão da série) | `PADRAO-DAS-AULAS.md` |
 
-**Depois de gravar:** próximo vídeo = as 5 falhas restantes (o código sem limite + o download que vira cofre + a foto que espiona + a chave na vitrine + o backup no chão), no mesmo formato. Quando o 1 estiver pronto, a gente prepara.
+**Depois de gravar:** a série tem 3 aulas — as pastas da **AULA-02 · AS FUNCOES** (código sem limite + download que abre pastas + função espia) e **AULA-03 · A VITRINE** (chave no site + banco na calçada) já estão criadas, esperando produção. O passo a passo de montar cada uma está no `PADRAO-DAS-AULAS.md`.
