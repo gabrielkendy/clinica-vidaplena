@@ -61,4 +61,13 @@ clinica-vidaplena/
 └── MISSOES/           ← guia de exploração (roteiro do V1)
 ```
 
-A versão BLINDADA (8 correções, antes/depois na tela) entra no V2 da série.
+## 🔀 As duas versões (o antes e o depois)
+- **`main`** (esta branch) — o lab **vulnerável**: as 8 falhas plantadas, do jeito que o vídeo 1 mostra.
+- **branch `blindado`** — o MESMO lab com **as 8 correções aplicadas** (o "depois" do vídeo 2), com o guia das correções e o script do reteste.
+
+```bash
+git checkout blindado             # ver o código corrigido (✅ CORREÇÃO em cada ajuste)
+node 02-BLINDAGEM/server-blindado.js   # roda na porta 3500, lado a lado com o vulnerável
+python 02-BLINDAGEM/reteste.py         # roda os MESMOS 8 ataques → 🛡️ 8/8 bloqueadas
+```
+
