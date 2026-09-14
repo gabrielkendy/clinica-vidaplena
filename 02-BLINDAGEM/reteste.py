@@ -81,8 +81,10 @@ verifica(s == 403, f"pediu o caderno de senhas → HTTP {s} (antes: 200 com as c
 missao(3, "ÁREA INTERNA SEM PORTEIRO")
 s_pac, _, _ = req("/api/admin/pacientes?token=tok_mariana_4d1")
 s_equipe, _, _ = req("/api/admin/pacientes?token=tok_equipe_000")
-verifica(s_pac == 403 and s_equipe == 200,
-         f"paciente tentou o painel → HTTP {s_pac} | e a EQUIPE continua entrando → HTTP {s_equipe}")
+s_meus, b_meus, _ = req("/api/meus-dados?token=tok_mariana_4d1")
+meus_ok = s_meus == 200 and "Mariana" in b_meus and '"senha"' not in b_meus and "tok_" not in b_meus
+verifica(s_pac == 403 and s_equipe == 200 and meus_ok,
+         f"paciente tentou o painel → HTTP {s_pac} | EQUIPE continua → HTTP {s_equipe} | paciente vê só os PRÓPRIOS dados → HTTP {s_meus}")
 
 # 4) código sem limite
 missao(4, "CÓDIGO DE ACESSO (FORÇA BRUTA)")

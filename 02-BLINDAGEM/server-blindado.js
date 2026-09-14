@@ -169,6 +169,12 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  // ✅ CORREÇÃO 01/03: o paciente vê os PRÓPRIOS dados (nunca a lista interna da equipe).
+  if (p === "/api/meus-dados" && req.method === "GET") {
+    if (!user) return json(res, 401, { erro: "Faça login." });
+    return json(res, 200, { id: user.id, nome: user.nome, email: user.email, cpf: user.cpf, telefone: user.telefone, plano: user.plano });
+  }
+
   // Rotas internas da equipe (as 3) — agora com PORTEIRO
   // ✅ CORREÇÃO 03: o servidor confere se quem pede é da equipe (staff).
   //    Não importa o que a tela mostra: quem não é da equipe recebe 403.
