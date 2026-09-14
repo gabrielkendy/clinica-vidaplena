@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel Interno — Clínica VidaPlena</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="dark">
+<nav>
+  <div class="in">
+    <div class="logo"><span class="logo-chip"><img src="/img/logo-horizontal.png" alt="VidaPlena"></span> <span class="dbadge">equipe · interno</span></div>
+    <a class="btn ghost small" href="/paciente" style="color:#c6cfd8;border-color:var(--darkb)">Voltar ao portal</a>
+  </div>
+</nav>
+
+<div class="wrap" style="padding:34px 24px 70px">
+  <h2 class="serif" style="font-size:28px;margin-bottom:4px">Painel Interno</h2>
+  <p class="dmuted">Visão geral da clínica — uso restrito da equipe.</p>
+
+  <div class="dgrid" style="margin:26px 0">
+    <div class="dcard"><div class="dmuted">Faturamento (mês)</div><div class="money" id="fin1" style="font-size:24px;margin-top:6px">—</div></div>
+    <div class="dcard"><div class="dmuted">A receber (convênios)</div><div class="money" id="fin2" style="font-size:24px;margin-top:6px">—</div></div>
+    <div class="dcard"><div class="dmuted">Consultas no mês</div><div class="money" id="fin3" style="font-size:24px;margin-top:6px">—</div></div>
+    <div class="dcard"><div class="dmuted">Ticket médio</div><div class="money" id="fin4" style="font-size:24px;margin-top:6px">—</div></div>
+  </div>
+
+  <div class="dcard">
+    <h3>Pacientes cadastrados</h3>
+    <table class="dtable">
+      <thead><tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>Plano</th><th></th></tr></thead>
+      <tbody id="tbPacientes"><tr><td colspan="5" class="dmuted">Carregando…</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="dcard">
+    <h3>Agenda de hoje</h3>
+    <table class="dtable">
+      <thead><tr><th>Hora</th><th>Paciente</th><th>Profissional</th><th>Procedimento</th></tr></thead>
+      <tbody id="tbAgenda"><tr><td colspan="4" class="dmuted">Carregando…</td></tr></tbody>
+    </table>
+  </div>
+
+  <p class="dmuted" style="margin-top:20px">Sessão: <span id="sessao">—</span> · © 2026 Clínica VidaPlena <span style="color:#c9a25e">(demo — dados fictícios)</span></p>
+</div>
+
+<script>
+const token = localStorage.getItem('token');
+const nomeLogado = localStorage.getItem('nome') || '(não logado)';
+document.getElementById('sessao').textContent = nomeLogado;
+
+function get(path, cb) {
+  fetch(path + (path.includes('?') ? '&' : '?') + 'token=' + (token || ''))
+    .then(r => r.json()).then(cb).catch(() => {});
+}
+
+if (!token) {
+  document.getElementById('tbPacientes').innerHTML = '<tr><td colspan="5" class="dmuted">Faça login no portal do paciente para carregar os dados.</td></tr>';
+  document.getElementById('tbAgenda').innerHTML = '<tr><td colspan="4" class="dmuted">—</td></tr>';
+} else {
+  get('/api/admin/pacientes', d => {
+    document.getElementById('tbPacientes').innerHTML = Array.isArray(d)
+      ? d.map(p => '<tr><td>' + p.nome + '</td><td>' + p.cpf + '</td><td>' + p.telefone + '</td><td>' + p.plano + '</td><td>' + (p.staff ? '<span class="money">EQUIPE</span>' : '') + '</td></tr>').join('')
+      : '<tr><td colspan="5" class="dmuted">Sem acesso.</td></tr>';
+  });
+  get('/api/admin/financeiro', f => {
+    if (f && f.faturamento_bruto) {
+      document.getElementById('fin1').textContent = f.faturamento_bruto;
+      document.getElementById('fin2').textContent = f.a_receber_convenios;
+      document.getElementById('fin3').textContent = f.consultas_no_mes;
+      document.getElementById('fin4').textContent = f.ticket_medio;
+    }
+  });
+  fetch('/api/admin/agenda?token=' + token).then(r => r.json()).then(d => {
+    if (!Array.isArray(d)) return;
+    document.getElementById('tbAgenda').innerHTML = d.map(a =>
+      '<tr><td>' + (a.data || '').slice(11) + ' · ' + (a.data || '').slice(8, 10) + '/' + (a.data || '').slice(5, 7) + '</td><td>paciente #' + a.paciente_id + '</td><td>' + a.medico + '</td><td>' + a.especialidade + ' — ' + a.status + '</td></tr>'
+    ).join('') || '<tr><td colspan="4" class="dmuted">Sem agendamentos.</td></tr>';
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+HEMOGRAMA COMPLETO — Clínica VidaPlena (documento fictício de laboratório)
+Paciente: Mariana Ferreira Alves
+Data da coleta: 30/08/2026 · Médico solicitante: Dr. Rafael Menezes
+Convênio: Ampla Saúde · Guia: 4471-2026
+
+RESULTADO                      REFERÊNCIA
+Hemoglobina ........ 13,8 g/dL   12,0 — 16,0
+Hematócrito ........ 41,2 %      36 — 46
+Leucócitos ......... 6.800/mm³   4.000 — 11.000
+Plaquetas .......... 245.000/mm³ 150.000 — 450.000
+
+Observação: resultados dentro da normalidade.
+Documento de exemplo — dados fictícios.

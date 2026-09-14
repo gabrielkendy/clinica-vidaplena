@@ -10,3 +10,7 @@ Thumbs.db
 # .env e public/.env NÃO são ignorados DE PROPÓSITO.
 # Este lab existe pra demonstrar a falha clássica de arquivo de segredos exposto.
 # Todos os valores são FICTÍCIOS (marcados como EXEMPLO). Nunca use dados reais aqui.
+
+# deploy online (Vercel)
+.next/
+.vercel/
