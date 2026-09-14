@@ -1,6 +1,7 @@
 # Segurança com IA — Aula 2
 
 As funções que a IA escreveu contra você: o código que aceita tentativa a noite toda → o download que vira cofre → a foto de perfil que espiona por dentro. As 3 falhas desta aula + o prompt completo pra arrumar cada uma no SEU projeto.
+
 ## 1 AS 3 FUNÇÕES DO VÍDEO — e o que cada uma faz de errado 🧩
 
 Não são portas na parede: são funções que funcionam — até alguém apertar o botão do jeito errado.  
@@ -11,6 +12,7 @@ Não são portas na parede: são funções que funcionam — até alguém aperta
 | 📂 O download de exame (busca por nome de arquivo | Em vez do nome de um exame, mandei um atalho que sobe as pastas (../../). O download me entregou o arquivo de senhas do servidor. | Prompt 2 — dois cadeados: nome válido + caminho preso na pasta | atalho → 400 · exame real → 200 |
 | 🪞 A foto de perfil (importar por link | Colei um "link de foto" que apontava pra dentro do próprio sistema. O servidor foi lá, buscou e me trouxe o conteúdo interno. | Prompt 3 — bloquear rede interna + whitelist + limite de tempo | link interno → bloqueado · foto pública → funciona |
 A lição das funções: a IA escreve a função que FUNCIONA — nunca a que se DEFENDE. O limite de tentativas, os dois cadeados do arquivo e a coleira da busca: nada disso apareceu sozinho no código dela.
+
 ## 2 O AJUSTE DE CADA FUNÇÃO — o prompt completo 📋
 
 Cada função que você viu no vídeo tem UM prompt de correção. Copia o da falha que o SEU projeto tem, cola no seu agente (Cursor, Claude Code, ChatGPT, Codex...) junto com o seu projeto: ele corrige e cria o teste.
@@ -63,9 +65,13 @@ O que fazer:
 
 Me mostre: o antes/depois, e o teste.
 ```
+
 ## 3 TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪[🔴 Clínica aberta (com as 8 falhas) — clinica-vidaplena.vercel.app](https://clinica-vidaplena.vercel.app)[🟢 Clínica blindada (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app](https://clinica-vidaplena-blindado.vercel.app)[💾 Código no GitHub — clona e ataca na sua máquina (com os scripts de ataque)](https://github.com/gabrielkendy/clinica-vidaplena)
 
-Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.O experimento de 30 segundos: na clínica aberta, abre o console (F12) e roda o ataque do código: fetch('/api/login/codigo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:'mariana@exemplo.com',codigo:'1234'})}).then(r=>console.log(r.status)) — repara que NUNCA bloqueia. Na blindada... bloqueia na 6ª.
+Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.
+
+O experimento de 30 segundos: na clínica aberta, abre o console (F12) e roda o ataque do código: fetch('/api/login/codigo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:'mariana@exemplo.com',codigo:'1234'})}).then(r=>console.log(r.status)) — repara que NUNCA bloqueia. Na blindada... bloqueia na 6ª.
+
 ## 4 MODO MANUAL — conserte sem IA 🖐️
 
 Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 3 falhas:
@@ -77,6 +83,7 @@ Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 
 - Função espia: bloqueie rede interna (localhost, 127.*, 10.*, 192.168.*, 169.254.*) antes de buscar qualquer URL.
 
 O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/#manual) → seção MODO MANUAL.
+
 ## 5 CHECKLIST — hoje, no SEU projeto ✅
 
 - Testar EU MESMO as 3 funções: tentar o código de login várias vezes seguidas (bloqueia?), pedir um arquivo com ../ no nome, colar um link interno num campo de importar.
@@ -85,5 +92,9 @@ O passo a passo detalhado (com o "como verificar" de cada uma) está no material
 
 - Se algum segredo já esteve exposto: trocar as chaves (rotação) — exposto é vazado pra sempre.
 
-- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém. Material da aula 2 · Segurança com IA (modo defesa)  
- Material completo + casos reais: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/)
+- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).
+
+A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.
+
+Material da aula 2 · Segurança com IA (modo defesa)
+Material completo + casos reais: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/)

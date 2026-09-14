@@ -1,6 +1,7 @@
 # Segurança com IA — Aula 3 (o fecho)
 
 A chave na vitrine e o banco no chão: a chave da IA escrita no código do site → o backup do banco jogado na pasta pública. As 2 últimas falhas + o prompt completo pra arrumar cada uma — e o re-teste que prova o 8 de 8.
+
 ## 1 AS 2 ÚLTIMAS — o que o sistema mostra sem ninguém pedir 🏁
 
 Não são portas abertas: é a vitrine. O que o sistema entrega de bandeja pra qualquer visitante.
@@ -9,6 +10,7 @@ Não são portas abertas: é a vitrine. O que o sistema entrega de bandeja pra q
 | 🗝️ A chave na vitrine (segredo no código do site | Abri o código do site (Ctrl + U), procurei "key" e achei a chave da assistente de IA escrita e legível — qualquer visitante lê e usa na MINHA conta. | Prompt 1 — chamada de IA vai pro servidor; a chave vive no cofre das configurações | buscar a chave no site → zero · assistente → funciona |
 | 🗄️ O banco no chão (backup + respostas que contam tudo | Pedi o backup como quem pede uma página: /backup.sql → veio o banco inteiro (nomes, senha). E o servidor ainda contava a tecnologia e a versão de graça. | Prompt 2 — backup fora da pasta pública + escudos nas respostas + nada de versão | backup → 404 · sem versão no cabeçalho · escudos ligados |
 A lição da vitrine: o que o sistema NÃO mostra não pode ser usado contra ele. Chave que desce pro navegador é chave pública. Backup na pasta pública é presente de despedida.
+
 ## 2 O AJUSTE DE CADA FALHA — o prompt completo 📋
 
 Cada falha do vídeo tem UM prompt de correção — e no fim tem o RE-TESTE, que prova o placar. Copia, cola no seu agente (Cursor, Claude Code, ChatGPT, Codex...) junto com o seu projeto: ele corrige e cria o teste.
@@ -44,6 +46,7 @@ O que fazer:
 
 Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado da varredura.
 ```
+
 ### 🏁 O FECHO — o re-teste (prove o 8 de 8)
 
 O que o vídeo mostrou: rodar o ataque completo de novo e ver 8 de 8 fechadas.
@@ -60,9 +63,13 @@ Faça uma VARREDURA FINAL de segurança no meu projeto, como um atacante faria (
 
 Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando + resposta). Se alguma continuar aberta, corrija e teste de novo até fechar.
 ```
+
 ## 3 TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪[🔴 Clínica aberta (com as 8 falhas) — clinica-vidaplena.vercel.app](https://clinica-vidaplena.vercel.app)[🟢 Clínica blindada (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app](https://clinica-vidaplena-blindado.vercel.app)[💾 Código no GitHub — clona e ataca na tua máquina (com os scripts de ataque)](https://github.com/gabrielkendy/clinica-vidaplena)
 
-Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.O experimento de 30 segundos: na clínica aberta, põe /backup.sql no fim do endereço — o banco inteiro desce. Agora na blindada: não encontrado. E o curl -I? A blindada não conta nem quem é.
+Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.
+
+O experimento de 30 segundos: na clínica aberta, põe /backup.sql no fim do endereço — o banco inteiro desce. Agora na blindada: não encontrado. E o curl -I? A blindada não conta nem quem é.
+
 ## 4 MODO MANUAL — conserte sem IA 🖐️
 
 Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 2 falhas:
@@ -72,6 +79,7 @@ Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 
 - Backup na calçada: dumps fora da pasta pública e fora do deploy; headers de segurança ligados; nada de versão/stack trace nas respostas.
 
 O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/#manual) → seção MODO MANUAL.
+
 ## 5 CHECKLIST FINAL — hoje, no SEU projeto ✅
 
 - Testar EU MESMO as 2 falhas: abrir o código do site e procurar "key"/"secret"; pedir /backup.sql e /.env no fim do endereço.
@@ -82,5 +90,9 @@ O passo a passo detalhado (com o "como verificar" de cada uma) está no material
 
 - Se algum segredo já esteve exposto: trocar as chaves (rotação) — exposto é vazado pra sempre.
 
-- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém. Material da aula 3 (o fecho) · Segurança com IA (modo defesa)  
+- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).
+
+A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.
+
+Material da aula 3 (o fecho) · Segurança com IA (modo defesa)  
  Série completa + casos reais: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/)

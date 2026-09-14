@@ -1,6 +1,7 @@
 # Segurança com IA — Aula 1
 
 A IA invadiu a minha clínica: um arquivo exposto → um crachá vazado → a vida dos pacientes. Aqui está o mapa das 3 falhas + o prompt completo pra arrumar cada uma no SEU projeto.
+
 ## 1 A INVASÃO DO VÍDEO — em 3 portas 🚪
 
 Não foram 3 falhas soltas: foi uma corrente. Cada porta aberta entregava a chave da próxima. É assim que uma invasão de verdade funciona.  
@@ -11,6 +12,7 @@ Não foram 3 falhas soltas: foi uma corrente. Cada porta aberta entregava a chav
 | 🪪 O crachá achado (painel interno | Com o crachá na mão, abri o painel da equipe: todos os pacientes (CPF, telefone, plano) e o faturamento do mês. | Prompt 3 — porteiro NO SERVIDOR em toda rota interna | acesso comum → 403 · equipe de verdade → 200 |
 | 🧾 A vida dos pacientes (ficha) + exame | Troquei o número 101 pelo 103 e li a ficha do Bruno (com as anotações íntimas dele). E baixei o exame dele — sem senha dele, só pedindo. | Prompt 2 — filtro de dono em TODA busca (dado E arquivo) | 103 → 404 · a ficha dela → 200 |
 A lição da corrente: quem construiu foi a IA, e a IA só escreveu o caminho feliz. Os erros não são aleatórios: são SEMPRE os mesmos. E o que é previsível é treinável.
+
 ## 2 O AJUSTE DE CADA FALHA — o prompt completo 📋
 
 Cada falha que você viu no vídeo tem UM prompt de correção. É só copiar o da falha que o SEU projeto tem e colar no seu agente (Cursor, Claude Code, ChatGPT, Codex...) junto com o seu projeto: ele corrige e cria o teste.
@@ -62,9 +64,13 @@ O que fazer:
 
 Me mostre: rotas alteradas, o antes/depois, e o teste.
 ```
+
 ## 3 TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪[🔴 Clínica aberta (com as 8 falhas) — clinica-vidaplena.vercel.app](https://clinica-vidaplena.vercel.app)[🟢 Clínica blindada (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app](https://clinica-vidaplena-blindado.vercel.app)[💾 Código no GitHub — clona e ataca na sua máquina (com os scripts de ataque)](https://github.com/gabrielkendy/clinica-vidaplena)
 
-Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.O experimento de 30 segundos: na clínica aberta, põe /.env no fim do endereço. Agora faz o mesmo na blindada. Viu? É a diferença entre um arquivo e uma tranca.
+Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.
+
+O experimento de 30 segundos: na clínica aberta, põe /.env no fim do endereço. Agora faz o mesmo na blindada. Viu? É a diferença entre um arquivo e uma tranca.
+
 ## 4 MODO MANUAL — conserte sem IA 🖐️
 
 Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 3 falhas:
@@ -76,6 +82,7 @@ Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 
 - Porteiro da área interna: toda rota de admin checa o papel NO SERVIDOR (staff/role da sessão) → sem isso: 403.
 
 O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/#manual) → seção MODO MANUAL.
+
 ## 5 CHECKLIST — hoje, no SEU projeto ✅
 
 - Testar EU MESMO as 3 falhas: pedir /.env, trocar um id na URL por um de outro usuário, chamar uma rota interna com conta comum.
@@ -84,5 +91,9 @@ O passo a passo detalhado (com o "como verificar" de cada uma) está no material
 
 - Se algum segredo já esteve exposto: trocar as chaves (rotação) — exposto é vazado pra sempre.
 
-- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém. Material da aula 1 · Segurança com IA (modo defesa)  
- Material completo + casos reais: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/)
+- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).
+
+A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.
+
+Material da aula 1 · Segurança com IA (modo defesa)
+Material completo + casos reais: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/)
