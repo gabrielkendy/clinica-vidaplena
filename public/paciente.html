@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal do Paciente — Clínica VidaPlena</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- painel interno da equipe: /interno -->
+<nav>
+  <div class="in">
+    <a class="logo" href="/"><img class="brandimg" src="/img/logo-horizontal.png" alt="Clínica VidaPlena"></a>
+    <div class="navlinks">
+      <span id="quem" class="hi"></span>
+      <button class="btn ghost small" id="bSair" style="display:none" onclick="sair()">Sair</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- LOGIN -->
+  <section id="boxLogin" class="formcard">
+    <h2>Portal do Paciente</h2>
+    <p class="hint">Acesse sua agenda, exames e dados do plano.</p>
+    <label>E-mail</label>
+    <input id="email" value="mariana@exemplo.com">
+    <label>Senha</label>
+    <input id="senha" type="password" value="Mariana2026">
+    <button class="btn primary" onclick="entrar()">Entrar</button>
+    <p class="small"><a href="#" onclick="mostrarCodigo()">Prefiro entrar com código do WhatsApp</a></p>
+  </section>
+
+  <section id="boxCodigo" class="formcard" style="display:none">
+    <h2>Código de acesso</h2>
+    <p class="hint">Enviamos um código de 4 dígitos no seu WhatsApp.</p>
+    <label>E-mail</label>
+    <input id="emailCod" value="mariana@exemplo.com">
+    <label>Código recebido</label>
+    <input id="codigo" placeholder="0000">
+    <button class="btn primary" onclick="entrarCodigo()">Confirmar código</button>
+    <p class="small"><a href="#" onclick="mostrarLogin()">Voltar para e-mail e senha</a></p>
+  </section>
+
+  <!-- PAINEL -->
+  <section id="painel" style="display:none;padding-bottom:60px">
+    <div class="phead">
+      <div>
+        <h2 class="serif" style="font-size:26px">Olá, <span id="nomePaciente"></span> 👋</h2>
+        <div class="hi" id="resumo"></div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab on" id="tab-consultas" onclick="aba('consultas')">Minhas consultas</button>
+      <button class="tab" id="tab-exames" onclick="aba('exames')">Meus exames</button>
+      <button class="tab" id="tab-dados" onclick="aba('dados')">Meus dados</button>
+    </div>
+
+    <div id="vConsultas"></div>
+    <div id="vExames" style="display:none"></div>
+    <div id="vDados" style="display:none"></div>
+
+    <h3 class="serif" style="margin-top:34px;font-size:19px">Foto de perfil</h3>
+    <p style="color:var(--dim);font-size:14px">Cole o link de uma foto para usar no seu perfil.</p>
+    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+      <input id="urlFoto" placeholder="https://..." style="max-width:380px">
+      <button class="btn ghost" onclick="importarFoto()">Importar foto</button>
+    </div>
+    <div class="out" id="saida"></div>
+  </section>
+
+  <footer class="pfoot">
+    <div>© 2026 Clínica VidaPlena · CNPJ 12.345.678/0001-90 · Av. das Palmeiras, 1.240 — São Paulo/SP</div>
+    <div><span style="color:#b45309">Ambiente de demonstração — dados fictícios.</span></div>
+  </footer>
+</div>
+
+<a class="wzap" href="https://wa.me/5511930118899?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20meu%20agendamento." target="_blank" aria-label="Falar no WhatsApp">
+  <span class="tip">Falar no WhatsApp</span>
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.12c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.12-1.87-.12-.43-.14-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37s.39 0 .56.01c.18.01.42-.07.66.5.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.66-.15.27.1 1.71.81 2 .96.3.15.5.22.57.34.07.12.07.72-.18 1.42z"/></svg>
+</a>
+
+<!-- assistente virtual -->
+<div class="chatfab" onclick="toggleChat()">💬 Fale com a Vida</div>
+<div id="chatBox" style="display:none;position:fixed;right:22px;bottom:162px;width:320px;background:#fff;border:1px solid var(--bord);border-radius:18px;box-shadow:0 24px 60px rgba(14,90,80,.25);overflow:hidden;z-index:20">
+  <div style="background:var(--teal);color:#fff;padding:12px 16px;font-weight:700;font-size:14px">Assistente Vida <span style="font-weight:400;opacity:.85">· online agora</span></div>
+  <div id="chatLog" style="padding:14px;height:180px;overflow:auto;font-size:13.5px;color:var(--txt)"></div>
+  <div style="display:flex;border-top:1px solid var(--bord)">
+    <input id="chatIn" placeholder="Escreva sua dúvida..." style="border:0;border-radius:0" onkeydown="if(event.key==='Enter')enviarChat()">
+    <button class="btn primary" style="border-radius:0;padding:12px 18px" onclick="enviarChat()">➤</button>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

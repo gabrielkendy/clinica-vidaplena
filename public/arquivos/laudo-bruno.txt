@@ -1,0 +1,10 @@
+LAUDO DERMATOLÓGICO — Clínica VidaPlena (documento fictício de laboratório)
+Paciente: Bruno Carvalho Lima
+Data: 01/09/2026 · Médica: Dra. Camila Rocha (CRM-SP 184.220)
+Convênio: MedPlus
+
+EXAME: Dermatoscopia de corpo inteiro
+ACHADOS: Nevo melanocítico benigno em região dorsal (2mm), sem critérios de atipia.
+CONDUTA: Acompanhamento anual. Fotoproteção diária recomendada.
+
+Documento de exemplo — dados fictícios.
