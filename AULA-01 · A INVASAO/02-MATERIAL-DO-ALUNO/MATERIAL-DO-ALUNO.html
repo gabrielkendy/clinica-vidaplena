@@ -182,8 +182,8 @@ Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
 
 O que fazer:
 1. Encontre TODOS os pontos de tentativa: login com senha, código OTP/WhatsApp, recuperação de senha, verificação de e-mail.
-2. Adicione rate limit com bloqueio: após 5 tentativas erradas, bloqueie aquele e-mail/telefone por 10 minutos (avisando quando estiver perto do limite). Zere o contador quando a pessoa ACERTAR.
-3. Se o projeto permitir, use armazenamento compartilhado (Redis/tabela) em vez de memória — me explique a opção certa pro meu caso.
+2. Adicione rate limit com bloqueio progressivo: após 5 tentativas erradas, bloqueie aquele e-mail/telefone por 10 minutos (e avise quando estiver próximo do limite). Zere o contador quando a pessoa ACERTAR.
+3. Se der, prefira armazenamento compartilhado (Redis/tabela) em vez de memória — me explique qual seu projeto permite.
 4. Os códigos também devem EXPIRAR (ex: 10 minutos) e ser de uso único.
 5. Crie um teste que PROVA: 6 tentativas erradas seguidas → a resposta vira 429/bloqueio.
 
