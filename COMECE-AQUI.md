@@ -1,9 +1,9 @@
-# 🎬 COMECE AQUI — o plano de gravação completo (V1 + V2)
+# 🎬 COMECE AQUI — plano de gravação 100% ONLINE (V1 + V2)
 
-> Você tem **2 vídeos** pra gravar desta série:
-> **V1 · "A IA invadiu a minha clínica"** (o ataque) e **V2 · "A Blindagem"** (as correções ao vivo).
-> 🌐 O site **JÁ ESTÁ NO AR**: `https://clinica-vidaplena.vercel.app`
-> Tudo aqui é no NOSSO lab (Clínica VidaPlena, dados 100% fictícios). Nunca em sistema de terceiros.
+> **Tudo no ar, simulando o real:** você grava abrindo os sites **na internet** e fazendo os ataques contra eles — do jeito que qualquer pessoa faria.
+> - 🔴 **VULNERÁVEL (o alvo):** `https://clinica-vidaplena.vercel.app`
+> - 🟢 **BLINDADO (o depois):** `https://clinica-vidaplena-blindado.vercel.app`
+> Os dois são labs públicos, com dados 100% fictícios e avisos no site. Nunca faça isso em sistema de terceiros.
 
 ---
 
@@ -14,26 +14,16 @@
 | `COMECE-AQUI.md` | **este guia** — o plano de gravação |
 | `01-ROTEIRO/ROTEIRO-LIMPO-PARA-GRAVAR.md` | as falas do V1 (o que você fala) |
 | `01-ROTEIRO/ROTEIRO-COM-TIMECODES.md` | V1 com timecodes + o que mostrar na tela |
-| `01-ROTEIRO/APRESENTACAO-TEORIA-ANOTAVEL.html` | deck de 39 slides (abre no navegador, navega com ← →) |
-| `01-ROTEIRO/KIT-DE-GRAVACAO.md` | os comandos pra COLAR na hora (V1 e V2) |
-| `ATAQUE-AO-VIVO.cmd` | 💀 modo hacker LOCAL (duplo clique; sobe o lab + ataca) |
-| `ATAQUE-ONLINE.cmd` | 💀 modo hacker no site NO AR (duplo clique) |
-| `SIMULAR-ATAQUES.cmd` | simulação limpa das 8 falhas (sem visual de filme) |
-| `02-BLINDAGEM/` | o V2 inteiro: guia das correções + roteiro + servidor blindado + reteste |
-| `MISSOES/` | roteiro técnico de cada falha (referência) |
-| `online/` | o código do deploy da Vercel (não precisa mexer pra gravar) |
+| `01-ROTEIRO/APRESENTACAO-TEORIA-ANOTAVEL.html` | deck de 39 slides (navega com ← →) |
+| `01-ROTEIRO/KIT-DE-GRAVACAO.md` | os comandos prontos (V1 e V2, online e local) |
+| `ATAQUE-ONLINE.cmd` | 💀 o ataque completo no site NO AR (duplo clique) |
+| `SIMULAR-ATAQUES.cmd` · `ATAQUE-AO-VIVO.cmd` | versão LOCAL (só se quiser a alternativa offline) |
+| `02-BLINDAGEM/` | o V2: guia das correções + roteiro + reteste |
+| `MISSOES/ataque-online.py` | o script do ataque online (roda via .cmd) |
+| `online/` e `online-blindado/` | o código dos dois deploys (não precisa mexer) |
 
 **Logins do lab:** `mariana@exemplo.com` / `Mariana2026` (paciente) · `equipe@vidaplena.com` / `equipe2026` (equipe)
 **Código de acesso da Mariana:** `4815`
-
----
-
-## 🌐 O site no ar (Vercel) — usa ele na gravação
-
-- **https://clinica-vidaplena.vercel.app** — o lab publicado, funcionando igual ao local (as 8 falhas, login, painel, assistente).
-- **Por que isso importa pro vídeo:** agora você pode gravar o take de abertura mostrando um site **de verdade, na internet**. Fala a frase e aponta: "esse site tá no ar agora, qualquer um pode abrir". É outro nível de realismo.
-- **Ataque no site público:** duplo clique em `ATAQUE-ONLINE.cmd` (testado: 8/8 no ar).
-- **Dica de ouro:** abre no CELULAR na câmera também — mostra "site de clínica navegando no celular" e depois o ataque derrubando ele no PC. Corte forte.
 
 ---
 
@@ -41,59 +31,50 @@
 
 **Duração alvo:** ~13-16 min · **Produção:** 2h a 2h30
 
-### PASSO 0 · Prepare o terreno (15 min)
-1. **Suba o lab** (deixa essa janela aberta a gravação inteira):
-   ```bash
-   cd "C:\Users\Gabriel\Documents\New project\clinica-vidaplena"
-   node server.js
-   ```
-   ✅ Deu certo quando aparecer `🏥 Clínica VidaPlena no ar (LAB DE TREINAMENTO)` na porta 3400.
-2. **Teste a simulação** (garante que TUDO funciona): duplo clique em `SIMULAR-ATAQUES.cmd`.
-   ✅ Deu certo quando o resumo disser **8/8 falhas exploradas**. Se alguma falhar, me chama antes de gravar.
-3. **Teste o modo hacker:** duplo clique em `ATAQUE-AO-VIVO.cmd` (visual de filme com banner, cores e contagem ao vivo). É esse que fica no vídeo.
-4. **Abra a apresentação** `01-ROTEIRO/APRESENTACAO-TEORIA-ANOTAVEL.html` (39 slides, navega com ← →).
-5. **Confira o ambiente:**
-   - Browser aba 1: `http://localhost:3400` (Ctrl+F5)
-   - Aba 2: `http://localhost:3400/paciente` logada como Mariana
-   - Aba 3: `http://localhost:3400/interno`
-   - Terminal limpo, **fonte grande** (Ctrl + scroll), fundo escuro
-   - OBS: tela + câmera (canto), gravando em 1080p
+### PASSO 0 · Setup (5 min — agora é só abrir!)
+1. **Nada pra subir!** O alvo já está no ar: `https://clinica-vidaplena.vercel.app`
+2. **Browser, 3 abas:**
+   - Aba 1: `https://clinica-vidaplena.vercel.app` (Ctrl+F5 só na primeira vez)
+   - Aba 2: `https://clinica-vidaplena.vercel.app/paciente` (logar como Mariana)
+   - Aba 3: `https://clinica-vidaplena.vercel.app/interno`
+3. **Terminal** limpo, fonte grande, fundo escuro (pro `ATAQUE-ONLINE.cmd`)
+4. **Teste antes de gravar:** duplo clique em `ATAQUE-ONLINE.cmd` → tem que fechar em **8/8 FALHAS EXPLORADAS**.
 
 ### PASSO 1 · Estude o roteiro (25 min)
-1. Leia o **ROTEIRO-LIMPO-PARA-GRAVAR.md** de ponta a ponta, uma vez, sem parar. É o que você fala, em linguagem de conversa.
-2. Depois abra o **ROTEIRO-COM-TIMECODES.md** e veja cada bloco: o que falar + **o que mostrar na tela**.
-3. Deixe o **KIT-DE-GRAVACAO.md** aberto no celular/segundo monitor: é de lá que você copia os comandos na hora.
-   💡 Você está pronto quando souber contar a história em 3 frases: "construí uma clínica com IA, uma IA achou 8 falhas graves, inclusive prontuário de paciente, e agora eu vou consertar".
+1. Leia o **ROTEIRO-LIMPO-PARA-GRAVAR.md** de ponta a ponta, uma vez, sem parar. É o que você fala (linguagem de conversa).
+2. Depois abra o **ROTEIRO-COM-TIMECODES.md**: cada bloco tem o que falar + o que mostrar.
+3. Deixe o **KIT-DE-GRAVACAO.md** aberto no celular/segundo monitor: é de lá que você copia os comandos.
 
-### PASSO 2 · Grave em blocos (60–80 min)
-Grave **na ordem do roteiro**, um bloco por vez, 2 takes de cada e escolhe um na edição.
+### PASSO 2 · Os takes "como um hacker faria" (navegador — NOVO, é ouro)
+Grave **a tela do navegador** fazendo exatamente o que qualquer curioso faria — abrir as URLs na barra de endereço:
 
-**Blocos com a CÂMERA (você falando):**
-- **B01 · A promessa** — energia alta, olhando pra lente. Pode abrir mostrando o site no ar no celular.
-- **B03 · Por que acontece (sempre um destes 5 motivos)** — pode ser só áudio sobre os cards do deck (slide 3).
+| O que digitar na barra | O que a tela mostra (o "uau") |
+|---|---|
+| `clinica-vidaplena.vercel.app/.env` | **o caderno de senhas inteiro**, aberto como texto |
+| `clinica-vidaplena.vercel.app/backup.sql` | o banco de dados começando a baixar |
+| `clinica-vidaplena.vercel.app/app.js` → Ctrl+F `VIDA_AI_KEY` | a chave da IA no código do site |
+| `clinica-vidaplena.vercel.app/interno` (logada como paciente) | o painel da equipe aberto |
+| F12 → aba Sources no portal | a chave no meio do JavaScript |
+
+Dica: grava em **tela cheia** o navegador digitando a URL e apertando Enter → mostra o resultado. 2 takes de cada.
+
+### PASSO 3 · O ataque completo (o take de encerramento)
+Duplo clique em **`ATAQUE-ONLINE.cmd`** → o ataque roda INTEIRO contra o site no ar (banner, cores, contagem, brute force do código) → fecha em **💀 8/8 FALHAS EXPLORADAS — O SITE NO AR FOI COMPROMETIDO**.
+⭐ **Depois do resultado, 3 SEGUNDOS DE SILÊNCIO olhando pra tela.** É o "uau".
+
+### PASSO 4 · Os blocos com a câmera
+Na ordem do roteiro:
+- **B01 · A promessa** — energia alta. Dica: pode ABRIR mostrando o site no celular: "esse site tá na internet agora".
+- **B03 · Por que acontece** — só áudio sobre os cards do deck (slide 3).
 - **B12 · A lição** — o bloco mais importante. Calma, pausas. A tese: "a IA escreveu o caminho feliz".
 - **B13 · Fecho e CTA** — like/inscreve/comenta.
 
-**Blocos com a TELA (o lab + terminal):**
-- **B02 · A clínica** — navegue devagar: hero → equipe → portal (login) → assistente. 2s "respirando" em cada seção.
-- **B04 a B11 · As 8 missões** — pra CADA UMA:
-  1. Antes de gravar: rode o comando UMA vez fora de câmera (ensaio). Funcionou? Reseta e grava.
-  2. O slide "Agora no lab" fica no deck te guiando (ou vai direto pro terminal).
-  3. **Rode o comando do KIT** e deixa o resultado na tela.
-  4. ⭐ **REGRA DE OURO: depois do resultado, fique 3 SEGUNDOS EM SILÊNCIO olhando pra tela.** É esse silêncio que vira o "uau" na edição.
-  5. Volte pro slide "A defesa" e diga a frase de ouro (tá no deck).
-
-**Dicas de campo:**
-- A missão mais forte é o **código sem limite (B07)**: grave com calma o loop rodando e o "ENTROU".
-- Na **missão da chave (B10)**, dê **Ctrl + +** no app.js pra chave ficar GIGANTE.
-- A missão do **.env (B04)** abre as demos: capriche na expressão.
-- Se travar ou der erro no meio: para, respira, roda de novo. Regra do "testei antes".
-
-### PASSO 3 · Use a apresentação como esqueleto (na edição)
+### PASSO 5 · Use a apresentação como esqueleto (na edição)
 - Cada falha tem 4 slides: **Teoria → Por que acontece → Agora no lab → A defesa**
-- O corte fica: **slide de teoria → B-roll da invasão → slide de defesa**
-- Anote no deck (**N** liga o pincel) enquanto fala, se quiser efeito de aula
-- Print bonito pra thumb: aperta **S** (ou 💾) em qualquer slide e salva PNG
+- Corte: **slide de teoria → B-roll do navegador/terminal → slide de defesa**
+- Print pra thumb: aperta **S** em qualquer slide.
+
+> 🔌 **Modo local (alternativa):** se quiser gravar sem internet, roda `node server.js` e usa os .cmd locais (`ATAQUE-AO-VIVO.cmd`). Mesma coisa, na tua máquina.
 
 ---
 
@@ -101,56 +82,53 @@ Grave **na ordem do roteiro**, um bloco por vez, 2 takes de cada e escolhe um na
 
 **Duração alvo:** ~10-13 min · **Produção:** 1h30 a 2h
 
-### PASSO 0 · Setup dos DOIS servidores (10 min)
-Deixa os dois rodando lado a lado (o "antes" e o "depois"):
-```bash
-cd "C:\Users\Gabriel\Documents\New project\clinica-vidaplena"
-node server.js                          # janela 1: o vulnerável (3400)
-node 02-BLINDAGEM/server-blindado.js    # janela 2: o blindado (3500)
-```
-✅ Vulnerável: `http://localhost:3400` · ✅ Blindado: `http://localhost:3500` (visualmente IDÊNTICOS — é isso que o vídeo mostra).
-**Teste antes de gravar:** `python 02-BLINDAGEM/reteste.py` → tem que fechar em **🛡️ 8/8 PORTAS FECHADAS**.
+### PASSO 0 · Setup (2 min — os dois já estão no ar!)
+Abre os DOIS navegadores/lado a lado:
+- 🔴 Esquerda: `https://clinica-vidaplena.vercel.app` (o vulnerável)
+- 🟢 Direita: `https://clinica-vidaplena-blindado.vercel.app` (o blindado)
+✅ São visualmente IDÊNTICOS — é isso que o vídeo mostra.
+**Teste antes de gravar:** `python 02-BLINDAGEM/reteste.py https://clinica-vidaplena-blindado.vercel.app` → fecha em **🛡️ 8/8 PORTAS FECHADAS**.
 
 ### PASSO 1 · Estude o roteiro (20 min)
-1. Leia o **`02-BLINDAGEM/ROTEIRO-V2-A-BLINDAGEM.md`** de ponta a ponta (mesmo estilo de conversa do V1).
-2. Tenha aberto o **`02-BLINDAGEM/GUIA-DAS-8-CORRECOES.md`**: cada correção tem o "antes → depois" e o que mostrar.
+1. Leia o **`02-BLINDAGEM/ROTEIRO-V2-A-BLINDAGEM.md`** (mesmo estilo de conversa do V1).
+2. Abra o **`02-BLINDAGEM/GUIA-DAS-8-CORRECOES.md`**: cada correção tem o "antes → depois" e o que mostrar.
 
 ### PASSO 2 · Grave em blocos
 - **B01 · A promessa 2** (câmera) — recap do V1 + "hoje eu fecho as 8 E tento invadir de novo".
 - **B02 · Como a blindagem funciona** (tela) — os dois sites lado a lado, idênticos.
-- **B03 · O mapa** (deck/tela) — as 8 correções em cards.
+- **B03 · O mapa** — as 8 correções em cards.
 - **B04 a B11 · As 8 correções** — pra CADA UMA:
-  1. Recap rápido: roda o ataque no **3400** e mostra o problema (3s).
-  2. Mostra a correção no código do blindado (é pequena — destaca na tela).
-  3. Roda o MESMO ataque no **3500** → **bloqueado**. E mostra que o uso legítimo continua funcionando.
-  4. Fecha com a frase da correção (tá no guia).
-- **B12 · O RETESTE** (o momento de ouro) — grava o `python 02-BLINDAGEM/reteste.py` rodando INTEIRO, sem corte, até o **8/8 PORTAS FECHADAS**.
-- **B13 · A lição 2 e o CTA** (câmera) — "correção boa é correção pequena" + as 4 perguntas + CTA.
+  1. Recap: roda o ataque no site 🔴 e mostra o problema (3s).
+  2. Mostra a correção (o código tá no guia — é pequena).
+  3. Roda o MESMO ataque no site 🟢 → **bloqueado na tela** (404/403/400/429).
+  4. Fecha com a frase do guia ("Dificuldade não é defesa. LIMITE é defesa.").
+- **B12 · O RETESTE** (momento de ouro) — grava o comando rodando INTEIRO, sem corte, até **🛡️ 8/8 PORTAS FECHADAS**.
+- **B13 · A lição 2 e o CTA** (câmera) — "correção boa é correção pequena" + as 4 perguntas.
 
-**Dica de ouro do V2:** os dois navegadores abertos lado a lado (3400 vermelho de um lado, 3500 verde do outro) — o espectador vê o antes/depois em UMA olhada.
+**Dica de ouro:** tela dividida — os DOIS navegadores abertos (🔴 e 🟢) e você digita a MESMA URL de ataque nos dois. Um mostra os dados, o outro mostra "acesso negado". Corte perfeito.
+
+> 🔌 **Modo local (alternativa):** `node server.js` (3400) + `node 02-BLINDAGEM/server-blindado.js` (3500) e `python 02-BLINDAGEM/reteste.py` (sem URL).
 
 ---
 
 ## ✅ Checklist antes de publicar cada vídeo
 - [ ] A promessa ficou clara nos primeiros 20 segundos?
-- [ ] Todas as missões têm o momento da descoberta (com os 3s de silêncio)?
+- [ ] Tem o take no navegador (a URL suspeita aberta na tela)? É o que rende comentário.
+- [ ] Os 3s de silêncio depois de cada descoberta?
 - [ ] V1 termina prometendo a parte 2? V2 termina com o placar 8/8?
-- [ ] O fecho pede like/inscreve/comenta?
-- [ ] Áudio limpo nas partes com fala?
-- [ ] Descrição com: **site no ar** (`https://clinica-vidaplena.vercel.app`) + repo (`github.com/gabrielkendy/clinica-vidaplena`) + capítulos
+- [ ] Descrição com: alvo (`clinica-vidaplena.vercel.app`) + blindado (`clinica-vidaplena-blindado.vercel.app`) + repo (`github.com/gabrielkendy/clinica-vidaplena`)
 
 ---
 
-## 🔧 Se algo der errado (troubleshooting)
+## 🔧 Se algo der errado
 
 | Problema | Solução |
 |---|---|
-| Lab não abre / erro de conexão | o terminal com `node server.js` caiu: sobe de novo (PASSO 0) |
-| **"Porta em uso" ao subir** | já tem um servidor rodando nela — fecha a janela antiga (ou reinicia o PC e sobe só um) |
-| Página com visual antigo | **Ctrl + F5** na aba |
-| Comando não retorna nada | confere se copiou o comando INTEIRO do KIT (com as aspas) |
-| Loop do código não acha | o código certo é `4815`; a faixa do kit já cobre |
-| Deu ruim no meio do take | respira, reseta a página e grava de novo. Sem estresse. |
+| Site não abre | confere a URL (sem espaço); testa no celular; a Vercel pode estar em cold start (espera 3s) |
+| Demora na primeira resposta | normal (servidor "acordando") — na gravação, faça 1 acesso antes pra aquecer |
+| `ATAQUE-ONLINE.cmd` não acha o código | o código é `4815`; a faixa do loop já cobre |
+| Comando local não roda | **Ctrl+F5**, ou confere se o `node server.js` tá rodando (modo local) |
+| Deu ruim no meio do take | respira, reseta, grava de novo. Sem estresse. |
 
 ## 📏 As 3 regras que não se quebram
 1. **Só no nosso lab.** Nunca demo em sistema de terceiros. (É o posicionamento da série inteira.)

@@ -1,6 +1,11 @@
 # 🔧 AS 8 CORREÇÕES — guia de gravação do V2 ("A Blindagem")
 
-> **O setup do vídeo:** dois servidores rodando lado a lado —
+> **🌐 MODO ONLINE (o padrão agora):** os dois sites já estão no ar —
+> 🔴 **vulnerável:** `https://clinica-vidaplena.vercel.app` · 🟢 **blindado:** `https://clinica-vidaplena-blindado.vercel.app`
+> Os comandos deste guia usam `3400`/`3500` (modo local); **no modo online, troque** `http://localhost:3400` pela URL 🔴 e `http://localhost:3500` pela URL 🟢 — os resultados são idênticos (já testado).
+> **O reteste online:** `python 02-BLINDAGEM/reteste.py https://clinica-vidaplena-blindado.vercel.app`
+>
+> **O setup local (alternativa):** dois servidores lado a lado —
 > o **vulnerável na porta 3400** (o "antes") e o **blindado na porta 3500** (o "depois").
 > ```bash
 > node server.js                        # 3400 — o que cai

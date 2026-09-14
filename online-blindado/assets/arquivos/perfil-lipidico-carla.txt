@@ -1,0 +1,13 @@
+PERFIL LIPÍDICO — Clínica VidaPlena (documento fictício de laboratório)
+Paciente: Carla Mendes Rocha
+Data da coleta: 22/08/2026 · Médico solicitante: Dr. Rafael Menezes
+Convênio: Particular · Guia: 2210-2026
+
+RESULTADO                        REFERÊNCIA
+Colesterol total ... 214 mg/dL    < 190
+HDL ................ 58 mg/dL     > 40
+LDL ................ 138 mg/dL    < 130
+Triglicérides ...... 118 mg/dL    < 150
+
+Observação: LDL discretamente elevado. Sugerida reavaliação em 90 dias.
+Documento de exemplo — dados fictícios.

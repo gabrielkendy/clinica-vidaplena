@@ -4,8 +4,8 @@
 Roda os MESMOS 8 ataques do vídeo 1 contra a versão corrigida (porta 3500).
 Agora TODOS devem FALHAR. É o momento "na tua frente" do vídeo 2.
 
-Uso:  python 02-BLINDAGEM/reteste.py
-(antes: rodar  node 02-BLINDAGEM/server-blindado.js)
+Uso:  python 02-BLINDAGEM/reteste.py                        # blindado local (3500)
+python 02-BLINDAGEM/reteste.py https://url-do-blindado    # blindado NO AR (Vercel)
 """
 import json
 import os
@@ -22,7 +22,7 @@ G = "\033[92m"; R = "\033[91m"; Y = "\033[93m"; C = "\033[96m"; W = "\033[97m"
 B = "\033[1m"; D = "\033[2m"; X = "\033[0m"
 BG = B + G
 
-BASE = "http://localhost:3500"
+BASE = (sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://localhost:3500")
 
 def slow(t, d=0.012, fim="\n"):
     for ch in t:
@@ -37,9 +37,9 @@ def req(path, method="GET", data=None):
     )
     try:
         with urllib.request.urlopen(r, timeout=10) as resp:
-            return resp.status, resp.read().decode("utf-8", "ignore"), dict(resp.headers)
+            return resp.status, resp.read().decode("utf-8", "ignore"), {k.lower(): v for k, v in resp.headers.items()}
     except urllib.error.HTTPError as e:
-        return e.code, e.read().decode("utf-8", "ignore"), dict(e.headers or {})
+        return e.code, e.read().decode("utf-8", "ignore"), {k.lower(): v for k, v in (e.headers or {}).items()}
     except Exception:
         return 0, "", {}
 
@@ -118,8 +118,8 @@ verifica((not tem_chave) and s_ass == 200 and '"resposta"' in b_ass,
 missao(8, "BACKUP EXPOSTO + SERVIDOR TAGARELA")
 s, _, _ = req("/backup.sql")
 s2, _, h = req("/")
-sem_powered = "X-Powered-By" not in h
-com_headers = "X-Content-Type-Options" in h and "X-Frame-Options" in h
+sem_powered = "x-powered-by" not in h
+com_headers = "x-content-type-options" in h and "x-frame-options" in h
 verifica(s == 403 and sem_powered and com_headers,
          f"backup → HTTP {s} | X-Powered-By sumiu | headers de proteção presentes")
 

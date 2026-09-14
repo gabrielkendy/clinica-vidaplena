@@ -1,0 +1,77 @@
+{
+  "pacientes": [
+    {
+      "id": 1, "nome": "Mariana Ferreira Alves", "email": "mariana@exemplo.com", "senha": "Mariana2026",
+      "token": "tok_mariana_4d1", "cpf": "412.365.897-00", "telefone": "(11) 98231-4455",
+      "plano": "Ampla Saúde", "nascimento": "1991-03-14", "staff": false
+    },
+    {
+      "id": 2, "nome": "Bruno Carvalho Lima", "email": "bruno@exemplo.com", "senha": "Bruno2026",
+      "token": "tok_bruno_8b2", "cpf": "318.442.176-00", "telefone": "(11) 97744-2210",
+      "plano": "MedPlus", "nascimento": "1985-11-02", "staff": false
+    },
+    {
+      "id": 3, "nome": "Carla Mendes Rocha", "email": "carla@exemplo.com", "senha": "Carla2026",
+      "token": "tok_carla_1f9", "cpf": "295.774.038-00", "telefone": "(11) 96612-8877",
+      "plano": "Particular", "nascimento": "1979-07-28", "staff": false
+    },
+    {
+      "id": 4, "nome": "Dra. Camila Rocha (equipe)", "email": "equipe@vidaplena.com", "senha": "equipe2026",
+      "token": "tok_equipe_000", "cpf": "—", "telefone": "(11) 3011-8899",
+      "plano": "—", "nascimento": "1983-05-10", "staff": true
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": 101, "paciente_id": 1, "medico": "Dra. Camila Rocha", "especialidade": "Dermatologia",
+      "data": "2026-09-18 14:30", "status": "confirmada",
+      "observacoes": "Retorno pós-procedimento. Avaliar cicatrização da região tratada.", "valor": "R$ 320,00"
+    },
+    {
+      "id": 102, "paciente_id": 1, "medico": "Dra. Juliana Prado", "especialidade": "Estética",
+      "data": "2026-10-02 10:00", "status": "confirmada",
+      "observacoes": "Aplicação de toxina botulínica (manutenção).", "valor": "R$ 1.200,00"
+    },
+    {
+      "id": 103, "paciente_id": 2, "medico": "Dr. Rafael Menezes", "especialidade": "Clínica Geral",
+      "data": "2026-09-19 09:00", "status": "confirmada",
+      "observacoes": "DADO SENSÍVEL (exemplo de laboratório): paciente relata insônia e ansiedade há 3 semanas. Encaminhado para avaliação complementar.",
+      "valor": "R$ 280,00"
+    },
+    {
+      "id": 104, "paciente_id": 2, "medico": "Dra. Camila Rocha", "especialidade": "Dermatologia",
+      "data": "2026-09-25 16:00", "status": "aguardando confirmação",
+      "observacoes": "Mapeamento de pintas (check-up anual).", "valor": "R$ 350,00"
+    },
+    {
+      "id": 105, "paciente_id": 3, "medico": "Dra. Juliana Prado", "especialidade": "Estética",
+      "data": "2026-09-21 11:30", "status": "confirmada",
+      "observacoes": "Preenchimento labial. ATENÇÃO: alergia relatada a lidocaína.", "valor": "R$ 1.450,00"
+    },
+    {
+      "id": 106, "paciente_id": 1, "medico": "Dr. Rafael Menezes", "especialidade": "Clínica Geral",
+      "data": "2026-09-15 08:00", "status": "realizada",
+      "observacoes": "Check-up anual. Solicitar hemograma completo.", "valor": "R$ 280,00"
+    }
+  ],
+  "exames": [
+    { "id": "exp_01", "paciente_id": 1, "nome": "Hemograma Completo", "arquivo": "hemograma-mariana.txt", "data": "2026-08-30", "medico": "Dr. Rafael Menezes" },
+    { "id": "exp_02", "paciente_id": 2, "nome": "Laudo Dermatológico", "arquivo": "laudo-bruno.txt", "data": "2026-09-01", "medico": "Dra. Camila Rocha" },
+    { "id": "exp_03", "paciente_id": 3, "nome": "Perfil Lipídico", "arquivo": "perfil-lipidico-carla.txt", "data": "2026-08-22", "medico": "Dr. Rafael Menezes" }
+  ],
+  "codigos": {
+    "mariana@exemplo.com": "4815",
+    "bruno@exemplo.com": "2277",
+    "carla@exemplo.com": "9090",
+    "equipe@vidaplena.com": "1111"
+  },
+  "financeiro": {
+    "mes_referencia": "Setembro/2026",
+    "faturamento_bruto": "R$ 187.430,00",
+    "a_receber_convenios": "R$ 42.180,00",
+    "consultas_no_mes": 312,
+    "procedimentos_estetica": 96,
+    "ticket_medio": "R$ 601,00",
+    "inadimplencia": "2,4%"
+  }
+}
