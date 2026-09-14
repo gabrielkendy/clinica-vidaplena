@@ -41,7 +41,7 @@ Onde tiver 🎙️, você fala a fala do roteiro.
 
 | Se precisar de... | Vai em... |
 |---|---|
-| Slides de apoio na gravação | `01-ROTEIRO/APRESENTACAO-TEORIA-ANOTAVEL.html` |
+| **Material do Aluno da AULA 1** (com os prompts) | `MATERIAL-DO-ALUNO.html` (na raiz do projeto — é O entregável) |
 | Os prompts pro espectador (você mostra e usa na tela) | `materiais-aulas.vercel.app/seguranca-com-ia` → PROMPTS (mestre + 8 + manual) |
 | Ver o resultado esperado das correções | `02-BLINDAGEM/server-blindado.js` (é o "mapa" do que a IA deve fazer) |
 | Voltar o lab pras falhas (resetar) | `RESET-LAB.cmd` |

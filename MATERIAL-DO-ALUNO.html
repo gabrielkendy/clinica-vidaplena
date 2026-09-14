@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material do Aluno — Aula 1: A IA invadiu a minha clínica</title>
+<style>
+:root{--bg:#f4f6f8;--card:#ffffff;--ink:#0f172a;--mut:#5b6472;--green:#0e9f6e;--green2:#057a55;--line:#e2e8f0;--blue:#3b82f6;--gold:#b45309;--red:#dc2626}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:28px 18px 80px}
+.topbar{position:sticky;top:0;background:rgba(244,246,248,.92);backdrop-filter:blur(6px);z-index:50;padding:10px 0;border-bottom:1px solid var(--line)}
+.topbar .wrap{padding:0 18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tb-btn{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;text-decoration:none;transition:.15s}
+.tb-btn:hover{border-color:var(--green);color:var(--green)}
+h1{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:6px 0 4px}
+h1 .s{color:var(--green)}
+.sub{color:var(--mut);font-size:15px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:16px 0;scroll-margin-top:70px}
+h2{font-size:19px;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+h2 .n{background:var(--green);color:#fff;border-radius:8px;font-size:13px;padding:2px 9px}
+h3{font-size:15px;margin:14px 0 6px;color:var(--green2)}
+p{color:#334155;font-size:14.5px;margin-bottom:8px}
+.mut{color:var(--mut);font-size:13px}
+pre{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:16px 14px;font-size:12.8px;line-height:1.5;overflow-x:auto;white-space:pre-wrap;margin:10px 0}
+.chip{display:inline-block;background:#eefcf5;color:var(--green2);border:1px solid #b8ecd9;border-radius:999px;font-size:12px;font-weight:700;padding:2px 10px;margin:2px 2px 2px 0}
+.chip.r{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
+.copy{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;padding:7px 14px;cursor:pointer;transition:.15s;margin-top:8px}
+.copy:hover{background:var(--green2)}
+.copy.ok{background:#10b981}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
+th{background:#f1f5f9;text-align:left;padding:8px 10px;border:1px solid var(--line);font-size:12.5px;text-transform:uppercase;color:var(--mut)}
+td{padding:8px 10px;border:1px solid var(--line);vertical-align:top}
+a{color:var(--blue)}
+.note{background:#fff7e6;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:10px 0}
+.note b{color:#92400e}
+.alert{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:10px 0}
+.alert b{color:#b91c1c}
+.ok-box{background:#eefcf5;border:1px solid #b8ecd9;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:10px 0}
+.ok-box b{color:var(--green2)}
+.check{list-style:none;margin:10px 0}
+.check li{padding:7px 0 7px 30px;position:relative;font-size:14px;border-bottom:1px dashed #e8edf3}
+.check li::before{content:'✅';position:absolute;left:0;top:6px}
+.big{font-size:clamp(20px,2.6vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:6px 0}
+details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fbfdfe;overflow:hidden}
+details[open]{background:#fff;border-color:#b8ecd9}
+summary{cursor:pointer;padding:12px 14px;font-weight:700;font-size:14.5px;color:var(--ink);display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▾';margin-left:auto;color:var(--mut);transition:.2s}
+details[open] summary::after{transform:rotate(180deg)}
+details pre{margin:0 12px 8px;border-radius:8px}
+details .copy{margin:0 12px 14px}
+.master{border:2px solid var(--green)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.mini{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff;font-size:13.5px}
+.mini b{color:var(--green2)}
+.lnk{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff;text-decoration:none;color:var(--ink);font-size:14px;transition:.15s}
+.lnk:hover{border-color:var(--green)}
+.lnk b{color:var(--blue)}
+.foot{margin-top:30px;text-align:center;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="tb-btn" href="#invasao">🚪 A invasão</a>
+  <a class="tb-btn" href="#lab">🧪 Testa no ar</a>
+  <a class="tb-btn" href="#prompts">📋 Prompts</a>
+  <a class="tb-btn" href="#manual">🖐️ Manual (sem IA)</a>
+  <a class="tb-btn" href="#checklist">✅ Checklist</a>
+</div></div>
+
+<div class="wrap">
+
+<h1>Segurança com IA <span class="s">— Aula 1</span></h1>
+<p class="sub">A IA invadiu a minha clínica: <b>um arquivo exposto → um crachá vazado → a vida dos pacientes</b>. Aqui está o mapa da invasão inteira + os <b>prompts prontos</b> pra blindar o SEU projeto hoje.</p>
+
+<div class="card" id="invasao">
+<h2><span class="n">1</span> A INVASÃO DO VÍDEO — em 3 portas 🚪</h2>
+<p>Não foram 3 falhas soltas: foi <b>uma corrente</b>. Cada porta aberta entregava a chave da próxima. É assim que uma invasão de verdade funciona.</p>
+<table>
+<tr><th>Porta</th><th>O ataque (ao vivo, no site)</th><th>A correção (o prompt)</th><th>O teste</th></tr>
+<tr><td>🔐 <b>O caderno de senhas</b><br><span class="mut"><code>/.env</code></span></td><td>Pedi o arquivo de segredos na barra de endereço e baixei o site inteiro de senhas: banco, chave de IA, WhatsApp, cofre de backup... <b>e o crachá da equipe</b>.</td><td><b>Prompt 1</b> — senhas fora da pasta pública + regra que bloqueia arquivo sensível</td><td><code>/.env</code> → <b>403</b></td></tr>
+<tr><td>🪪 <b>O crachá achado</b><br><span class="mut">painel interno</span></td><td>Com o crachá na mão, abri o painel da equipe: <b>todos os pacientes</b> (CPF, telefone, plano) e o <b>faturamento do mês</b>.</td><td><b>Prompt 3</b> — porteiro NO SERVIDOR em toda rota interna</td><td>acesso comum → <b>403</b> · equipe de verdade → <b>200</b></td></tr>
+<tr><td>🧾 <b>A vida dos pacientes</b><br><span class="mut">ficha + exame</span></td><td>Troquei o número 101 pelo 103 e li a <b>ficha do Bruno</b> (com as anotações íntimas dele). E baixei o <b>exame dele</b> — sem senha dele, só pedindo.</td><td><b>Prompt 2</b> — filtro de dono em TODA busca (dado E arquivo)</td><td>103 → <b>404</b> · a ficha dela → <b>200</b></td></tr>
+</table>
+<div class="note"><b>A lição da corrente:</b> quem construiu foi a IA, e a IA só escreveu o caminho feliz. Os erros não são aleatórios: são SEMPRE os mesmos 8. E o que é previsível é treinável.</div>
+</div>
+
+<div class="card" id="lab">
+<h2><span class="n">2</span> TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪</h2>
+<a class="lnk" href="https://clinica-vidaplena.vercel.app" target="_blank">🔴 <b>Clínica aberta</b> (com as 8 falhas) — clinica-vidaplena.vercel.app</a>
+<a class="lnk" href="https://clinica-vidaplena-blindado.vercel.app" target="_blank">🟢 <b>Clínica blindada</b> (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app</a>
+<a class="lnk" href="https://github.com/gabrielkendy/clinica-vidaplena" target="_blank">💾 <b>Código no GitHub</b> — clona e ataca na sua máquina (com os scripts de ataque)</a>
+<p class="mut">Login do paciente: <code>mariana@exemplo.com</code> / <code>Mariana2026</code> · Tudo fictício, marcado na tela: é laboratório de treino. <b>A regra da série:</b> só se ataca o PRÓPRIO laboratório.</p>
+<div class="alert"><b>O experimento de 30 segundos:</b> na clínica aberta, põe <code>/.env</code> no fim do endereço. Agora faz o mesmo na blindada. Viu? É a diferença entre um arquivo e uma tranca.</div>
+</div>
+
+<div class="card" id="prompts">
+<h2><span class="n">3</span> OS PROMPTS — blinde o SEU projeto 📋</h2>
+<p><b>Como usar (3 passos):</b></p>
+<ol style="margin:0 0 10px 20px;font-size:14px;color:#334155">
+<li>Cola o <b>PROMPT MESTRE</b> no seu agente (Cursor, Claude Code, ChatGPT...) junto com o seu projeto → ele devolve o <b>relatório das 8 portas</b>.</li>
+<li>Pra cada porta aberta, cola o <b>prompt daquela porta</b> → ele corrige e cria o teste.</li>
+<li>Fecha com o <b>PROMPT DE RE-TESTE</b> → prova que fechou.</li>
+</ol>
+<p class="mut">Rode <b>um por vez</b>. Exija sempre o "antes e depois" e o teste. Uma porta por vez você CONFERE.</p>
+
+<h3>🚀 O PROMPT MESTRE (a auditoria completa)</h3>
+<details class="master" open><summary>🚀 Auditoria das 8 portas + plano de correção</summary>
+<pre id="p-mestre">Você é um engenheiro de segurança auditando o MEU projeto. Faça uma auditoria completa procurando as 8 classes de falhas mais comuns em sistemas construídos com IA e me devolva um RELATÓRIO + PLANO DE CORREÇÃO.
+
+Para cada uma das 8 classes abaixo:
+(a) diga se existe no meu projeto, com arquivo e linha exatos;
+(b) explique o risco em 1 frase simples (como se eu não fosse técnico);
+(c) classifique a gravidade (crítico / alto / médio);
+(d) escreva a correção exata que você vai aplicar.
+
+As 8 classes:
+1. DADOS DE OUTRO USUÁRIO (IDOR): toda rota que devolve dados por id filtra pelo dono (user_id da sessão)? Ou busca só pelo id?
+2. ARQUIVOS SENSÍVEIS EXPOSTOS: .env, *.sql, *.bak, dumps, dotfiles — algum está em pasta servida pela web? Alguma rota monta caminho de arquivo com input do usuário (path traversal)?
+3. ÁREA INTERNA SEM PORTEIRO: rotas de admin/painel checam permissão NO SERVIDOR (role/staff) ou só escondem o botão no front? Alguma rota confia em dados do cliente pra decidir permissão?
+4. SEM LIMITE DE TENTATIVAS: login, código OTP, recuperação de senha — têm rate limit, bloqueio após N erros e expiração?
+5. URL BUSCADA PELO SERVIDOR (SSRF): alguma função do backend busca URL fornecida pelo usuário? Ela bloqueia rede interna/localhost/metadata?
+6. SEGREDOS NO FRONT: alguma chave de API aparece em arquivo que o navegador baixa (js do site)? Alguma chamada de IA/serviço é feita direto do navegador?
+7. CÓPIA DE SEGURANÇA NA VITRINE: backups/dumps estão fora da pasta pública? Fora da internet? Existe arquivo esquecido que um scanner acharia?
+8. CABEÇALHOS E EXPOSIÇÃO PASSIVA: headers de segurança ligados (CSP, X-Content-Type-Options, X-Frame-Options)? X-Powered-By removido? Mensagens de erro vazando stack trace ou versão?
+
+REGRAS: não corrija nada ainda — só o relatório completo, ordenado do mais grave pro menos, com a correção proposta pra cada item. Seja específico: arquivo, linha, e o trecho de código de cada correção.</pre>
+<button class="copy" onclick="cp('p-mestre',this)">📋 Copiar o prompt mestre</button>
+</details>
+
+<h3>As 3 portas do vídeo (as que você viu ao vivo)</h3>
+
+<details><summary><span class="chip">DO VÍDEO</span> 1 · 🔐 Senhas à vista (.env / arquivos de segredos)</summary>
+<pre id="p1">Aplique a correção de ARQUIVOS DE SEGREDOS EXPOSTOS no meu projeto.
+
+O que fazer:
+1. Localize TODOS os arquivos de segredos e artefatos que não podem ser públicos: .env, *.sql, *.bak, *.dump, backups, logs, dotfiles.
+2. Garanta que NENHUM deles fica em pasta servida pela web (pasta pública/static/public/www). Mova pra fora, ou pra uma pasta bloqueada.
+3. No servidor, crie uma REGRA que recusa qualquer requisição a arquivo sensível (nome começando com ponto, ou extensão .sql/.bak/.dump/.env) — respondendo 403 ANTES de tentar ler.
+4. Se algum desses arquivos já foi para um repositório ou deploy: me liste TUDO que vazou e me diga quais chaves preciso TROCAR (rotação), porque arquivo exposto se considera vazado pra sempre.
+5. Crie um teste que PROVA: pedir /.env e /backup.sql na minha app → 403/404.
+
+Me mostre: arquivos movidos, a regra adicionada (antes/depois), a lista de chaves pra trocar, e o teste.</pre>
+<button class="copy" onclick="cp('p1',this)">📋 Copiar</button>
+</details>
+
+<details><summary><span class="chip">DO VÍDEO</span> 2 · 🧾 Dado de outro usuário (IDOR)</summary>
+<pre id="p2">Aplique a correção de ACESSO A DADOS DE OUTROS USUÁRIOS (IDOR) no meu projeto.
+
+O que fazer:
+1. Encontre TODA rota/consulta que devolve dados por um id vindo do cliente (ex: /pedidos/:id, /agendamentos/:id, ?id=, ?token=).
+2. Em cada uma: filtre SEMPRE pelo dono do dado junto com o id — ex: WHERE id = ? AND user_id = &lt;usuário da sessão&gt; (NUNCA confie em id, role ou "dono" que veio do cliente).
+3. Se o dado não for do usuário logado: responda 404 (não 403 — não confirme nem que o dado existe).
+4. Se o banco suportar, adicione uma trava extra no nível do banco (constraint/policy) como rede de segurança.
+5. Vale também para ARQUIVOS e downloads: um arquivo só pode ser entregue pro dono — confira no servidor se o arquivo pertence a quem está pedindo (e nunca monte caminho de arquivo com texto do usuário).
+6. Crie um teste que PROVA: logado como usuário A, pedir o registro do usuário B → 404; e o dono B acessando o dele → 200.
+
+Me mostre: rotas alteradas, o antes/depois de cada correção, e como rodar o teste.</pre>
+<button class="copy" onclick="cp('p2',this)">📋 Copiar</button>
+</details>
+
+<details><summary><span class="chip">DO VÍDEO</span> 3 · 🖥️ Área interna sem porteiro (permissão no servidor)</summary>
+<pre id="p3">Aplique a correção de PERMISSÃO EM ROTAS INTERNAS no meu projeto.
+
+O que fazer:
+1. Liste TODAS as rotas que não são pra qualquer usuário (admin, painel, equipe, financeiro, relatórios, listagens gerais).
+2. Em cada uma, a decisão deve acontecer NO SERVIDOR: checar o papel/permissão do usuário da SESSÃO (ex: user.role === 'admin' | user.staff) — nunca um campo que veio do cliente.
+3. Sem permissão: responda 403 com uma mensagem genérica ("acesso restrito").
+4. Revise também o frontend: o que a tela mostra pode continuar, mas NUNCA é a defesa — a defesa é no servidor.
+5. Crie um teste que PROVA: usuário comum chamando a rota interna → 403; usuário com permissão → 200.
+
+Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
+<button class="copy" onclick="cp('p3',this)">📋 Copiar</button>
+</details>
+
+<h3>As 5 portas que fecham o lab inteiro</h3>
+
+<details><summary>4 · 🔢 Código sem limite (força bruta)</summary>
+<pre id="p4">Aplique a correção de LIMITE DE TENTATIVAS nos meus acessos do projeto.
+
+O que fazer:
+1. Encontre TODOS os pontos de tentativa: login com senha, código OTP/WhatsApp, recuperação de senha, verificação de e-mail.
+2. Adicione rate limit com bloqueio progressivo: após 5 tentativas erradas, bloqueie aquele e-mail/telefone por 10 minutos (e avise quando estiver próximo do limite). Zere o contador quando a pessoa ACERTAR.
+3. Se der, prefira armazenamento compartilhado (Redis/tabela) em vez de memória — me explique qual seu projeto permite.
+4. Os códigos também devem EXPIRAR (ex: 10 minutos) e ser de uso único.
+5. Crie um teste que PROVA: 6 tentativas erradas seguidas → a resposta vira 429/bloqueio.
+
+Me mostre: o antes/depois do código, onde o contador vive, e o teste.</pre>
+<button class="copy" onclick="cp('p4',this)">📋 Copiar</button>
+</details>
+
+<details><summary>5 · 📂 Download abre pastas (path traversal)</summary>
+<pre id="p5">Aplique a correção de CAMINHOS DE ARQUIVO (path traversal) no meu projeto.
+
+O que fazer:
+1. Encontre toda rota/função que lê ou baixa arquivo com nome/caminho vindo do usuário.
+2. Correção com dois cadeados:
+   a) o nome só pode ser um nome de arquivo simples (sem barras, sem '..', sem caracteres estranhos — valide com whitelist/regex);
+   b) mesmo depois, confira que o caminho final resolvido está DENTRO da pasta permitida.
+3. Se possível, o ideal é nem usar nome de arquivo do cliente: use um id que busca o arquivo numa lista/tabela do banco (o cliente nunca dita o caminho).
+4. Crie um teste que PROVA: pedir '../../etc/passwd' ou '../../.env' → 400/404; e um arquivo real → 200.
+
+Me mostre: o antes/depois da função, e o teste.</pre>
+<button class="copy" onclick="cp('p5',this)">📋 Copiar</button>
+</details>
+
+<details><summary>6 · 🪞 Função espia por dentro (SSRF)</summary>
+<pre id="p6">Aplique a correção de REQUISIÇÕES DO SERVIDOR (SSRF) no meu projeto.
+
+O que fazer:
+1. Encontre toda função do backend que busca uma URL fornecida pelo usuário (importar por link, webhook, preview, fetch de imagem).
+2. Correção:
+   a) bloqueie endereços internos: localhost, 127.*, 10.*, 172.16-31.*, 192.168.*, 169.254.* (metadata da nuvem), IPv6 local — resolva o DNS ANTES de chamar e valide o IP final (proteção contra DNS rebinding);
+   b) prefira uma whitelist de domínios permitidos, se o caso de uso permitir;
+   c) limite o tamanho da resposta e o tempo (timeout).
+3. Crie um teste que PROVA: apontar a função pra um endereço interno → 400/bloqueado; e pra uma URL pública de verdade → funciona.
+
+Me mostre: o antes/depois, e o teste.</pre>
+<button class="copy" onclick="cp('p6',this)">📋 Copiar</button>
+</details>
+
+<details><summary>7 · 🗝️ Chave escrita no site (segredo no front)</summary>
+<pre id="p7">Aplique a correção de SEGREDOS NO NAVEGADOR no meu projeto.
+
+O que fazer:
+1. Vasculhe TODO arquivo que o navegador baixa (js/ts do front, html, configs públicas) procurando chaves: 'sk-', 'apiKey', 'secret', 'token' de serviço.
+2. Corrija movendo a chamada pro SERVIDOR: o front chama uma rota do SEU backend, o backend usa a chave (lida de variável de ambiente) e devolve só a resposta pronta. A chave nunca desce pro navegador.
+3. Tire a chave do código: ela vive em variável de ambiente/secret manager, nunca no repositório.
+4. Confirme que nenhum arquivo servido ao navegador contém a chave (busque na saída do build também).
+5. Crie um teste que PROVA: buscar a chave nos arquivos do front → zero resultados; e a função continua funcionando pelo backend → 200.
+
+Me mostre: arquivos alterados, o antes/depois, e o teste.</pre>
+<button class="copy" onclick="cp('p7',this)">📋 Copiar</button>
+</details>
+
+<details><summary>8 · 🗄️ Banco na calçada (backup + headers)</summary>
+<pre id="p8">Aplique a correção de EXPOSIÇÃO PASSIVA no meu projeto.
+
+O que fazer:
+1. Backups e dumps: garanta que estão FORA da pasta pública e fora do deploy (e me liste qualquer arquivo esquecido: .sql, .bak, .zip, .old, logs).
+2. Ligue os headers de segurança em TODAS as respostas: Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy, HSTS (em https).
+3. Remova o X-Powered-By (e qualquer header que conte versão/tecnologia).
+4. Erros: nada de stack trace/versão pro cliente — erro genérico pro usuário, detalhe só no log do servidor.
+5. Rode uma varredura de nomes comuns (/.env, /backup.sql, /.git/config, /admin) e me mostre o status de cada um.
+
+Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado da varredura.</pre>
+<button class="copy" onclick="cp('p8',this)">📋 Copiar</button>
+</details>
+
+<h3>🏁 Fecha com o re-teste (a prova final)</h3>
+<details class="master"><summary>🏁 PROMPT DE RE-TESTE — prove que fechou</summary>
+<pre id="preteste">Faça uma VARREDURA FINAL de segurança no meu projeto, como um atacante faria (nos MEUS próprios testes), e me devolva o placar:
+
+1. Liste o que é servido publicamente e confirme que nenhum arquivo sensível responde: teste /.env, /backup.sql, /.git/config, /package.json exposto indevidamente.
+2. Para CADA rota que devolve dados: prove que filtra pelo dono (teste com 2 usuários de verdade).
+3. Confirme que rotas internas respondem 403 pra usuário comum (testando no servidor).
+4. Confirme o rate limit: tente 10x seguidas no login/código e mostre o bloqueio acontecendo.
+5. Busque chaves de API em todos os arquivos do front ('sk-', 'apiKey', 'secret') e mostre zero resultados.
+6. Confirme os headers de segurança nas respostas (curl -I).
+
+Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando + resposta). Se alguma continuar aberta, corrija e teste de novo até fechar.</pre>
+<button class="copy" onclick="cp('preteste',this)">📋 Copiar o re-teste</button>
+</details>
+
+<div class="ok-box"><b>Dica de ouro:</b> se a IA enrolar, pede de novo: "me mostre o arquivo e a linha exatos". Ela não consegue fingir código que não escreveu.</div>
+</div>
+
+<div class="card" id="manual">
+<h2><span class="n">4</span> MODO MANUAL — conserte sem IA 🖐️</h2>
+<p>Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada porta:</p>
+<ul class="check">
+<li><b>Senhas à vista:</b> procure <code>.env</code>/<code>.sql</code> dentro da pasta pública → mova pra fora → no servidor, bloqueie dotfiles e extensões sensíveis (403 antes de ler).</li>
+<li><b>Dado de outro:</b> em toda busca por id, exija também <code>dono = usuário logado</code>; se não bater: 404. Vale pra arquivo também.</li>
+<li><b>Porteiro da área interna:</b> toda rota de admin checa o papel NO SERVIDOR (staff/role da sessão) → sem isso: 403.</li>
+<li><b>Código sem limite:</b> 5 erros = bloqueio de 10 min por e-mail; código expira em 10 min e vale 1 vez.</li>
+<li><b>Download abre pastas:</b> o nome do arquivo nunca vem do cliente (lista/tabela do banco) e o caminho final fica dentro da pasta permitida.</li>
+<li><b>Função espia:</b> bloqueie rede interna (localhost, 127.*, 10.*, 192.168.*, 169.254.*) antes de buscar qualquer URL.</li>
+<li><b>Chave no site:</b> a chamada de IA vai pro servidor; a chave vive em variável de ambiente, nunca em arquivo que o navegador baixa.</li>
+<li><b>Backup na calçada:</b> dumps fora da pasta pública e fora do deploy; headers de segurança ligados; nada de versão/stack trace nas respostas.</li>
+</ul>
+<p class="mut">O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#manual" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a> → seção MODO MANUAL.</p>
+</div>
+
+<div class="card" id="checklist">
+<h2><span class="n">5</span> CHECKLIST — hoje, no SEU projeto ✅</h2>
+<ul class="check">
+<li>Rodar o <b>prompt mestre</b> no meu projeto (auditoria das 8 portas).</li>
+<li>Corrigir as portas abertas (um prompt por porta, com antes/depois).</li>
+<li>Rodar o <b>re-teste</b> e guardar a tabela final.</li>
+<li>Se algum segredo já esteve exposto: <b>trocar as chaves</b> (rotação) — exposto é vazado pra sempre.</li>
+<li>Testar EU MESMO: pedir <code>/.env</code>, trocar um id de outro usuário, chamar uma rota interna com conta comum.</li>
+<li>Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).</li>
+</ul>
+<div class="note"><b>A regra da série:</b> só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.</div>
+</div>
+
+<div class="foot">
+Material da aula 1 · <b>Segurança com IA (modo defesa)</b><br>
+Material completo + casos reais: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>
+</div>
+
+</div>
+
+<script>
+function cp(id,btn){
+  // innerHTML aqui só restaura o rótulo fixo do próprio botão (conteúdo nosso) — sem entrada de usuário.
+  // textContent (não innerText): copia o prompt completo mesmo se o <details> estiver fechado.
+  var t=document.getElementById(id).textContent;
+  function done(){var o=btn.innerHTML;btn.innerHTML='✅ Copiado!';btn.classList.add('ok');setTimeout(function(){btn.innerHTML=o;btn.classList.remove('ok')},1600);}
+  function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();done();}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb);}else{fb();}
+}
+</script>
+</body>
+</html>
