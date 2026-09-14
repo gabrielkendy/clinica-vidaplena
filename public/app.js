@@ -1,7 +1,7 @@
-/* Portal do Paciente — Clínica VidaPlena (LAB DE TREINO)
-   ⚠️ FALHA 07 plantada: chave da assistente virtual exposta no front.
-   Qualquer visitante lê isso no F12. (TODO: mover para o servidor) */
-const VIDA_AI_KEY = "sk-proj-EXEMPLO0NAO0E0REAL0AAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+/* Portal do Paciente — Clínica VidaPlena (VERSÃO BLINDADA)
+   ✅ CORREÇÃO 07: aqui NÃO existe mais chave nenhuma.
+   O site só conversa com o servidor (/api/assistente) — a chave
+   fica lá, e o navegador nunca vê. Abre o F12 e confere. */
 
 let token = localStorage.getItem('token');
 let paciente = null;
@@ -63,13 +63,13 @@ async function abrirPainel(nome) {
     '<button class="btn ghost small" onclick="baixarExame(\'' + e.arquivo + '\')">Baixar PDF</button></div>'
   ).join('') : '') || '<p style="color:var(--dim)">Nenhum exame disponível.</p>';
 
-  const rp = await fetch('/api/admin/pacientes?token=' + token);
-  const todos = await rp.json();
-  const eu = Array.isArray(todos) ? todos.find(p => p.email === localStorage.getItem('emailSalvo')) : null;
+  // ✅ CORREÇÃO 01/03: os dados agora vêm da própria sessão, não da lista interna.
+  const rp = await fetch('/api/meus-dados?token=' + token);
+  const eu = await rp.json();
   document.getElementById('vDados').innerHTML =
     '<div class="ag"><div class="meta">Nome: <b style="color:var(--txt)">' + nome + '</b></div></div>' +
-    '<div class="ag"><div class="meta">CPF: <b style="color:var(--txt)">' + ((todos && Array.isArray(todos) && todos[0]) ? todos[0].cpf + ' *(carregado do painel interno)' : '—') + '</b></div></div>' +
-    '<div class="ag"><div class="meta">Plano: <b style="color:var(--txt)">' + ((todos && Array.isArray(todos) && todos[1]) ? todos[1].plano : '—') + '</b></div></div>' +
+    '<div class="ag"><div class="meta">CPF: <b style="color:var(--txt)">' + (eu.cpf || '—') + '</b></div></div>' +
+    '<div class="ag"><div class="meta">Plano: <b style="color:var(--txt)">' + (eu.plano || '—') + '</b></div></div>' +
     '<p style="color:var(--dim);font-size:13px;margin-top:10px">Para alterar seus dados, fale com a recepção.</p>';
 }
 
@@ -85,7 +85,8 @@ async function importarFoto() {
   out.textContent = JSON.stringify(d, null, 2).slice(0, 3000);
 }
 
-/* assistente virtual (mock) */
+/* assistente virtual — ✅ CORREÇÃO 07: sem chave no front.
+   O site manda a pergunta pro servidor; o servidor usa a chave. */
 let chatAberto = false;
 function toggleChat() {
   chatAberto = !chatAberto;
@@ -94,21 +95,20 @@ function toggleChat() {
     document.getElementById('chatLog').innerHTML = '<div style="margin-bottom:8px"><b>Vida:</b> Oi! Sou a assistente virtual da VidaPlena 💚 Posso ajudar com agendamento, convênios e resultados.</div>';
   }
 }
-function enviarChat() {
+async function enviarChat() {
   const inp = document.getElementById('chatIn');
   const t = inp.value.trim(); if (!t) return;
   const log = document.getElementById('chatLog');
   log.innerHTML += '<div style="margin-bottom:8px;text-align:right"><b>Você:</b> ' + t + '</div>';
   inp.value = '';
-  const respostas = [
-    'Anotado! Posso verificar sua agenda. Quer remarcar ou confirmar sua próxima consulta?',
-    'Nosso horário de atendimento é de segunda a sábado, das 08h às 20h. Quer que eu já reserve um horário?',
-    'Aceitamos Ampla Saúde, MedPlus e Saúde Total. Posso conferir a cobertura do seu plano.',
-  ];
-  setTimeout(() => {
-    log.innerHTML += '<div style="margin-bottom:8px"><b>Vida:</b> ' + respostas[Math.floor(Math.random() * respostas.length)] + '</div>';
-    log.scrollTop = log.scrollHeight;
-  }, 600);
+  try {
+    const r = await fetch('/api/assistente', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mensagem: t }) });
+    const d = await r.json();
+    log.innerHTML += '<div style="margin-bottom:8px"><b>Vida:</b> ' + (d.resposta || 'Desculpa, tentei aqui e não consegui.') + '</div>';
+  } catch {
+    log.innerHTML += '<div style="margin-bottom:8px"><b>Vida:</b> Tive um problema técnico, tenta de novo?</div>';
+  }
+  log.scrollTop = log.scrollHeight;
 }
 
 /* auto-login se tinha token salvo */
