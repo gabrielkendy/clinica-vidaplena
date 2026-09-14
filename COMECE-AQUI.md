@@ -3,13 +3,13 @@
 ## 🎙️ 1. ROTEIRO.md — o que você FALA no vídeo
 Abre, lê, grava. Cada falha: **história → ataque → correção (com o prompt) → teste.**
 
-→ `AULA-01 · A INVASAO/ROTEIRO.md`
+→ `AULA-01 · A INVASAO/01-ROTEIRO/ROTEIRO.md`
 
 ## 🖥️ 2. EXECUCAO.md — o que você FAZ na tela
 **Passo a passo cego:** um quadradinho por vez (faz → marca → segue). Tudo no **site oficial + Cursor.**
 Onde tiver 🎙️, você fala a fala do roteiro.
 
-→ `AULA-01 · A INVASAO/EXECUCAO.md`
+→ `AULA-01 · A INVASAO/01-ROTEIRO/EXECUCAO.md`
 
 ---
 
@@ -41,13 +41,15 @@ Onde tiver 🎙️, você fala a fala do roteiro.
 
 | Se precisar de... | Vai em... |
 |---|---|
-| **Material do Aluno da AULA 1** (com os prompts) | `AULA-01 · A INVASAO/MATERIAL-DO-ALUNO.html` (é O entregável) |
+| **Material do Aluno da AULA 1** (com os prompts) | `AULA-01 · A INVASAO/02-MATERIAL-DO-ALUNO/MATERIAL-DO-ALUNO.html` (é O entregável) |
+| **Thumb** (prompt + arte final) | `AULA-01 · A INVASAO/03-THUMBNAIL/` |
+| **Descrição do vídeo** (título, tags, fixado) | `AULA-01 · A INVASAO/05-DESCRICAO/DESCRICAO.md` |
 | Os prompts pro espectador (você mostra e usa na tela) | `materiais-aulas.vercel.app/seguranca-com-ia` → PROMPTS (mestre + 8 + manual) |
-| Ver o resultado esperado das correções | `02-BLINDAGEM/server-blindado.js` (é o "mapa" do que a IA deve fazer) |
+| Ver o resultado esperado das correções | `LAB-BLINDADO/server-blindado.js` (é o "mapa" do que a IA deve fazer) |
 | Voltar o lab pras falhas (resetar) | `RESET-LAB.cmd` |
 | A versão blindada pronta (referência no ar) | `clinica-vidaplena-blindado.vercel.app` |
 | O site no ar (é o cenário do vídeo) | `clinica-vidaplena.vercel.app` |
-| O círcuito completo de teste das 8 portas | `02-BLINDAGEM/reteste.py` (ou `reteste.py <URL>`) |
+| O círcuito completo de teste das 8 portas | `LAB-BLINDADO/reteste.py` (ou `reteste.py <URL>`) |
 | O padrão das aulas (estrutura + divisão da série) | `PADRAO-DAS-AULAS.md` |
 
 **Depois de gravar:** a série tem 3 aulas — as pastas da **AULA-02 · AS FUNCOES** (código sem limite + download que abre pastas + função espia) e **AULA-03 · A VITRINE** (chave no site + banco na calçada) já estão criadas, esperando produção. O passo a passo de montar cada uma está no `PADRAO-DAS-AULAS.md`.

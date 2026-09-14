@@ -4,8 +4,7 @@ node_modules/
 Thumbs.db
 
 # Material de produção do vídeo (roteiros do canal) — não faz parte do lab público
-AULA-*/ROTEIRO.md
-AULA-*/EXECUCAO.md
+AULA-*/01-ROTEIRO/**
 
 # NOTA IMPORTANTE:
 # .env e public/.env NÃO são ignorados DE PROPÓSITO.

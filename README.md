@@ -72,7 +72,7 @@ clinica-vidaplena/
 
 ```bash
 git checkout blindado             # ver o código corrigido (✅ CORREÇÃO em cada ajuste)
-node 02-BLINDAGEM/server-blindado.js   # roda na porta 3500, lado a lado com o vulnerável
-python 02-BLINDAGEM/reteste.py         # roda os MESMOS 8 ataques → 🛡️ 8/8 bloqueadas
+node LAB-BLINDADO/server-blindado.js   # roda na porta 3500, lado a lado com o vulnerável
+python LAB-BLINDADO/reteste.py         # roda os MESMOS 8 ataques → 🛡️ 8/8 bloqueadas
 ```
 

@@ -17,13 +17,14 @@
 
 ---
 
-## O padrão de CADA pasta de aula
+## O padrão de CADA pasta de aula (pacote completo de entregáveis)
 
 ```
 AULA-0X · TEMA/
-├── MATERIAL-DO-ALUNO.html   ← O ENTREGÁVEL: conteúdos + prompts DA AULA (copia, preenche, usa)
-├── ROTEIRO.md               ← o que falar no vídeo (uso interno; NÃO vai pro repo público)
-└── EXECUCAO.md              ← o que fazer na tela, passo a passo (uso interno; NÃO vai pro repo público)
+├── 01-ROTEIRO/              ← ROTEIRO.md (o que falar) + EXECUCAO.md (o que fazer na tela) — NÃO vão pro repo público
+├── 02-MATERIAL-DO-ALUNO/    ← MATERIAL-DO-ALUNO.html — conteúdos + prompts DA AULA (o entregável do aluno)
+├── 03-THUMBNAIL/            ← PROMPT-THUMB-*.txt (17 blocos) + THUMB-FINAL.png (base Codex + foto de identidade, aprovada)
+└── 05-DESCRICAO/            ← DESCRICAO.md: título + alternativas + descrição + capítulos + tags + comentário fixado
 ```
 
 ## O padrão do MATERIAL-DO-ALUNO.html (5 seções, sempre nesta ordem)
