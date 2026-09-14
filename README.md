@@ -10,6 +10,11 @@ node server.js
 # Site: http://localhost:3400
 ```
 
+## 🌐 Site NO AR (Vercel) — o mesmo lab, publicado
+**https://clinica-vidaplena.vercel.app** — funciona igual ao local (as 8 falhas, login, painel, assistente). Dados fictícios, avisos no site.
+- Ataque contra o site público: `python MISSOES/ataque-online.py` (ou `ATAQUE-ONLINE.cmd`)
+- Código do deploy: pasta `online/` (Next.js · função catch-all). Re-deploy: `cd online && npx vercel --prod`
+
 ## 🎯 Simular os ataques (as 8 falhas de uma vez)
 ```bash
 python MISSOES/simular-ataques.py     # ou dê duplo clique em SIMULAR-ATAQUES.cmd

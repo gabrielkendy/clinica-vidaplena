@@ -23,6 +23,8 @@
 
    💀 **Quer o visual de filme pra gravar?** Duplo clique em **`ATAQUE-AO-VIVO.cmd`**: banner, cores, contagem ao vivo das tentativas. É esse que fica bonito no vídeo.
 
+   🌐 **O lab TAMBÉM está publicado na internet:** `https://clinica-vidaplena.vercel.app` (dados fictícios, avisos no site). Pra gravar o ataque contra o site NO AR, duplo clique em **`ATAQUE-ONLINE.cmd`** — mesmo visual de filme, alvo público. É o take de "eu ataquei um site de verdade que está no ar".
+
 3. **Abra a apresentação** (`01-ROTEIRO/APRESENTACAO-TEORIA-ANOTAVEL.html`) no navegador:
    ✅ Deu certo quando você navegar com ← → pelos **39 slides** e a capa aparecer.
 
@@ -51,7 +53,7 @@ Grave **na ordem do roteiro**, um bloco por vez. Não precisa ser perfeito de pr
 
 ### Blocos com a CÂMERA (você falando):
 - **B01 · A promessa** — abertura. Energia alta, direto, olhando pra lente. ("No vídeo de hoje eu vou te mostrar uma IA invadindo um site de clínica.")
-- **B03 · Como o atacante pensa** — pode ser só áudio sobre os cards do deck (slide 3).
+- **B03 · Por que acontece (sempre um destes 5 motivos)** — pode ser só áudio sobre os cards do deck (slide 3).
 - **B12 · A lição** — o bloco mais importante da sua fala. Grave com calma, pausas. É aqui que a tese aparece: "a IA escreveu o caminho feliz".
 - **B13 · Fecho e CTA** — pede like/inscreve/comenta.
 
@@ -96,7 +98,7 @@ Faltou algo? Regrava SÓ aquele bloco. Não refaça o que está bom.
 
 ## PASSO 5 · Pós-produção e publicação (depois)
 
-1. **Descrição do YouTube:** capítulos com os timecodes + link do lab (`github.com/gabrielkendy/clinica-vidaplena`) + convite: "clona e ataca você mesmo".
+1. **Descrição do YouTube:** capítulos com os timecodes + **site no ar** (`https://clinica-vidaplena.vercel.app`) + repo (`github.com/gabrielkendy/clinica-vidaplena`) + convite: "clona e ataca você mesmo".
 2. **Comentário fixado:** "quantas dessas 8 você já cometeu? Eu já cometi umas 5. Comenta a sua."
 3. **Shorts:** cada missão vira um short de 40s (o hook é a descoberta; o CTA é "vídeo completo no canal").
 4. **Thumb:** conceito no roteiro (split da tela bonita + `.env` aberto + "8 FALHAS"). Prompt no Codex com headline 3D.
@@ -117,3 +119,17 @@ Faltou algo? Regrava SÓ aquele bloco. Não refaça o que está bom.
 1. **Só no nosso lab.** Nunca demo em sistema de terceiros. (É o posicionamento da série inteira.)
 2. **Testa antes de gravar.** Todo comando roda primeiro fora de câmera.
 3. **Os 3 segundos de silêncio** depois de cada descoberta. É o que faz o vídeo parecer de gente grande.
+
+---
+
+## 🌐 O site NO AR (Vercel) — já está publicado
+
+- **https://clinica-vidaplena.vercel.app** — o lab publicado: funciona igual ao local (as 8 falhas, login, painel, assistente).
+- Ataque no site público: **`ATAQUE-ONLINE.cmd`** (ou `python MISSOES/ataque-online.py`). Testado: **8/8 no ar**.
+- Serve pra você gravar o "site de verdade na internet" OU deixar ativo pro público brincar.
+- Código do deploy: pasta `online/` (Next.js · uma função catch-all). Re-deploy: `cd online && npx vercel --prod`.
+
+## 🛠️ E o V2 (a blindagem)? Já está pronto também
+- `02-BLINDAGEM/GUIA-DAS-8-CORRECOES.md` — o passo a passo das 8 correções (com antes/depois)
+- `02-BLINDAGEM/ROTEIRO-V2-A-BLINDAGEM.md` — o roteiro falado do V2 (mesma linguagem simples)
+- Rodar o "depois": `node 02-BLINDAGEM/server-blindado.js` (porta 3500) + `python 02-BLINDAGEM/reteste.py` → **🛡️ 8/8 bloqueadas**
