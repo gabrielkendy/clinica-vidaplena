@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Material do Aluno — Aula 1: A IA invadiu a minha clínica</title>
+<title>Material do Aluno — Aula 2: As funções que a IA escreveu contra você</title>
 <style>
 :root{--bg:#f4f6f8;--card:#ffffff;--ink:#0f172a;--mut:#5b6472;--green:#0e9f6e;--green2:#057a55;--line:#e2e8f0;--blue:#3b82f6;--gold:#b45309;--red:#dc2626}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -48,7 +48,6 @@ summary::after{content:'▾';margin-left:auto;color:var(--mut);transition:.2s}
 details[open] summary::after{transform:rotate(180deg)}
 details pre{margin:0 12px 8px;border-radius:8px}
 details .copy{margin:0 12px 14px}
-.master{border:2px solid var(--green)}
 .fix{border:2px solid var(--green)}
 .fix summary{font-size:15.5px}
 .lnk{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff;text-decoration:none;color:var(--ink);font-size:14px;transition:.15s}
@@ -59,7 +58,7 @@ details .copy{margin:0 12px 14px}
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <a class="tb-btn" href="#invasao">🚪 A invasão</a>
+  <a class="tb-btn" href="#invasao">🧩 As 3 funções</a>
   <a class="tb-btn" href="#prompts">📋 Os prompts (o ajuste)</a>
   <a class="tb-btn" href="#lab">🧪 Testa no ar</a>
   <a class="tb-btn" href="#manual">🖐️ Manual (sem IA)</a>
@@ -68,70 +67,71 @@ details .copy{margin:0 12px 14px}
 
 <div class="wrap">
 
-<h1>Segurança com IA <span class="s">— Aula 1</span></h1>
-<p class="sub">A IA invadiu a minha clínica: <b>um arquivo exposto → um crachá vazado → a vida dos pacientes</b>. Aqui está o mapa das 3 falhas + <b>o prompt completo pra arrumar cada uma</b> no SEU projeto.</p>
+<h1>Segurança com IA <span class="s">— Aula 2</span></h1>
+<p class="sub">As funções que a IA escreveu contra você: <b>o código que aceita tentativa a noite toda → o download que vira cofre → a foto de perfil que espiona por dentro</b>. As 3 falhas desta aula + <b>o prompt completo pra arrumar cada uma</b> no SEU projeto.</p>
 
 <div class="card" id="invasao">
-<h2><span class="n">1</span> A INVASÃO DO VÍDEO — em 3 portas 🚪</h2>
-<p>Não foram 3 falhas soltas: foi <b>uma corrente</b>. Cada porta aberta entregava a chave da próxima. É assim que uma invasão de verdade funciona.</p>
+<h2><span class="n">1</span> AS 3 FUNÇÕES DO VÍDEO — e o que cada uma faz de errado 🧩</h2>
+<p>Não são portas na parede: são <b>funções que funcionam</b> — até alguém apertar o botão do jeito errado.</p>
 <table>
-<tr><th>Porta</th><th>O ataque (ao vivo, no site)</th><th>A correção (o prompt)</th><th>O teste</th></tr>
-<tr><td>🔐 <b>O caderno de senhas</b><br><span class="mut"><code>/.env</code></span></td><td>Pedi o arquivo de segredos na barra de endereço e baixei o site inteiro de senhas: banco, chave de IA, WhatsApp, cofre de backup... <b>e o crachá da equipe</b>.</td><td><b>Prompt 1</b> — senhas fora da pasta pública + regra que bloqueia arquivo sensível</td><td><code>/.env</code> → <b>403</b></td></tr>
-<tr><td>🪪 <b>O crachá achado</b><br><span class="mut">painel interno</span></td><td>Com o crachá na mão, abri o painel da equipe: <b>todos os pacientes</b> (CPF, telefone, plano) e o <b>faturamento do mês</b>.</td><td><b>Prompt 3</b> — porteiro NO SERVIDOR em toda rota interna</td><td>acesso comum → <b>403</b> · equipe de verdade → <b>200</b></td></tr>
-<tr><td>🧾 <b>A vida dos pacientes</b><br><span class="mut">ficha + exame</span></td><td>Troquei o número 101 pelo 103 e li a <b>ficha do Bruno</b> (com as anotações íntimas dele). E baixei o <b>exame dele</b> — sem senha dele, só pedindo.</td><td><b>Prompt 2</b> — filtro de dono em TODA busca (dado E arquivo)</td><td>103 → <b>404</b> · a ficha dela → <b>200</b></td></tr>
+<tr><th>A função</th><th>O ataque (ao vivo, no site)</th><th>A correção (o prompt)</th><th>O teste</th></tr>
+<tr><td>🔢 <b>O código de acesso</b><br><span class="mut">login por código (4 dígitos)</span></td><td>Tentei os códigos um atrás do outro, sem parar. <b>Sem limite de tentativas</b>, o sistema deixou até acertar: acesso concedido, sem saber o código.</td><td><b>Prompt 1</b> — limite de tentativas + bloqueio + código com validade</td><td>6ª tentativa → <b>429 · bloqueado</b></td></tr>
+<tr><td>📂 <b>O download de exame</b><br><span class="mut">busca por nome de arquivo</span></td><td>Em vez do nome de um exame, mandei um <b>atalho que sobe as pastas</b> (<code>../../</code>). O download me entregou o <b>arquivo de senhas</b> do servidor.</td><td><b>Prompt 2</b> — dois cadeados: nome válido + caminho preso na pasta</td><td>atalho → <b>400</b> · exame real → <b>200</b></td></tr>
+<tr><td>🪞 <b>A foto de perfil</b><br><span class="mut">importar por link</span></td><td>Colei um "link de foto" que apontava pra <b>dentro do próprio sistema</b>. O <b>servidor</b> foi lá, buscou e me trouxe o conteúdo interno.</td><td><b>Prompt 3</b> — bloquear rede interna + whitelist + limite de tempo</td><td>link interno → <b>bloqueado</b> · foto pública → <b>funciona</b></td></tr>
 </table>
-<div class="note"><b>A lição da corrente:</b> quem construiu foi a IA, e a IA só escreveu o caminho feliz. Os erros não são aleatórios: são SEMPRE os mesmos. E o que é previsível é treinável.</div>
+<div class="note"><b>A lição das funções:</b> a IA escreve a função que FUNCIONA — nunca a que se DEFENDE. O limite de tentativas, os dois cadeados do arquivo e a coleira da busca: nada disso apareceu sozinho no código dela.</div>
 </div>
 
 <div class="card" id="prompts">
-<h2><span class="n">2</span> O AJUSTE DE CADA FALHA — o prompt completo 📋</h2>
-<p>Cada falha que você viu no vídeo tem <b>UM prompt de correção</b>. É só copiar o da falha <b>que o SEU projeto tem</b> e colar no seu agente (Cursor, Claude Code, ChatGPT, Codex...) <b>junto com o seu projeto</b>: ele corrige e cria o teste.</p>
-<p class="mut"><b>Como usar:</b> 1) se liga qual das 3 falhas o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o <b>antes/depois</b> e o <b>teste</b>. Conserta UMA por vez — assim você confere cada prova.</p>
+<h2><span class="n">2</span> O AJUSTE DE CADA FUNÇÃO — o prompt completo 📋</h2>
+<p>Cada função que você viu no vídeo tem <b>UM prompt de correção</b>. Copia o da falha <b>que o SEU projeto tem</b>, cola no seu agente (Cursor, Claude Code, ChatGPT, Codex...) <b>junto com o seu projeto</b>: ele corrige e cria o teste.</p>
+<p class="mut"><b>Como usar:</b> 1) se liga qual das 3 funções o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o <b>antes/depois</b> e o <b>teste</b>. Conserta UMA por vez — assim você confere cada prova.</p>
 
-<details class="fix" open><summary><span class="chip">FALHA 1</span> 🔐 Senhas à vista (.env / arquivos de segredos)</summary>
-<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: o <code>/.env</code> aberto na internet, com todas as senhas do sistema.</p>
-<pre id="p1">Aplique a correção de ARQUIVOS DE SEGREDOS EXPOSTOS no meu projeto.
+<details class="fix" open><summary><span class="chip">FALHA 1</span> 🔢 Código sem limite (força bruta no login por código)</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: o código de 4 dígitos aceitando tentativa atrás de tentativa até acertar.</p>
+<pre id="p4">Aplique a correção de LIMITE DE TENTATIVAS nos meus acessos do projeto.
 
 O que fazer:
-1. Localize TODOS os arquivos de segredos e artefatos que não podem ser públicos: .env, *.sql, *.bak, *.dump, backups, logs, dotfiles.
-2. Garanta que NENHUM deles fica em pasta servida pela web (pasta pública/static/public/www). Mova pra fora, ou pra uma pasta bloqueada.
-3. No servidor, crie uma REGRA que recusa qualquer requisição a arquivo sensível (nome começando com ponto, ou extensão .sql/.bak/.dump/.env) — respondendo 403 ANTES de tentar ler.
-4. Se algum desses arquivos já foi para um repositório ou deploy: me liste TUDO que vazou e me diga quais chaves preciso TROCAR (rotação), porque arquivo exposto se considera vazado pra sempre.
-5. Crie um teste que PROVA: pedir /.env e /backup.sql na minha app → 403/404.
+1. Encontre TODOS os pontos de tentativa: login com senha, código OTP/WhatsApp, recuperação de senha, verificação de e-mail.
+2. Adicione rate limit com bloqueio progressivo: após 5 tentativas erradas, bloqueie aquele e-mail/telefone por 10 minutos (e avise quando estiver próximo do limite). Zere o contador quando a pessoa ACERTAR.
+3. Se der, prefira armazenamento compartilhado (Redis/tabela) em vez de memória — me explique qual seu projeto permite.
+4. Os códigos também devem EXPIRAR (ex: 10 minutos) e ser de uso único.
+5. Crie um teste que PROVA: 6 tentativas erradas seguidas → a resposta vira 429/bloqueio.
 
-Me mostre: arquivos movidos, a regra adicionada (antes/depois), a lista de chaves pra trocar, e o teste.</pre>
-<button class="copy" onclick="cp('p1',this)">📋 Copiar o ajuste da falha 1</button>
+Me mostre: o antes/depois do código, onde o contador vive, e o teste.</pre>
+<button class="copy" onclick="cp('p4',this)">📋 Copiar o ajuste da falha 1</button>
 </details>
 
-<details class="fix" open><summary><span class="chip">FALHA 2</span> 🧾 Dado de outro usuário (ficha e exame alheios)</summary>
-<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: trocar o número na URL e ler a ficha e o exame de outro paciente.</p>
-<pre id="p2">Aplique a correção de ACESSO A DADOS DE OUTROS USUÁRIOS (IDOR) no meu projeto.
+<details class="fix" open><summary><span class="chip">FALHA 2</span> 📂 Download abre pastas (path traversal)</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: o download de exame subindo as pastas e entregando o arquivo de senhas.</p>
+<pre id="p5">Aplique a correção de CAMINHOS DE ARQUIVO (path traversal) no meu projeto.
 
 O que fazer:
-1. Encontre TODA rota/consulta que devolve dados por um id vindo do cliente (ex: /pedidos/:id, /agendamentos/:id, ?id=, ?token=).
-2. Em cada uma: filtre SEMPRE pelo dono do dado junto com o id — ex: WHERE id = ? AND user_id = &lt;usuário da sessão&gt; (NUNCA confie em id, role ou "dono" que veio do cliente).
-3. Se o dado não for do usuário logado: responda 404 (não 403 — não confirme nem que o dado existe).
-4. Se o banco suportar, adicione uma trava extra no nível do banco (constraint/policy) como rede de segurança.
-5. Vale também para ARQUIVOS e downloads: um arquivo só pode ser entregue pro dono — confira no servidor se o arquivo pertence a quem está pedindo (e nunca monte caminho de arquivo com texto do usuário).
-6. Crie um teste que PROVA: logado como usuário A, pedir o registro do usuário B → 404; e o dono B acessando o dele → 200.
+1. Encontre toda rota/função que lê ou baixa arquivo com nome/caminho vindo do usuário.
+2. Correção com dois cadeados:
+   a) o nome só pode ser um nome de arquivo simples (sem barras, sem '..', sem caracteres estranhos — valide com whitelist/regex);
+   b) mesmo depois, confira que o caminho final resolvido está DENTRO da pasta permitida.
+3. Se possível, o ideal é nem usar nome de arquivo do cliente: use um id que busca o arquivo numa lista/tabela do banco (o cliente nunca dita o caminho).
+4. Crie um teste que PROVA: pedir '../../etc/passwd' ou '../../.env' → 400/404; e um arquivo real → 200.
 
-Me mostre: rotas alteradas, o antes/depois de cada correção, e como rodar o teste.</pre>
-<button class="copy" onclick="cp('p2',this)">📋 Copiar o ajuste da falha 2</button>
+Me mostre: o antes/depois da função, e o teste.</pre>
+<button class="copy" onclick="cp('p5',this)">📋 Copiar o ajuste da falha 2</button>
 </details>
 
-<details class="fix" open><summary><span class="chip">FALHA 3</span> 🖥️ Área interna sem porteiro (qualquer um entrava)</summary>
-<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: o painel da equipe abriu pra quem tinha o crachá vazado — sem porteiro de verdade.</p>
-<pre id="p3">Aplique a correção de PERMISSÃO EM ROTAS INTERNAS no meu projeto.
+<details class="fix" open><summary><span class="chip">FALHA 3</span> 🪞 Função espia por dentro (SSRF)</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: a "importação de foto" buscando um endereço interno e devolvendo o conteúdo do servidor.</p>
+<pre id="p6">Aplique a correção de REQUISIÇÕES DO SERVIDOR (SSRF) no meu projeto.
 
 O que fazer:
-1. Liste TODAS as rotas que não são pra qualquer usuário (admin, painel, equipe, financeiro, relatórios, listagens gerais).
-2. Em cada uma, a decisão deve acontecer NO SERVIDOR: checar o papel/permissão do usuário da SESSÃO (ex: user.role === 'admin' | user.staff) — nunca um campo que veio do cliente.
-3. Sem permissão: responda 403 com uma mensagem genérica ("acesso restrito").
-4. Revise também o frontend: o que a tela mostra pode continuar, mas NUNCA é a defesa — a defesa é no servidor.
-5. Crie um teste que PROVA: usuário comum chamando a rota interna → 403; usuário com permissão → 200.
+1. Encontre toda função do backend que busca uma URL fornecida pelo usuário (importar por link, webhook, preview, fetch de imagem).
+2. Correção:
+   a) bloqueie endereços internos: localhost, 127.*, 10.*, 172.16-31.*, 192.168.*, 169.254.* (metadata da nuvem), IPv6 local — resolva o DNS ANTES de chamar e valide o IP final (proteção contra DNS rebinding);
+   b) prefira uma whitelist de domínios permitidos, se o caso de uso permitir;
+   c) limite o tamanho da resposta e o tempo (timeout).
+3. Crie um teste que PROVA: apontar a função pra um endereço interno → 400/bloqueado; e pra uma URL pública de verdade → funciona.
 
-Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
-<button class="copy" onclick="cp('p3',this)">📋 Copiar o ajuste da falha 3</button>
+Me mostre: o antes/depois, e o teste.</pre>
+<button class="copy" onclick="cp('p6',this)">📋 Copiar o ajuste da falha 3</button>
 </details>
 
 <div class="ok-box"><b>Dica de ouro:</b> se a IA enrolar, pede de novo: "me mostre o arquivo e a linha exatos". Ela não consegue fingir código que não escreveu.</div>
@@ -144,16 +144,16 @@ Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
 <a class="lnk" href="https://clinica-vidaplena-blindado.vercel.app" target="_blank">🟢 <b>Clínica blindada</b> (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app</a>
 <a class="lnk" href="https://github.com/gabrielkendy/clinica-vidaplena" target="_blank">💾 <b>Código no GitHub</b> — clona e ataca na sua máquina (com os scripts de ataque)</a>
 <p class="mut">Login do paciente: <code>mariana@exemplo.com</code> / <code>Mariana2026</code> · Tudo fictício, marcado na tela: é laboratório de treino. <b>A regra da série:</b> só se ataca o PRÓPRIO laboratório.</p>
-<div class="alert"><b>O experimento de 30 segundos:</b> na clínica aberta, põe <code>/.env</code> no fim do endereço. Agora faz o mesmo na blindada. Viu? É a diferença entre um arquivo e uma tranca.</div>
+<div class="alert"><b>O experimento de 30 segundos:</b> na clínica aberta, abre o console (F12) e roda o ataque do código: <code>fetch('/api/login/codigo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:'mariana@exemplo.com',codigo:'1234'})}).then(r=>console.log(r.status))</code> — repara que NUNCA bloqueia. Na blindada... bloqueia na 6ª.</div>
 </div>
 
 <div class="card" id="manual">
 <h2><span class="n">4</span> MODO MANUAL — conserte sem IA 🖐️</h2>
 <p>Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 3 falhas:</p>
 <ul class="check">
-<li><b>Senhas à vista:</b> procure <code>.env</code>/<code>.sql</code> dentro da pasta pública → mova pra fora → no servidor, bloqueie dotfiles e extensões sensíveis (403 antes de ler).</li>
-<li><b>Dado de outro:</b> em toda busca por id, exija também <code>dono = usuário logado</code>; se não bater: 404. Vale pra arquivo também.</li>
-<li><b>Porteiro da área interna:</b> toda rota de admin checa o papel NO SERVIDOR (staff/role da sessão) → sem isso: 403.</li>
+<li><b>Código sem limite:</b> 5 erros = bloqueio de 10 min por e-mail; código expira em 10 min e vale 1 vez.</li>
+<li><b>Download abre pastas:</b> o nome do arquivo nunca vem do cliente (lista/tabela do banco) e o caminho final fica dentro da pasta permitida.</li>
+<li><b>Função espia:</b> bloqueie rede interna (localhost, 127.*, 10.*, 192.168.*, 169.254.*) antes de buscar qualquer URL.</li>
 </ul>
 <p class="mut">O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#manual" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a> → seção MODO MANUAL.</p>
 </div>
@@ -161,8 +161,8 @@ Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
 <div class="card" id="checklist">
 <h2><span class="n">5</span> CHECKLIST — hoje, no SEU projeto ✅</h2>
 <ul class="check">
-<li>Testar EU MESMO as 3 falhas: pedir <code>/.env</code>, trocar um id na URL por um de outro usuário, chamar uma rota interna com conta comum.</li>
-<li>Achou alguma? Copiar o <b>ajuste daquela falha</b> (seção 2) e colar no seu agente — com o antes/depois.</li>
+<li>Testar EU MESMO as 3 funções: tentar o código de login várias vezes seguidas (bloqueia?), pedir um arquivo com <code>../</code> no nome, colar um link interno num campo de importar.</li>
+<li>Achou alguma? Copiar o <b>ajuste daquela função</b> (seção 2) e colar no seu agente — com o antes/depois.</li>
 <li>Se algum segredo já esteve exposto: <b>trocar as chaves</b> (rotação) — exposto é vazado pra sempre.</li>
 <li>Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).</li>
 </ul>
@@ -170,7 +170,7 @@ Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
 </div>
 
 <div class="foot">
-Material da aula 1 · <b>Segurança com IA (modo defesa)</b><br>
+Material da aula 2 · <b>Segurança com IA (modo defesa)</b><br>
 Material completo + casos reais: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>
 </div>
 

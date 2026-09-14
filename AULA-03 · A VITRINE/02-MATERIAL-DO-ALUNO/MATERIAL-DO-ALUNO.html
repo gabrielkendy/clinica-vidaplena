@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material do Aluno — Aula 3: A chave na vitrine e o banco no chão</title>
+<style>
+:root{--bg:#f4f6f8;--card:#ffffff;--ink:#0f172a;--mut:#5b6472;--green:#0e9f6e;--green2:#057a55;--line:#e2e8f0;--blue:#3b82f6;--gold:#b45309;--red:#dc2626}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:28px 18px 80px}
+.topbar{position:sticky;top:0;background:rgba(244,246,248,.92);backdrop-filter:blur(6px);z-index:50;padding:10px 0;border-bottom:1px solid var(--line)}
+.topbar .wrap{padding:0 18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tb-btn{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;text-decoration:none;transition:.15s}
+.tb-btn:hover{border-color:var(--green);color:var(--green)}
+h1{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:6px 0 4px}
+h1 .s{color:var(--green)}
+.sub{color:var(--mut);font-size:15px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:16px 0;scroll-margin-top:70px}
+h2{font-size:19px;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+h2 .n{background:var(--green);color:#fff;border-radius:8px;font-size:13px;padding:2px 9px}
+h3{font-size:15px;margin:14px 0 6px;color:var(--green2)}
+p{color:#334155;font-size:14.5px;margin-bottom:8px}
+.mut{color:var(--mut);font-size:13px}
+pre{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:16px 14px;font-size:12.8px;line-height:1.5;overflow-x:auto;white-space:pre-wrap;margin:10px 0}
+.chip{display:inline-block;background:#eefcf5;color:var(--green2);border:1px solid #b8ecd9;border-radius:999px;font-size:12px;font-weight:700;padding:2px 10px;margin:2px 2px 2px 0}
+.copy{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;padding:7px 14px;cursor:pointer;transition:.15s;margin-top:8px}
+.copy:hover{background:var(--green2)}
+.copy.ok{background:#10b981}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
+th{background:#f1f5f9;text-align:left;padding:8px 10px;border:1px solid var(--line);font-size:12.5px;text-transform:uppercase;color:var(--mut)}
+td{padding:8px 10px;border:1px solid var(--line);vertical-align:top}
+a{color:var(--blue)}
+.note{background:#fff7e6;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:10px 0}
+.note b{color:#92400e}
+.alert{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:10px 0}
+.alert b{color:#b91c1c}
+.ok-box{background:#eefcf5;border:1px solid #b8ecd9;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:10px 0}
+.ok-box b{color:var(--green2)}
+.check{list-style:none;margin:10px 0}
+.check li{padding:7px 0 7px 30px;position:relative;font-size:14px;border-bottom:1px dashed #e8edf3}
+.check li::before{content:'✅';position:absolute;left:0;top:6px}
+details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fbfdfe;overflow:hidden}
+details[open]{background:#fff;border-color:#b8ecd9}
+summary{cursor:pointer;padding:12px 14px;font-weight:700;font-size:14.5px;color:var(--ink);display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▾';margin-left:auto;color:var(--mut);transition:.2s}
+details[open] summary::after{transform:rotate(180deg)}
+details pre{margin:0 12px 8px;border-radius:8px}
+details .copy{margin:0 12px 14px}
+.fix{border:2px solid var(--green)}
+.fix summary{font-size:15.5px}
+.lnk{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff;text-decoration:none;color:var(--ink);font-size:14px;transition:.15s}
+.lnk:hover{border-color:var(--green)}
+.lnk b{color:var(--blue)}
+.foot{margin-top:30px;text-align:center;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="tb-btn" href="#invasao">🏁 As 2 últimas</a>
+  <a class="tb-btn" href="#prompts">📋 Os prompts (o ajuste)</a>
+  <a class="tb-btn" href="#lab">🧪 Testa no ar</a>
+  <a class="tb-btn" href="#manual">🖐️ Manual (sem IA)</a>
+  <a class="tb-btn" href="#checklist">✅ Checklist</a>
+</div></div>
+
+<div class="wrap">
+
+<h1>Segurança com IA <span class="s">— Aula 3 (o fecho)</span></h1>
+<p class="sub">A chave na vitrine e o banco no chão: <b>a chave da IA escrita no código do site → o backup do banco jogado na pasta pública</b>. As 2 últimas falhas + <b>o prompt completo pra arrumar cada uma</b> — e o <b>re-teste</b> que prova o 8 de 8.</p>
+
+<div class="card" id="invasao">
+<h2><span class="n">1</span> AS 2 ÚLTIMAS — o que o sistema mostra sem ninguém pedir 🏁</h2>
+<p>Não são portas abertas: é a <b>vitrine</b>. O que o sistema entrega de bandeja pra qualquer visitante.</p>
+<table>
+<tr><th>A falha</th><th>O ataque (ao vivo, no site)</th><th>A correção (o prompt)</th><th>O teste</th></tr>
+<tr><td>🗝️ <b>A chave na vitrine</b><br><span class="mut">segredo no código do site</span></td><td>Abri o código do site (Ctrl + U), procurei "key" e achei a <b>chave da assistente de IA</b> escrita e legível — qualquer visitante lê e usa na MINHA conta.</td><td><b>Prompt 1</b> — chamada de IA vai pro servidor; a chave vive no cofre das configurações</td><td>buscar a chave no site → <b>zero</b> · assistente → <b>funciona</b></td></tr>
+<tr><td>🗄️ <b>O banco no chão</b><br><span class="mut">backup + respostas que contam tudo</span></td><td>Pedi o backup como quem pede uma página: <code>/backup.sql</code> → veio o <b>banco inteiro</b> (nomes, senha). E o servidor ainda contava a tecnologia e a versão de graça.</td><td><b>Prompt 2</b> — backup fora da pasta pública + escudos nas respostas + nada de versão</td><td>backup → <b>404</b> · sem versão no cabeçalho · escudos ligados</td></tr>
+</table>
+<div class="note"><b>A lição da vitrine:</b> o que o sistema NÃO mostra não pode ser usado contra ele. Chave que desce pro navegador é chave pública. Backup na pasta pública é presente de despedida.</div>
+</div>
+
+<div class="card" id="prompts">
+<h2><span class="n">2</span> O AJUSTE DE CADA FALHA — o prompt completo 📋</h2>
+<p>Cada falha do vídeo tem <b>UM prompt de correção</b> — e no fim tem o <b>RE-TESTE</b>, que prova o placar. Copia, cola no seu agente (Cursor, Claude Code, ChatGPT, Codex...) <b>junto com o seu projeto</b>: ele corrige e cria o teste.</p>
+<p class="mut"><b>Como usar:</b> 1) se liga qual das 2 falhas o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o <b>antes/depois</b> e o <b>teste</b>. No fim, roda o re-teste e guarda o placar.</p>
+
+<details class="fix" open><summary><span class="chip">FALHA 1</span> 🗝️ Chave escrita no site (segredo no front)</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: a chave da assistente de IA legível no código do site (Ctrl + U, busca por "key").</p>
+<pre id="p7">Aplique a correção de SEGREDOS NO NAVEGADOR no meu projeto.
+
+O que fazer:
+1. Vasculhe TODO arquivo que o navegador baixa (js/ts do front, html, configs públicas) procurando chaves: 'sk-', 'apiKey', 'secret', 'token' de serviço.
+2. Corrija movendo a chamada pro SERVIDOR: o front chama uma rota do SEU backend, o backend usa a chave (lida de variável de ambiente) e devolve só a resposta pronta. A chave nunca desce pro navegador.
+3. Tire a chave do código: ela vive em variável de ambiente/secret manager, nunca no repositório.
+4. Confirme que nenhum arquivo servido ao navegador contém a chave (busque na saída do build também).
+5. Crie um teste que PROVA: buscar a chave nos arquivos do front → zero resultados; e a função continua funcionando pelo backend → 200.
+
+Me mostre: arquivos alterados, o antes/depois, e o teste.</pre>
+<button class="copy" onclick="cp('p7',this)">📋 Copiar o ajuste da falha 1</button>
+</details>
+
+<details class="fix" open><summary><span class="chip">FALHA 2</span> 🗄️ Banco na calçada (backup + headers)</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: o <code>/backup.sql</code> baixando o banco inteiro + o servidor contando tecnologia e versão.</p>
+<pre id="p8">Aplique a correção de EXPOSIÇÃO PASSIVA no meu projeto.
+
+O que fazer:
+1. Backups e dumps: garanta que estão FORA da pasta pública e fora do deploy (e me liste qualquer arquivo esquecido: .sql, .bak, .zip, .old, logs).
+2. Ligue os headers de segurança em TODAS as respostas: Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy, HSTS (em https).
+3. Remova o X-Powered-By (e qualquer header que conte versão/tecnologia).
+4. Erros: nada de stack trace/versão pro cliente — erro genérico pro usuário, detalhe só no log do servidor.
+5. Rode uma varredura de nomes comuns (/.env, /backup.sql, /.git/config, /admin) e me mostre o status de cada um.
+
+Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado da varredura.</pre>
+<button class="copy" onclick="cp('p8',this)">📋 Copiar o ajuste da falha 2</button>
+</details>
+
+<h3>🏁 O FECHO — o re-teste (prove o 8 de 8)</h3>
+<details class="fix" open><summary><span class="chip">FECHO</span> ✅ Re-teste — o placar final, porta por porta</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: rodar o ataque completo de novo e ver 8 de 8 fechadas.</p>
+<pre id="preteste">Faça uma VARREDURA FINAL de segurança no meu projeto, como um atacante faria (nos MEUS próprios testes), e me devolva o placar:
+
+1. Liste o que é servido publicamente e confirme que nenhum arquivo sensível responde: teste /.env, /backup.sql, /.git/config, /package.json exposto indevidamente.
+2. Para CADA rota que devolve dados: prove que filtra pelo dono (teste com 2 usuários de verdade).
+3. Confirme que rotas internas respondem 403 pra usuário comum (testando no servidor).
+4. Confirme o rate limit: tente 10x seguidas no login/código e mostre o bloqueio acontecendo.
+5. Busque chaves de API em todos os arquivos do front ('sk-', 'apiKey', 'secret') e mostre zero resultados.
+6. Confirme os headers de segurança nas respostas (curl -I).
+
+Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando + resposta). Se alguma continuar aberta, corrija e teste de novo até fechar.</pre>
+<button class="copy" onclick="cp('preteste',this)">📋 Copiar o re-teste</button>
+</details>
+
+<div class="ok-box"><b>Dica de ouro:</b> se a IA enrolar, pede de novo: "me mostre o arquivo e a linha exatos". Ela não consegue fingir código que não escreveu.</div>
+<div class="note"><b>Série completa:</b> a auditoria das 8 (o prompt mestre), os ajustes das outras 6 e os casos reais estão no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>.</div>
+</div>
+
+<div class="card" id="lab">
+<h2><span class="n">3</span> TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪</h2>
+<a class="lnk" href="https://clinica-vidaplena.vercel.app" target="_blank">🔴 <b>Clínica aberta</b> (com as 8 falhas) — clinica-vidaplena.vercel.app</a>
+<a class="lnk" href="https://clinica-vidaplena-blindado.vercel.app" target="_blank">🟢 <b>Clínica blindada</b> (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app</a>
+<a class="lnk" href="https://github.com/gabrielkendy/clinica-vidaplena" target="_blank">💾 <b>Código no GitHub</b> — clona e ataca na tua máquina (com os scripts de ataque)</a>
+<p class="mut">Login do paciente: <code>mariana@exemplo.com</code> / <code>Mariana2026</code> · Tudo fictício, marcado na tela: é laboratório de treino. <b>A regra da série:</b> só se ataca o PRÓPRIO laboratório.</p>
+<div class="alert"><b>O experimento de 30 segundos:</b> na clínica aberta, põe <code>/backup.sql</code> no fim do endereço — o banco inteiro desce. Agora na blindada: não encontrado. E o <code>curl -I</code>? A blindada não conta nem quem é.</div>
+</div>
+
+<div class="card" id="manual">
+<h2><span class="n">4</span> MODO MANUAL — conserte sem IA 🖐️</h2>
+<p>Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 2 falhas:</p>
+<ul class="check">
+<li><b>Chave no site:</b> a chamada de IA vai pro servidor; a chave vive em variável de ambiente, nunca em arquivo que o navegador baixa.</li>
+<li><b>Backup na calçada:</b> dumps fora da pasta pública e fora do deploy; headers de segurança ligados; nada de versão/stack trace nas respostas.</li>
+</ul>
+<p class="mut">O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#manual" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a> → seção MODO MANUAL.</p>
+</div>
+
+<div class="card" id="checklist">
+<h2><span class="n">5</span> CHECKLIST FINAL — hoje, no SEU projeto ✅</h2>
+<ul class="check">
+<li>Testar EU MESMO as 2 falhas: abrir o código do site e procurar "key"/"secret"; pedir <code>/backup.sql</code> e <code>/.env</code> no fim do endereço.</li>
+<li>Achou alguma? Copiar o <b>ajuste daquela falha</b> (seção 2) e colar no seu agente — com o antes/depois.</li>
+<li>Rodar o <b>re-teste</b> e guardar o placar final do teu projeto.</li>
+<li>Se algum segredo já esteve exposto: <b>trocar as chaves</b> (rotação) — exposto é vazado pra sempre.</li>
+<li>Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).</li>
+</ul>
+<div class="note"><b>A regra da série:</b> só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.</div>
+</div>
+
+<div class="foot">
+Material da aula 3 (o fecho) · <b>Segurança com IA (modo defesa)</b><br>
+Série completa + casos reais: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>
+</div>
+
+</div>
+
+<script>
+function cp(id,btn){
+  // innerHTML aqui só restaura o rótulo fixo do próprio botão (conteúdo nosso) — sem entrada de usuário.
+  // textContent (não innerText): copia o prompt completo mesmo com a caixinha fechada.
+  var t=document.getElementById(id).textContent;
+  function done(){var o=btn.innerHTML;btn.innerHTML='✅ Copiado!';btn.classList.add('ok');setTimeout(function(){btn.innerHTML=o;btn.classList.remove('ok')},1600);}
+  function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();done();}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb);}else{fb();}
+}
+</script>
+</body>
+</html>

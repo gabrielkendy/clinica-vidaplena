@@ -7,13 +7,13 @@
 
 ## As 3 aulas
 
-| Aula | Tema | As falhas da aula | Prompts no material |
-|---|---|---|---|
-| **AULA-01 · A INVASAO** | A corrente: arquivo → crachá → dados | 🔐 `.env` exposto · 🪪 painel sem porteiro · 🧾 dado/exame de outro (IDOR) | mestre + **1, 2, 3** + re-teste |
-| **AULA-02 · AS FUNCOES** | O que as funções da IA escondem | 🔢 código sem limite (força bruta) · 📂 download abre pastas (path traversal) · 🪞 função espia (SSRF) | + **4, 5, 6** |
-| **AULA-03 · A VITRINE** | O que está à vista (e o fecho da série) | 🗝️ chave escrita no site · 🗄️ banco na calçada (backup + headers) | + **7, 8** + re-teste completo da série |
+| Aula | Tema | As falhas da aula | Prompt de cada falha | Status |
+|---|---|---|---|---|
+| **AULA-01 · A INVASAO** | A corrente: arquivo → crachá → dados | 🔐 `.env` exposto · 🪪 painel sem porteiro · 🧾 dado/exame de outro (IDOR) | 1, 2, 3 | ✅ completa |
+| **AULA-02 · AS FUNCOES** | Funções que a IA escreveu torto | 🔢 código sem limite · 📂 download abre pastas (path traversal) · 🪞 função espia (SSRF) | 4, 5, 6 | ✅ completa |
+| **AULA-03 · A VITRINE** | O que o sistema mostra sem ninguém pedir (o fecho) | 🗝️ chave escrita no site · 🗄️ banco na calçada (backup + headers) | 7, 8 + re-teste | ✅ completa |
 
-*(Ordem dos prompts = numeração do material completo em `materiais-aulas.vercel.app/seguranca-com-ia`.)*
+*(Numeração dos prompts = a do material completo em `materiais-aulas.vercel.app/seguranca-com-ia`.)*
 
 ---
 

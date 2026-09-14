@@ -1,0 +1,35 @@
+COMPLETE, FINAL, production-ready YouTube thumbnail for a tech channel. This is the finished artwork — NOT a concept, NOT a mockup, NOT a sketch. Elite agency level, $20,000 thumbnail quality.
+
+FORMAT: 16:9 horizontal, 1280x720, maximum click-through-rate composition, all key elements readable at 120px wide.
+
+VISUAL HIERARCHY (in this exact order): 1) THE FACE — brightest, sharpest, highest-quality element; 2) HEADLINE 3D text line 1 (yellow #FFD400, massive); 3) HEADLINE 3D text line 2 (white); 4) TAG badge; 5) background. Nothing can compete with the face.
+
+IDENTITY: Keep the EXACT identity of the man in the attached photo: same face, eyes, eyebrows, hairline, beard, jawline, skin tone, age, facial proportions. Unmistakably the same person. Never invent another person, never beautify, never make younger or older.
+
+PHOTO QUALITY: Shot like a Canon EOS R5 with RF 85mm f/1.2L lens, elite magazine photographer. Ultra-realistic skin: visible pores, beard filaments, natural skin grain, subsurface scattering, softer natural skin (natural texture but less aggressive pores). NOT waxy, NOT CGI, NOT over-smoothed, no beauty filter, no HDR look.
+
+SUBJECT: medium shot, half body, man on the RIGHT 45% of frame, black premium t-shirt with no logo. Pose: serious, investigative "I caught it again" expression — leaning slightly toward the camera with one index finger raised, as if saying "look at this".
+
+HOLLYWOOD LIGHTING: large frontal octabox above the camera, high frontal exposure, soft fill from below, bright catchlights in BOTH pupils, subtle Rembrandt modeling, blue rim light #3D5BFF behind the subject's shoulders for separation. The face MUST be the brightest object in the image.
+
+LENS: 85mm, f/1.8, gorgeous optical compression, creamy bokeh, zero wide-angle distortion, eyes perfectly sharp.
+
+BACKGROUND: near-black #090909 with deep blue #3D5BFF atmosphere, volumetric haze and subtle floating particles. The BACKGROUND element (blurred, reduced contrast, secondary — must NEVER steal attention from the face): a glowing WATCHFUL EYE made of thin electric-blue lines of code, floating above a dark blurred server rack — the visual metaphor of a system function that secretly watches from inside.
+
+TYPOGRAPHY: every letter is a real, physical 3D object — massive extrusion, visible thickness and volume, perspective, cinematic depth. NOT flat text, NOT vector, NOT Canva, NOT PowerPoint style.
+
+TEXT MATERIAL / 3D DEPTH / OUTLINE / GLOW / SHADOW: painted metal semi-gloss letters with subtle micro-scratches and a perfect bevel; thick side faces with ambient occlusion, letters casting shadows on each other; thick matte black outline; electric blue neon glow (bright core + soft halo); large soft drop shadow — looks like hours of Photoshop work.
+
+TEXT CONTENT: TAG (top-left, white plate with blue #2B60DE border, dark bold uppercase text): "PARTE 2". HEADLINE line 1 (yellow #FFD400, GIGANTIC 3D letters): "A IA ERROU". HEADLINE line 2 (white 3D letters, slightly smaller): "DE NOVO". PERFECT Portuguese spelling.
+
+COLOR GRADING: Hollywood blockbuster, Apple / Netflix key art quality, warm skin tones against the cool blue environment, deep blacks, soft bloom, subtle vignette — DaVinci Resolve grade. No oversaturation, no fake HDR.
+
+RETOUCH: editorial retouch only — preserve pores, wrinkles and beard; bright sparkling eyes; natural dodge & burn. No plastic skin.
+
+MICRO DETAILS: lens-level sharpness, microcontrast, detailed eyelashes, eyebrows and beard, soft natural skin texture.
+
+CTR OPTIMIZATION: clean subject separation, instant readability, zero clutter.
+
+NEGATIVE PROMPT: no flat text, no vector text, no Canva look, no plastic wax skin, no CGI, no anime, no beauty filter, no dark face, no wrong identity, no extra fingers, no deformed hands, no HDR halos, no watermarks, no wrong Portuguese spelling, no crooked letters, no low-res, no generic robot or brain icons, no real brand logos.
+
+FINAL QUALITY: TOP 0.01% YouTube thumbnail, every pixel intentional, masterful, 8K detail. OUTPUT: deliver ONE complete finished thumbnail, no additional editing required.
