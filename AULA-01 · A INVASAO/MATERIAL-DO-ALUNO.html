@@ -175,79 +175,8 @@ Me mostre: rotas alteradas, o antes/depois, e o teste.</pre>
 <button class="copy" onclick="cp('p3',this)">📋 Copiar</button>
 </details>
 
-<h3>As 5 portas que fecham o lab inteiro</h3>
-
-<details><summary>4 · 🔢 Código sem limite (força bruta)</summary>
-<pre id="p4">Aplique a correção de LIMITE DE TENTATIVAS nos meus acessos do projeto.
-
-O que fazer:
-1. Encontre TODOS os pontos de tentativa: login com senha, código OTP/WhatsApp, recuperação de senha, verificação de e-mail.
-2. Adicione rate limit com bloqueio progressivo: após 5 tentativas erradas, bloqueie aquele e-mail/telefone por 10 minutos (e avise quando estiver próximo do limite). Zere o contador quando a pessoa ACERTAR.
-3. Se der, prefira armazenamento compartilhado (Redis/tabela) em vez de memória — me explique qual seu projeto permite.
-4. Os códigos também devem EXPIRAR (ex: 10 minutos) e ser de uso único.
-5. Crie um teste que PROVA: 6 tentativas erradas seguidas → a resposta vira 429/bloqueio.
-
-Me mostre: o antes/depois do código, onde o contador vive, e o teste.</pre>
-<button class="copy" onclick="cp('p4',this)">📋 Copiar</button>
-</details>
-
-<details><summary>5 · 📂 Download abre pastas (path traversal)</summary>
-<pre id="p5">Aplique a correção de CAMINHOS DE ARQUIVO (path traversal) no meu projeto.
-
-O que fazer:
-1. Encontre toda rota/função que lê ou baixa arquivo com nome/caminho vindo do usuário.
-2. Correção com dois cadeados:
-   a) o nome só pode ser um nome de arquivo simples (sem barras, sem '..', sem caracteres estranhos — valide com whitelist/regex);
-   b) mesmo depois, confira que o caminho final resolvido está DENTRO da pasta permitida.
-3. Se possível, o ideal é nem usar nome de arquivo do cliente: use um id que busca o arquivo numa lista/tabela do banco (o cliente nunca dita o caminho).
-4. Crie um teste que PROVA: pedir '../../etc/passwd' ou '../../.env' → 400/404; e um arquivo real → 200.
-
-Me mostre: o antes/depois da função, e o teste.</pre>
-<button class="copy" onclick="cp('p5',this)">📋 Copiar</button>
-</details>
-
-<details><summary>6 · 🪞 Função espia por dentro (SSRF)</summary>
-<pre id="p6">Aplique a correção de REQUISIÇÕES DO SERVIDOR (SSRF) no meu projeto.
-
-O que fazer:
-1. Encontre toda função do backend que busca uma URL fornecida pelo usuário (importar por link, webhook, preview, fetch de imagem).
-2. Correção:
-   a) bloqueie endereços internos: localhost, 127.*, 10.*, 172.16-31.*, 192.168.*, 169.254.* (metadata da nuvem), IPv6 local — resolva o DNS ANTES de chamar e valide o IP final (proteção contra DNS rebinding);
-   b) prefira uma whitelist de domínios permitidos, se o caso de uso permitir;
-   c) limite o tamanho da resposta e o tempo (timeout).
-3. Crie um teste que PROVA: apontar a função pra um endereço interno → 400/bloqueado; e pra uma URL pública de verdade → funciona.
-
-Me mostre: o antes/depois, e o teste.</pre>
-<button class="copy" onclick="cp('p6',this)">📋 Copiar</button>
-</details>
-
-<details><summary>7 · 🗝️ Chave escrita no site (segredo no front)</summary>
-<pre id="p7">Aplique a correção de SEGREDOS NO NAVEGADOR no meu projeto.
-
-O que fazer:
-1. Vasculhe TODO arquivo que o navegador baixa (js/ts do front, html, configs públicas) procurando chaves: 'sk-', 'apiKey', 'secret', 'token' de serviço.
-2. Corrija movendo a chamada pro SERVIDOR: o front chama uma rota do SEU backend, o backend usa a chave (lida de variável de ambiente) e devolve só a resposta pronta. A chave nunca desce pro navegador.
-3. Tire a chave do código: ela vive em variável de ambiente/secret manager, nunca no repositório.
-4. Confirme que nenhum arquivo servido ao navegador contém a chave (busque na saída do build também).
-5. Crie um teste que PROVA: buscar a chave nos arquivos do front → zero resultados; e a função continua funcionando pelo backend → 200.
-
-Me mostre: arquivos alterados, o antes/depois, e o teste.</pre>
-<button class="copy" onclick="cp('p7',this)">📋 Copiar</button>
-</details>
-
-<details><summary>8 · 🗄️ Banco na calçada (backup + headers)</summary>
-<pre id="p8">Aplique a correção de EXPOSIÇÃO PASSIVA no meu projeto.
-
-O que fazer:
-1. Backups e dumps: garanta que estão FORA da pasta pública e fora do deploy (e me liste qualquer arquivo esquecido: .sql, .bak, .zip, .old, logs).
-2. Ligue os headers de segurança em TODAS as respostas: Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy, HSTS (em https).
-3. Remova o X-Powered-By (e qualquer header que conte versão/tecnologia).
-4. Erros: nada de stack trace/versão pro cliente — erro genérico pro usuário, detalhe só no log do servidor.
-5. Rode uma varredura de nomes comuns (/.env, /backup.sql, /.git/config, /admin) e me mostre o status de cada um.
-
-Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado da varredura.</pre>
-<button class="copy" onclick="cp('p8',this)">📋 Copiar</button>
-</details>
+<h3>As outras portas (próximas aulas)</h3>
+<div class="note"><b>Esta aula cobre as portas 1, 2 e 3</b> — o arquivo exposto, o crachá e os dados dos pacientes. As outras cinco falhas são as próximas aulas: <b>AULA-02 · AS FUNÇÕES</b> (o código sem limite, o download que abre pastas e a função espia) e <b>AULA-03 · A VITRINE</b> (a chave no site e o banco na calçada). O mapa completo e todos os prompts da série estão no material online: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#prompts" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>.</div>
 
 <h3>🏁 Fecha com o re-teste (a prova final)</h3>
 <details class="master"><summary>🏁 PROMPT DE RE-TESTE — prove que fechou</summary>
@@ -274,13 +203,8 @@ Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando
 <li><b>Senhas à vista:</b> procure <code>.env</code>/<code>.sql</code> dentro da pasta pública → mova pra fora → no servidor, bloqueie dotfiles e extensões sensíveis (403 antes de ler).</li>
 <li><b>Dado de outro:</b> em toda busca por id, exija também <code>dono = usuário logado</code>; se não bater: 404. Vale pra arquivo também.</li>
 <li><b>Porteiro da área interna:</b> toda rota de admin checa o papel NO SERVIDOR (staff/role da sessão) → sem isso: 403.</li>
-<li><b>Código sem limite:</b> 5 erros = bloqueio de 10 min por e-mail; código expira em 10 min e vale 1 vez.</li>
-<li><b>Download abre pastas:</b> o nome do arquivo nunca vem do cliente (lista/tabela do banco) e o caminho final fica dentro da pasta permitida.</li>
-<li><b>Função espia:</b> bloqueie rede interna (localhost, 127.*, 10.*, 192.168.*, 169.254.*) antes de buscar qualquer URL.</li>
-<li><b>Chave no site:</b> a chamada de IA vai pro servidor; a chave vive em variável de ambiente, nunca em arquivo que o navegador baixa.</li>
-<li><b>Backup na calçada:</b> dumps fora da pasta pública e fora do deploy; headers de segurança ligados; nada de versão/stack trace nas respostas.</li>
 </ul>
-<p class="mut">O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#manual" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a> → seção MODO MANUAL.</p>
+<p class="mut">As outras cinco portas (e o passo a passo detalhado de cada uma) estão no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#manual" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a> → seção MODO MANUAL.</p>
 </div>
 
 <div class="card" id="checklist">
