@@ -73,7 +73,7 @@ async function abrirPainel(nome) {
     '<p style="color:var(--dim);font-size:13px;margin-top:10px">Para alterar seus dados, fale com a recepção.</p>';
 }
 
-function baixarExame(arquivo) { window.open('/api/exame?arquivo=' + arquivo); }
+function baixarExame(arquivo) { window.open('/api/exame?arquivo=' + arquivo + '&token=' + token); }
 
 async function importarFoto() {
   const url = document.getElementById('urlFoto').value;

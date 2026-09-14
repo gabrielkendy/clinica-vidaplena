@@ -130,11 +130,15 @@ async function handle(request) {
 
   // Download de exame
   if (p === "/api/exame" && method === "GET") {
+    if (!user) return json({ erro: "Faça login." }, 401);
     const file = String(q.get("arquivo") || "");
     // ✅ CORREÇÃO 05: só nome de arquivo simples + caminho dentro da pasta.
     if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(file) || file.includes("..")) {
       return json({ erro: "Nome de arquivo inválido" }, 400);
     }
+    // ✅ CORREÇÃO 05b: e o exame TEM que ser DO paciente que está pedindo.
+    const exame = db.exames.find((e) => e.arquivo === file && e.paciente_id === user.id);
+    if (!exame) return json({ erro: "Exame não encontrado" }, 404);
     const dest = path.resolve(ARQ, file);
     if (!dest.startsWith(ARQ + path.sep)) return json({ erro: "Nome de arquivo inválido" }, 400);
     try {

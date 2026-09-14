@@ -152,12 +152,17 @@ const server = http.createServer(async (req, res) => {
 
   // Download de exame
   if (p === "/api/exame" && req.method === "GET") {
+    if (!user) return json(res, 401, { erro: "Faça login." });
     const file = String(u.query.arquivo || "");
     // ✅ CORREÇÃO 05: o nome precisa ser um nome de arquivo simples (sem caminhos, sem "..")
     if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(file) || file.includes("..")) {
       return json(res, 400, { erro: "Nome de arquivo inválido" });
     }
-    // ✅ CORREÇÃO 05b: e o caminho final TEM que ficar dentro da pasta de exames.
+    // ✅ CORREÇÃO 05b: e o exame TEM que ser DO paciente que está pedindo
+    //    (a mesma regra da ficha: só o que é seu; o resto é como se não existisse).
+    const exame = db.exames.find((e) => e.arquivo === file && e.paciente_id === user.id);
+    if (!exame) return json(res, 404, { erro: "Exame não encontrado" });
+    // ✅ CORREÇÃO 05c: e o caminho final continua travado dentro da pasta de exames.
     const dest = path.resolve(ARQ, file);
     if (!dest.startsWith(ARQ + path.sep)) return json(res, 400, { erro: "Nome de arquivo inválido" });
     try {

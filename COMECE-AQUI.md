@@ -27,12 +27,14 @@
 
 ---
 
-## O fluxo do vídeo 1 (3 falhas)
+## O fluxo do vídeo 1 (uma invasão em 3 falhas: **o arquivo → o crachá → os dados**)
 
 | # | Falha | A história | O ataque | A correção + prompt | O teste |
 |---|---|---|---|---|---|
-| 1 | 🔐 Caderno de senhas (.env) | projeto inteiro vai junto | `/.env` na barra do navegador | prompt 1 + código | 🟢 → 403 |
-| 2 | 🧾 Ficha do outro paciente | esconder o botão ≠ trancar a porta | troca o 101 por 103 na URL | prompt 2 + código | 🟢 → 404 · a dela funciona |
-| 3 | 🔢 Fechadura sem limite | 4 dígitos ≈ 10 mil combinações | o loop no terminal → ACESSO CONCEDIDO | prompt 4 + código | 🟢 → 429 |
+| 1 | 🔐 Caderno de senhas (.env) | o projeto inteiro vai junto | `/.env` na barra — e **ache o crachá da equipe** | prompt 1 + código | 🟢 → 403 |
+| 2 | 🪪 O crachá achado | a porta da equipe vale ouro | usa o `tok_equipe_000` achado → painel + financeiro | prompt 3 + código | 🟢 → 403 (e a equipe entra normal) |
+| 3 | 🧾 A vida dos pacientes | "quem pede é o dono do dado?" | troca 101 por 103 + baixa o laudo do Bruno | prompt 2 + código | 🟢 → 404 (e o dela funciona) |
 
-**Depois de gravar:** próximo vídeo = painel interno + traversal + SSRF (as 3 seguintes). Quando o 1 estiver pronto, a gente prepara.
+**As 3 formam UMA invasão:** o arquivo entrega o crachá → o crachá abre a sala → de dentro, os dados. É a narrativa do vídeo.
+
+**Depois de gravar:** próximo vídeo = as 5 falhas restantes em cadeia nova (o código sem limite + o download que vira cofre + a foto que espiona + a chave na vitrine + o backup no chão). Quando o 1 estiver pronto, a gente prepara.

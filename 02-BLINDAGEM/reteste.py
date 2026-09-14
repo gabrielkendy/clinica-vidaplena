@@ -94,12 +94,13 @@ for i in range(6):
     time.sleep(0.15)
 verifica(status_final == 429, f"6 tentativas erradas seguidas → HTTP {status_final} (antes: infinitas tentativas)")
 
-# 5) exame vira cofre
-missao(5, "DOWNLOAD ABRE PASTAS (PATH TRAVERSAL)")
-s_hack, _, _ = req("/api/exame?arquivo=../../.env")
-s_legit, _, _ = req("/api/exame?arquivo=hemograma-mariana.txt")
-verifica(s_hack == 400 and s_legit == 200,
-         f"pediu '../../.env' → HTTP {s_hack} | e o exame DE VERDADE continua baixando → HTTP {s_legit}")
+# 5) exame vira cofre (path traversal + arquivo de outro paciente)
+missao(5, "DOWNLOAD DE EXAME (PATH TRAVERSAL + ARQUIVO ALHEIO)")
+s_hack, _, _ = req("/api/exame?arquivo=../../.env&token=tok_mariana_4d1")
+s_alheio, _, _ = req("/api/exame?arquivo=laudo-bruno.txt&token=tok_mariana_4d1")
+s_legit, _, _ = req("/api/exame?arquivo=hemograma-mariana.txt&token=tok_mariana_4d1")
+verifica(s_hack == 400 and s_alheio == 404 and s_legit == 200,
+         f"'../../.env' → HTTP {s_hack} | exame do BRUNO (logada a Mariana) → HTTP {s_alheio} | o exame DELA continua baixando → HTTP {s_legit}")
 
 # 6) SSRF
 missao(6, "FUNÇÃO QUE ESPIA POR DENTRO (SSRF)")

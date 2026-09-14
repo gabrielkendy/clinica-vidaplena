@@ -64,7 +64,8 @@ O que fazer:
 2. Em cada uma: filtre SEMPRE pelo dono do dado junto com o id — ex: WHERE id = ? AND user_id = <usuário da sessão> (NUNCA confie em id, role ou "dono" que veio do cliente).
 3. Se o dado não for do usuário logado: responda 404 (não 403 — não confirme nem que o dado existe).
 4. Se o banco suportar, adicione uma trava extra no nível do banco (constraint/policy) como rede de segurança.
-5. Crie um teste que PROVA: logado como usuário A, pedir o registro do usuário B → 404; e o dono B acessando o dele → 200.
+5. Vale também para ARQUIVOS e downloads: um arquivo só pode ser entregue pro dono — confira no servidor se o arquivo pertence a quem está pedindo (e nunca monte caminho de arquivo com texto do usuário).
+6. Crie um teste que PROVA: logado como usuário A, pedir o registro do usuário B → 404; e o dono B acessando o dele → 200.
 
 Me mostre: rotas alteradas, o antes/depois de cada correção, e como rodar o teste.
 ```
