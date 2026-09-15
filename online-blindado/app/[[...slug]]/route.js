@@ -40,10 +40,11 @@ const SEG = {
   "Content-Security-Policy": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'",
 };
 
-/* ✅ CORREÇÃO 02 + 08a: arquivos que NUNCA são servidos pela web. */
+/* ✅ CORREÇÃO 02 + 08a + 09: arquivos que NUNCA são servidos pela web. */
 function arquivoBloqueado(f) {
   const nome = path.basename(f);
   if (nome.startsWith(".")) return true;
+  if (/\/(\.git|\.svn|\.hg)\//.test(f) || /\/\.(git|svn|hg)$/.test(f)) return true; // ✅ CORREÇÃO 09: histórico de código fora da web
   if (/\.(sql|env|log|bak|old|zip|tar|gz|dump)$/i.test(nome)) return true;
   return false;
 }

@@ -6,36 +6,36 @@
 
 ## ⭐ TÍTULO (principal)
 
-**ACHEI A CHAVE do sistema na vitrine do site (e fechei as 8 — FINAL)**
+**ACHEI A CHAVE do sistema na vitrine do site (e fechei as 9 — FINAL)**
 
 ### Alternativas
 1. A chave da IA estava escrita no site (último episódio)
 2. O backup do banco estava no chão da porta (e fechei a clínica)
-3. 8 de 8: o placar final da minha clínica blindada com IA
+3. 9 de 9: o placar final da minha clínica blindada com IA
 4. Nunca mais: a chave na vitrine + o banco na calçada (fecho da série)
 
 ---
 
 ## 📄 DESCRIÇÃO (colar no YouTube)
 
-SÉRIE COMPLETA — partes 1 e 2: eu invadi a clínica que a IA construiu pra mim, achei 8 falhas e consertei 6 ao vivo. Agora o FINAL: as duas últimas (as mais constrangedoras) e o placar.
+SÉRIE COMPLETA — partes 1 e 2: eu invadi a clínica que a IA construiu pra mim, achei 9 falhas e consertei 6 ao vivo. Agora o FINAL: as duas últimas (as mais constrangedoras) e o placar.
 
 Falha 7: a chave da minha assistente de IA, escrita no código do site, legível por QUALQUER visitante. Falha 8: o backup do banco inteiro jogado na pasta pública — e o servidor ainda contava a versão dele de graça. As duas caem, ao vivo, com a própria IA consertando na minha frente.
 
-E o fecho épico: eu rodo o ataque completo de novo na clínica blindada, as 8 falhas, uma a uma. E o placar aparece na tela: 8 DE 8. Do zero à blindada, sem instalar nada, sem saber hackear nada — só pedindo certo pra IA certa. Com o prompt certo.
+E o fecho épico: eu rodo o ataque completo de novo na clínica blindada, as 9 falhas, uma a uma. E o placar aparece na tela: 8 DE 8. Do zero à blindada, sem instalar nada, sem saber hackear nada — só pedindo certo pra IA certa. Com o prompt certo.
 
 ⚠️ A clínica é fictícia, um laboratório meu, com dados inventados. A regra da série: só se ataca o PRÓPRIO laboratório.
 
 ━━━━━━━━━━━━━━━
 
 🧪 TESTA VOCÊ MESMO (as duas versões estão no ar):
-🔴 A clínica aberta (com as 8 falhas): https://clinica-vidaplena.vercel.app
-🟢 A clínica blindada (8 de 8 fechadas): https://clinica-vidaplena-blindado.vercel.app
+🔴 A clínica aberta (com as 9 falhas): https://clinica-vidaplena.vercel.app
+🟢 A clínica blindada (9 de 9 fechadas): https://clinica-vidaplena-blindado.vercel.app
 
 💾 O código no GitHub (clona e roda no teu lab):
 https://github.com/gabrielkendy/clinica-vidaplena
 
-📘 MATERIAL DO ALUNO (grátis) — os PROMPTS das 8 falhas + o re-teste:
+📘 MATERIAL DO ALUNO (grátis) — os PROMPTS das 9 falhas + o re-teste:
 https://materiais-aulas.vercel.app/seguranca-com-ia
 
 ━━━━━━━━━━━━━━━
@@ -46,7 +46,7 @@ https://materiais-aulas.vercel.app/seguranca-com-ia
 […] A correção: a chave vai pro cofre
 […] Falha 8: o backup no chão e o servidor fofoqueiro (curl)
 […] A correção: escudos ligados
-[…] O RE-TESTE: o placar final — 8 de 8
+[…] O RE-TESTE: o placar final — 9 de 9
 […] O que fica dessa série (a lição de verdade)
 
 ━━━━━━━━━━━━━━━
@@ -58,7 +58,7 @@ vibe coding, segurança, segurança de aplicações, programação com IA, curso
 
 📌 COMENTÁRIO FIXADO
 Fecha a série com um teste no TEU projeto: procura "secret" ou "key" no código do teu site (Ctrl + U) e pede /backup.sql no fim do endereço. Achou algo? Corre aqui.
-Os prompts das 8 falhas (grátis): https://materiais-aulas.vercel.app/seguranca-com-ia
+Os prompts das 9 falhas (grátis): https://materiais-aulas.vercel.app/seguranca-com-ia
 Se você fechou alguma porta por causa da série, comenta: "fechei a primeira" — eu leio todos. 🛡️
 
 ---

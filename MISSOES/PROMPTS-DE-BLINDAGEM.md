@@ -3,7 +3,7 @@
 > **O objetivo da série:** você não sai daqui só sabendo o que é falha. Você sai com o **prompt pronto** pra mandar pra IA que construiu (ou mantém) o seu projeto — ela acha as portas abertas, explica e CORRIGE, uma por uma, com teste.
 >
 > **Como usar (o fluxo de 3 passos):**
-> 1. Cola o **PROMPT MESTRE** no seu agente (Cursor, Claude Code, ChatGPT, Codex) **junto com o seu projeto** → ele devolve o relatório das 8 portas.
+> 1. Cola o **PROMPT MESTRE** no seu agente (Cursor, Claude Code, ChatGPT, Codex) **junto com o seu projeto** → ele devolve o relatório das 9 portas.
 > 2. Pra cada porta aberta, cola o **prompt daquela falha** → ele corrige e cria o teste.
 > 3. Fecha com o **PROMPT DE RE-TESTE** → prova que fechou.
 >
@@ -14,15 +14,15 @@
 ## 🚀 PROMPT MESTRE — a auditoria completa + plano de correção
 
 ```
-Você é um engenheiro de segurança auditando o MEU projeto. Faça uma auditoria completa procurando as 8 classes de falhas mais comuns em sistemas construídos com IA e me devolva um RELATÓRIO + PLANO DE CORREÇÃO.
+Você é um engenheiro de segurança auditando o MEU projeto. Faça uma auditoria completa procurando as 9 classes de falhas mais comuns em sistemas construídos com IA e me devolva um RELATÓRIO + PLANO DE CORREÇÃO.
 
-Para cada uma das 8 classes abaixo:
+Para cada uma das 9 classes abaixo:
 (a) diga se existe no meu projeto, com arquivo e linha exatos;
 (b) explique o risco em 1 frase simples (como se eu não fosse técnico);
 (c) classifique a gravidade (crítico / alto / médio);
 (d) escreva a correção exata que você vai aplicar.
 
-As 8 classes:
+As 9 classes:
 1. DADOS DE OUTRO USUÁRIO (IDOR): toda rota que devolve dados por id filtra pelo dono (user_id da sessão)? Ou busca só pelo id?
 2. ARQUIVOS SENSÍVEIS EXPOSTOS: .env, *.sql, *.bak, dumps, dotfiles — algum está em pasta servida pela web? Alguma rota monta caminho de arquivo com input do usuário (path traversal)?
 3. ÁREA INTERNA SEM PORTEIRO: rotas de admin/painel checam permissão NO SERVIDOR (role/staff) ou só escondem o botão no front? Alguma rota confia em dados do cliente pra decidir permissão?
@@ -31,13 +31,14 @@ As 8 classes:
 6. SEGREDOS NO FRONT: alguma chave de API aparece em arquivo que o navegador baixa (js do site)? Alguma chamada de IA/serviço é feita direto do navegador?
 7. CÓPIA DE SEGURANÇA NA VITRINE: backups/dumps estão fora da pasta pública? Fora da internet? Existe arquivo esquecido que um scanner acharia?
 8. CABEÇALHOS E EXPOSIÇÃO PASSIVA: headers de segurança ligados (CSP, X-Content-Type-Options, X-Frame-Options)? X-Powered-By removido? Mensagens de erro vazando stack trace ou versão?
+9. HISTÓRICO DE CÓDIGO EXPOSTO (.git): a pasta .git (ou .svn/.hg) está servida pela web? O deploy incluiu o repositório inteiro na pasta pública? Teste /.git/config e /.git/logs/HEAD.
 
 REGRAS: não corrija nada ainda — só o relatório completo, ordenado do mais grave pro menos, com a correção proposta pra cada item. Seja específico: arquivo, linha, e o trecho de código de cada correção.
 ```
 
 ---
 
-## 🛠️ OS 8 PROMPTS DE CORREÇÃO (um por porta)
+## 🛠️ OS 9 PROMPTS DE CORREÇÃO (um por porta)
 
 ### 1 · 🔐 SENHAS À VISTA (.env / arquivos de segredos)
 
@@ -160,6 +161,21 @@ O que fazer:
 5. Rode uma varredura de nomes comuns (/.env, /backup.sql, /.git/config, /admin) e me mostre o status de cada um.
 
 Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado da varredura.
+```
+
+### 9 · 🕳️ HISTÓRICO DO CÓDIGO NA INTERNET (.git exposto)
+
+```
+Aplique a correção de HISTÓRICO DE CÓDIGO EXPOSTO no meu projeto.
+
+O que fazer:
+1. Verifique se a pasta .git (ou .svn/.hg) está sendo servida pela web — teste pedir /.git/config, /.git/HEAD e /.git/logs/HEAD no meu domínio.
+2. Garanta que o deploy NÃO inclui a pasta .git (exclua no .vercelignore/.dockerignore) e bloqueie qualquer pedido a /.git no servidor (403).
+3. Se o .git já esteve exposto (mesmo que por pouco tempo): me liste TODO segredo que já apareceu no histórico de commits — chaves de API, senhas, tokens, .env commitado — porque o histórico não esquece.
+4. Rotação: esses segredos antigos precisam ser TROCADOS, mesmo os que já foram removidos do código atual.
+5. Crie um teste que PROVA: /.git/config → 403/404; e me confirme que o deploy não leva a pasta .git.
+
+Me mostre: o bloqueio aplicado, a lista de segredos do histórico pra trocar, e o teste.
 ```
 
 ---

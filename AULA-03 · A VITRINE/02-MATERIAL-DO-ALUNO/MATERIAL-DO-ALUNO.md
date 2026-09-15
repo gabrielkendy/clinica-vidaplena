@@ -1,21 +1,21 @@
 # Segurança com IA — Aula 3 (o fecho)
 
-A chave na vitrine e o banco no chão: a chave da IA escrita no código do site → o backup do banco jogado na pasta pública. As 2 últimas falhas + o prompt completo pra arrumar cada uma — e o re-teste que prova o 8 de 8.
+A vitrine: a chave da IA escrita no código do site → o backup do banco na pasta pública → o histórico do código exposto. As 3 últimas falhas + o prompt completo pra arrumar cada uma — e o re-teste que prova o 9 de 9.
+## 1 AS 3 ÚLTIMAS — o que o sistema mostra sem ninguém pedir 🏁
 
-## 1 AS 2 ÚLTIMAS — o que o sistema mostra sem ninguém pedir 🏁
+Não são portas abertas: é a vitrine. O que o sistema entrega de bandeja pra qualquer visitante.  
 
-Não são portas abertas: é a vitrine. O que o sistema entrega de bandeja pra qualquer visitante.
 | A falha | O ataque (ao vivo, no site) | A correção (o prompt) | O teste |
 |---|---|---|---|
-| 🗝️ A chave na vitrine (segredo no código do site | Abri o código do site (Ctrl + U), procurei "key" e achei a chave da assistente de IA escrita e legível — qualquer visitante lê e usa na MINHA conta. | Prompt 1 — chamada de IA vai pro servidor; a chave vive no cofre das configurações | buscar a chave no site → zero · assistente → funciona |
-| 🗄️ O banco no chão (backup + respostas que contam tudo | Pedi o backup como quem pede uma página: /backup.sql → veio o banco inteiro (nomes, senha). E o servidor ainda contava a tecnologia e a versão de graça. | Prompt 2 — backup fora da pasta pública + escudos nas respostas + nada de versão | backup → 404 · sem versão no cabeçalho · escudos ligados |
-A lição da vitrine: o que o sistema NÃO mostra não pode ser usado contra ele. Chave que desce pro navegador é chave pública. Backup na pasta pública é presente de despedida.
-
+| 🗝️ A chave na vitrinesegredo no código do site | Abri o código do site (Ctrl + U), procurei "key" e achei a chave da assistente de IA escrita e legível — qualquer visitante lê e usa na MINHA conta. | Prompt 1 — chamada de IA vai pro servidor; a chave vive no cofre das configurações | buscar a chave no site → zero · assistente → funciona |
+| 🗄️ O banco no chãobackup + respostas que contam tudo | Pedi o backup como quem pede uma página: /backup.sql → veio o banco inteiro (nomes, senha). E o servidor ainda contava a tecnologia e a versão de graça. | Prompt 2 — backup fora da pasta pública + escudos nas respostas + nada de versão | backup → 404 · sem versão no cabeçalho · escudos ligados |
+| 🕳️ O histórico na vitrinea pasta .git exposta | Pedi a pasta do histórico do código: /.git/config → o repositório inteiro abre, e no histórico tem o segredo que eu já tinha apagado do código. | Prompt 3 — .git fora do deploy + bloqueio no servidor + trocar segredos antigos | /.git → 403 · deploy sem .git · lista de chaves pra trocar |
+A lição da vitrine: o que o sistema NÃO mostra não pode ser usado contra ele. Chave que desce pro navegador é chave pública. Backup na pasta pública é presente de despedida. E o histórico do código não esquece o que você apagou.
 ## 2 O AJUSTE DE CADA FALHA — o prompt completo 📋
 
 Cada falha do vídeo tem UM prompt de correção — e no fim tem o RE-TESTE, que prova o placar. Copia, cola no seu agente (Cursor, Claude Code, ChatGPT, Codex...) junto com o seu projeto: ele corrige e cria o teste.
 
-Como usar: 1) se liga qual das 2 falhas o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o antes/depois e o teste. No fim, roda o re-teste e guarda o placar.
+Como usar: 1) se liga qual das 3 falhas o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o antes/depois e o teste. No fim, roda o re-teste e guarda o placar.
 
 O que o vídeo mostrou: a chave da assistente de IA legível no código do site (Ctrl + U, busca por "key").
 
@@ -47,9 +47,23 @@ O que fazer:
 Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado da varredura.
 ```
 
-### 🏁 O FECHO — o re-teste (prove o 8 de 8)
+O que o vídeo mostrou: pedir /.git/config e ver o repositório + o histórico com segredos já apagados.
 
-O que o vídeo mostrou: rodar o ataque completo de novo e ver 8 de 8 fechadas.
+```
+Aplique a correção de HISTÓRICO DE CÓDIGO EXPOSTO no meu projeto.
+
+O que fazer:
+1. Verifique se a pasta .git (ou .svn/.hg) está sendo servida pela web — teste pedir /.git/config, /.git/HEAD e /.git/logs/HEAD no meu domínio.
+2. Garanta que o deploy NÃO inclui a pasta .git (exclua no .vercelignore/.dockerignore) e bloqueie qualquer pedido a /.git no servidor (403).
+3. Se o .git já esteve exposto (mesmo que por pouco tempo): me liste TODO segredo que já apareceu no histórico de commits — chaves de API, senhas, tokens, .env commitado — porque o histórico não esquece.
+4. Rotação: esses segredos antigos precisam ser TROCADOS, mesmo os que já foram removidos do código atual.
+5. Crie um teste que PROVA: /.git/config → 403/404; e me confirme que o deploy não leva a pasta .git.
+
+Me mostre: o bloqueio aplicado, a lista de segredos do histórico pra trocar, e o teste.
+```
+### 🏁 O FECHO — o re-teste (prove o 9 de 9)
+
+O que o vídeo mostrou: rodar o ataque completo de novo e ver 9 de 9 fechadas.
 
 ```
 Faça uma VARREDURA FINAL de segurança no meu projeto, como um atacante faria (nos MEUS próprios testes), e me devolva o placar:
@@ -63,36 +77,21 @@ Faça uma VARREDURA FINAL de segurança no meu projeto, como um atacante faria (
 
 Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando + resposta). Se alguma continuar aberta, corrija e teste de novo até fechar.
 ```
+## 3 TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪[🔴 Clínica aberta (com as 9 falhas) — clinica-vidaplena.vercel.app](https://clinica-vidaplena.vercel.app)[🟢 Clínica blindada (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app](https://clinica-vidaplena-blindado.vercel.app)[💾 Código no GitHub — clona e ataca na tua máquina (com os scripts de ataque)](https://github.com/gabrielkendy/clinica-vidaplena)
 
-## 3 TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪[🔴 Clínica aberta (com as 8 falhas) — clinica-vidaplena.vercel.app](https://clinica-vidaplena.vercel.app)[🟢 Clínica blindada (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app](https://clinica-vidaplena-blindado.vercel.app)[💾 Código no GitHub — clona e ataca na tua máquina (com os scripts de ataque)](https://github.com/gabrielkendy/clinica-vidaplena)
-
-Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.
-
-O experimento de 30 segundos: na clínica aberta, põe /backup.sql no fim do endereço — o banco inteiro desce. Agora na blindada: não encontrado. E o curl -I? A blindada não conta nem quem é.
-
+Login do paciente: mariana@exemplo.com / Mariana2026 · Tudo fictício, marcado na tela: é laboratório de treino. A regra da série: só se ataca o PRÓPRIO laboratório.O experimento de 30 segundos: na clínica aberta, põe /.git/config no fim do endereço — o histórico do código abre (com o segredo que já foi apagado). Agora na blindada: acesso negado. E o /backup.sql? A blindada nem entrega mais.
 ## 4 MODO MANUAL — conserte sem IA 🖐️
 
-Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 2 falhas:
-
+Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 3 falhas:
 - Chave no site: a chamada de IA vai pro servidor; a chave vive em variável de ambiente, nunca em arquivo que o navegador baixa.
-
 - Backup na calçada: dumps fora da pasta pública e fora do deploy; headers de segurança ligados; nada de versão/stack trace nas respostas.
+- Histórico exposto: a pasta .git fica fora do deploy (e bloqueada no servidor); segredos que já passaram pelo histórico são trocados.
 
 O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/#manual) → seção MODO MANUAL.
-
 ## 5 CHECKLIST FINAL — hoje, no SEU projeto ✅
-
-- Testar EU MESMO as 2 falhas: abrir o código do site e procurar "key"/"secret"; pedir /backup.sql e /.env no fim do endereço.
-
+- Testar EU MESMO as 3 falhas: abrir o código do site e procurar "key"/"secret"; pedir /backup.sql, /.env e /.git/config no fim do endereço.
 - Achou alguma? Copiar o ajuste daquela falha (seção 2) e colar no seu agente — com o antes/depois.
-
-- Rodar o re-teste e guardar o placar final do teu projeto.
-
-- Se algum segredo já esteve exposto: trocar as chaves (rotação) — exposto é vazado pra sempre.
-
-- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).
-
-A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.
-
-Material da aula 3 (o fecho) · Segurança com IA (modo defesa)  
+- Rodar o re-teste e guardar o placar final do teu projeto (9 de 9).
+- Se algum segredo já esteve exposto (ou no histórico): trocar as chaves (rotação) — exposto é vazado pra sempre.
+- Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).A regra da série: só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém. Material da aula 3 (o fecho) · Segurança com IA (modo defesa)  
  Série completa + casos reais: [materiais-aulas.vercel.app/seguranca-com-ia](https://materiais-aulas.vercel.app/seguranca-com-ia/)

@@ -29,7 +29,7 @@ E o mais importante: em cada passo, eu peço pra IA CONSERTAR na tua frente. Peg
 ━━━━━━━━━━━━━━━
 
 🧪 TESTA VOCÊ MESMO (as duas versões estão no ar):
-🔴 A clínica aberta (com as 8 falhas): https://clinica-vidaplena.vercel.app
+🔴 A clínica aberta (com as 9 falhas): https://clinica-vidaplena.vercel.app
 🟢 A clínica blindada (o depois): https://clinica-vidaplena-blindado.vercel.app
 
 💾 O código no GitHub (clona e brinca na tua máquina):

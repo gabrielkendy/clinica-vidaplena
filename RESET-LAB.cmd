@@ -10,6 +10,9 @@ echo.
 git checkout -- .
 git clean -fd
 echo.
+echo   recriando a pasta .git (falha 9 do lab)...
+python MISSOES\recria-git.py
+echo.
 echo   [1/2] arquivos restaurados para o estado com as falhas.
 echo   [2/2] publicando o site no ar...
 echo.

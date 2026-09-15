@@ -48,7 +48,7 @@ E me segue: a próxima série já tá no forno."
 **Legenda:**
 A chave da minha IA estava escrita no código do site. E o backup do banco, jogado na pasta pública. Dois presentes de despedida que eu não sabia que estava dando. 🎁😅
 
-O ataque: abrir o código, procurar "key", pedir "/backup.sql". Trinta segundos. A correção: os prompts certos no agente — e o placar final da série: 8 de 8 portas fechadas. 
+O ataque: abrir o código, procurar "key", pedir "/backup.sql". Trinta segundos. A correção: os prompts certos no agente — e o placar final da série: 9 de 9 portas fechadas. 
 
 📘 Os prompts grátis: link da bio.
 💬 Comenta CHAVE que eu te mando no direct.

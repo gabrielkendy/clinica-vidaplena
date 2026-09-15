@@ -49,7 +49,7 @@ Onde tiver 🎙️, você fala a fala do roteiro.
 | Voltar o lab pras falhas (resetar) | `RESET-LAB.cmd` |
 | A versão blindada pronta (referência no ar) | `clinica-vidaplena-blindado.vercel.app` |
 | O site no ar (é o cenário do vídeo) | `clinica-vidaplena.vercel.app` |
-| O círcuito completo de teste das 8 portas | `LAB-BLINDADO/reteste.py` (ou `reteste.py <URL>`) |
+| O círcuito completo de teste das 9 portas | `LAB-BLINDADO/reteste.py` (ou `reteste.py <URL>`) |
 | O padrão das aulas (estrutura + divisão da série) | `PADRAO-DAS-AULAS.md` |
 
 **Depois de gravar:** a série tem 3 aulas — as pastas da **AULA-02 · AS FUNCOES** (código sem limite + download que abre pastas + função espia) e **AULA-03 · A VITRINE** (chave no site + banco na calçada) já estão criadas, esperando produção. O passo a passo de montar cada uma está no `PADRAO-DAS-AULAS.md`.

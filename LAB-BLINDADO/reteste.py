@@ -45,7 +45,7 @@ def req(path, method="GET", data=None):
 
 print()
 slow(f"{BG}  ██████  RETESTE  ██████  VERSÃO BLINDADA{X}", 0.008)
-slow(f"{W}  A M E S M A S   8   F A L H A S   ·   A G O R A   F E C H A D A S{X}", 0.008)
+slow(f"{W}  A S   M E S M A S   9   F A L H A S   ·   A G O R A   F E C H A D A S{X}", 0.008)
 print()
 
 s, _, _ = req("/")
@@ -58,7 +58,7 @@ resultados = []
 
 def missao(n, nome):
     print(f"{D}{'─' * 64}{X}")
-    print(f"{BG}[{n}/8] {nome}{X}")
+    print(f"{BG}[{n}/9] {nome}{X}")
 
 def verifica(bloqueado, detalhe):
     tag = f"{G}✓ BLOQUEADO{X}" if bloqueado else f"{R}✗ AINDA ABERTO{X}"
@@ -124,14 +124,21 @@ com_headers = "x-content-type-options" in h and "x-frame-options" in h
 verifica(s == 403 and sem_powered and com_headers,
          f"backup → HTTP {s} | X-Powered-By sumiu | headers de proteção presentes")
 
+# 9) .git exposto
+missao(9, "HISTÓRICO DO CÓDIGO EXPOSTO (.git)")
+s, _, _ = req("/.git/config")
+s2, _, _ = req("/.git/logs/HEAD")
+verifica(s == 403 and s2 == 403,
+         f"pediu o histórico do código → /.git/config HTTP {s} | /.git/logs/HEAD HTTP {s2} (antes: 200 com o repositório)")
+
 print()
 print(f"{G}{B}{'═' * 64}{X}")
 fechadas = sum(1 for x in resultados if x)
-if fechadas == 8:
-    slow(f"{G}{B}  🛡️  8/8 PORTAS FECHADAS — NÃO ENTROU EM NENHUMA{X}", 0.02)
-    print(f"{D}  (os mesmos ataques do vídeo 1, agora todos barrados){X}")
+if fechadas == 9:
+    slow(f"{G}{B}  🛡️  9/9 PORTAS FECHADAS — NÃO ENTROU EM NENHUMA{X}", 0.02)
+    print(f"{D}  (os mesmos ataques da série, agora todos barrados){X}")
 else:
-    slow(f"{R}{B}  ⚠️  {fechadas}/8 fechadas — ainda tem porta aberta{X}", 0.02)
+    slow(f"{R}{B}  ⚠️  {fechadas}/9 fechadas — ainda tem porta aberta{X}", 0.02)
 print(f"{G}{B}{'═' * 64}{X}")
 print()
-sys.exit(0 if fechadas == 8 else 1)
+sys.exit(0 if fechadas == 9 else 1)

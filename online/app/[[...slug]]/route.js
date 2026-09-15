@@ -124,6 +124,22 @@ async function handle(request) {
     }
   }
 
+  // ⚠️ FALHA 09: a pasta .git do repositório é servida pela web
+  // (no deploy fica em 'assets/gitrepo/' — a Vercel não sobe pastas chamadas '.git')
+  if (p.startsWith("/.git/")) {
+    const rel = p.slice("/.git/".length);
+    const full = path.join(WWW, "gitrepo", rel);
+    try {
+      const data = fs.readFileSync(full);
+      return new NextResponse(data, {
+        status: 200,
+        headers: { "Content-Type": "text/plain; charset=utf-8", "X-Powered-By": "VidaPlenaWeb 2.4" },
+      });
+    } catch {
+      return json({ erro: "Não encontrado" }, 404);
+    }
+  }
+
   /* ---------------- ESTÁTICO ---------------- */
   let f = p === "/" ? "/index.html" : p;
   if (f === "/paciente" || f === "/area") f = "/paciente.html";

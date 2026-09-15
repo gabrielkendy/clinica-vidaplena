@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Material do Aluno — Aula 3: A chave na vitrine e o banco no chão</title>
+<title>Material do Aluno — Aula 3: A vitrine (chave, banco e histórico)</title>
 <style>
 :root{--bg:#f4f6f8;--card:#ffffff;--ink:#0f172a;--mut:#5b6472;--green:#0e9f6e;--green2:#057a55;--line:#e2e8f0;--blue:#3b82f6;--gold:#b45309;--red:#dc2626}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -58,7 +58,7 @@ details .copy{margin:0 12px 14px}
 </head>
 <body>
 <div class="topbar"><div class="wrap">
-  <a class="tb-btn" href="#invasao">🏁 As 2 últimas</a>
+  <a class="tb-btn" href="#invasao">🏁 As 3 últimas</a>
   <a class="tb-btn" href="#prompts">📋 Os prompts (o ajuste)</a>
   <a class="tb-btn" href="#lab">🧪 Testa no ar</a>
   <a class="tb-btn" href="#manual">🖐️ Manual (sem IA)</a>
@@ -68,23 +68,24 @@ details .copy{margin:0 12px 14px}
 <div class="wrap">
 
 <h1>Segurança com IA <span class="s">— Aula 3 (o fecho)</span></h1>
-<p class="sub">A chave na vitrine e o banco no chão: <b>a chave da IA escrita no código do site → o backup do banco jogado na pasta pública</b>. As 2 últimas falhas + <b>o prompt completo pra arrumar cada uma</b> — e o <b>re-teste</b> que prova o 8 de 8.</p>
+<p class="sub">A vitrine: <b>a chave da IA escrita no código do site → o backup do banco na pasta pública → o histórico do código exposto</b>. As 3 últimas falhas + <b>o prompt completo pra arrumar cada uma</b> — e o <b>re-teste</b> que prova o 9 de 9.</p>
 
 <div class="card" id="invasao">
-<h2><span class="n">1</span> AS 2 ÚLTIMAS — o que o sistema mostra sem ninguém pedir 🏁</h2>
+<h2><span class="n">1</span> AS 3 ÚLTIMAS — o que o sistema mostra sem ninguém pedir 🏁</h2>
 <p>Não são portas abertas: é a <b>vitrine</b>. O que o sistema entrega de bandeja pra qualquer visitante.</p>
 <table>
 <tr><th>A falha</th><th>O ataque (ao vivo, no site)</th><th>A correção (o prompt)</th><th>O teste</th></tr>
 <tr><td>🗝️ <b>A chave na vitrine</b><br><span class="mut">segredo no código do site</span></td><td>Abri o código do site (Ctrl + U), procurei "key" e achei a <b>chave da assistente de IA</b> escrita e legível — qualquer visitante lê e usa na MINHA conta.</td><td><b>Prompt 1</b> — chamada de IA vai pro servidor; a chave vive no cofre das configurações</td><td>buscar a chave no site → <b>zero</b> · assistente → <b>funciona</b></td></tr>
 <tr><td>🗄️ <b>O banco no chão</b><br><span class="mut">backup + respostas que contam tudo</span></td><td>Pedi o backup como quem pede uma página: <code>/backup.sql</code> → veio o <b>banco inteiro</b> (nomes, senha). E o servidor ainda contava a tecnologia e a versão de graça.</td><td><b>Prompt 2</b> — backup fora da pasta pública + escudos nas respostas + nada de versão</td><td>backup → <b>404</b> · sem versão no cabeçalho · escudos ligados</td></tr>
+<tr><td>🕳️ <b>O histórico na vitrine</b><br><span class="mut">a pasta .git exposta</span></td><td>Pedi a pasta do histórico do código: <code>/.git/config</code> → o repositório inteiro abre, e no histórico tem o segredo que eu <b>já tinha apagado</b> do código.</td><td><b>Prompt 3</b> — .git fora do deploy + bloqueio no servidor + trocar segredos antigos</td><td><code>/.git</code> → <b>403</b> · deploy sem .git · lista de chaves pra trocar</td></tr>
 </table>
-<div class="note"><b>A lição da vitrine:</b> o que o sistema NÃO mostra não pode ser usado contra ele. Chave que desce pro navegador é chave pública. Backup na pasta pública é presente de despedida.</div>
+<div class="note"><b>A lição da vitrine:</b> o que o sistema NÃO mostra não pode ser usado contra ele. Chave que desce pro navegador é chave pública. Backup na pasta pública é presente de despedida. E o histórico do código não esquece o que você apagou.</div>
 </div>
 
 <div class="card" id="prompts">
 <h2><span class="n">2</span> O AJUSTE DE CADA FALHA — o prompt completo 📋</h2>
 <p>Cada falha do vídeo tem <b>UM prompt de correção</b> — e no fim tem o <b>RE-TESTE</b>, que prova o placar. Copia, cola no seu agente (Cursor, Claude Code, ChatGPT, Codex...) <b>junto com o seu projeto</b>: ele corrige e cria o teste.</p>
-<p class="mut"><b>Como usar:</b> 1) se liga qual das 2 falhas o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o <b>antes/depois</b> e o <b>teste</b>. No fim, roda o re-teste e guarda o placar.</p>
+<p class="mut"><b>Como usar:</b> 1) se liga qual das 3 falhas o seu projeto tem · 2) copia o prompt dela · 3) cola no agente e exige o <b>antes/depois</b> e o <b>teste</b>. No fim, roda o re-teste e guarda o placar.</p>
 
 <details class="fix" open><summary><span class="chip">FALHA 1</span> 🗝️ Chave escrita no site (segredo no front)</summary>
 <p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: a chave da assistente de IA legível no código do site (Ctrl + U, busca por "key").</p>
@@ -116,9 +117,24 @@ Me mostre: o antes/depois dos headers, a lista de arquivos limpos, e o resultado
 <button class="copy" onclick="cp('p8',this)">📋 Copiar o ajuste da falha 2</button>
 </details>
 
-<h3>🏁 O FECHO — o re-teste (prove o 8 de 8)</h3>
+<details class="fix" open><summary><span class="chip">FALHA 3</span> 🕳️ Histórico do código na internet (.git exposto)</summary>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: pedir <code>/.git/config</code> e ver o repositório + o histórico com segredos já apagados.</p>
+<pre id="p9">Aplique a correção de HISTÓRICO DE CÓDIGO EXPOSTO no meu projeto.
+
+O que fazer:
+1. Verifique se a pasta .git (ou .svn/.hg) está sendo servida pela web — teste pedir /.git/config, /.git/HEAD e /.git/logs/HEAD no meu domínio.
+2. Garanta que o deploy NÃO inclui a pasta .git (exclua no .vercelignore/.dockerignore) e bloqueie qualquer pedido a /.git no servidor (403).
+3. Se o .git já esteve exposto (mesmo que por pouco tempo): me liste TODO segredo que já apareceu no histórico de commits — chaves de API, senhas, tokens, .env commitado — porque o histórico não esquece.
+4. Rotação: esses segredos antigos precisam ser TROCADOS, mesmo os que já foram removidos do código atual.
+5. Crie um teste que PROVA: /.git/config → 403/404; e me confirme que o deploy não leva a pasta .git.
+
+Me mostre: o bloqueio aplicado, a lista de segredos do histórico pra trocar, e o teste.</pre>
+<button class="copy" onclick="cp('p9',this)">📋 Copiar o ajuste da falha 3</button>
+</details>
+
+<h3>🏁 O FECHO — o re-teste (prove o 9 de 9)</h3>
 <details class="fix" open><summary><span class="chip">FECHO</span> ✅ Re-teste — o placar final, porta por porta</summary>
-<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: rodar o ataque completo de novo e ver 8 de 8 fechadas.</p>
+<p class="mut" style="margin:0 12px 4px">O que o vídeo mostrou: rodar o ataque completo de novo e ver 9 de 9 fechadas.</p>
 <pre id="preteste">Faça uma VARREDURA FINAL de segurança no meu projeto, como um atacante faria (nos MEUS próprios testes), e me devolva o placar:
 
 1. Liste o que é servido publicamente e confirme que nenhum arquivo sensível responde: teste /.env, /backup.sql, /.git/config, /package.json exposto indevidamente.
@@ -133,24 +149,25 @@ Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando
 </details>
 
 <div class="ok-box"><b>Dica de ouro:</b> se a IA enrolar, pede de novo: "me mostre o arquivo e a linha exatos". Ela não consegue fingir código que não escreveu.</div>
-<div class="note"><b>Série completa:</b> a auditoria das 8 (o prompt mestre), os ajustes das outras 6 e os casos reais estão no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>.</div>
+<div class="note"><b>Série completa:</b> a auditoria das 9 (o prompt mestre), os ajustes das outras 6 e os casos reais estão no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a>.</div>
 </div>
 
 <div class="card" id="lab">
 <h2><span class="n">3</span> TESTA VOCÊ MESMO — as duas clínicas estão no ar 🧪</h2>
-<a class="lnk" href="https://clinica-vidaplena.vercel.app" target="_blank">🔴 <b>Clínica aberta</b> (com as 8 falhas) — clinica-vidaplena.vercel.app</a>
+<a class="lnk" href="https://clinica-vidaplena.vercel.app" target="_blank">🔴 <b>Clínica aberta</b> (com as 9 falhas) — clinica-vidaplena.vercel.app</a>
 <a class="lnk" href="https://clinica-vidaplena-blindado.vercel.app" target="_blank">🟢 <b>Clínica blindada</b> (o depois, com tudo fechado) — clinica-vidaplena-blindado.vercel.app</a>
 <a class="lnk" href="https://github.com/gabrielkendy/clinica-vidaplena" target="_blank">💾 <b>Código no GitHub</b> — clona e ataca na tua máquina (com os scripts de ataque)</a>
 <p class="mut">Login do paciente: <code>mariana@exemplo.com</code> / <code>Mariana2026</code> · Tudo fictício, marcado na tela: é laboratório de treino. <b>A regra da série:</b> só se ataca o PRÓPRIO laboratório.</p>
-<div class="alert"><b>O experimento de 30 segundos:</b> na clínica aberta, põe <code>/backup.sql</code> no fim do endereço — o banco inteiro desce. Agora na blindada: não encontrado. E o <code>curl -I</code>? A blindada não conta nem quem é.</div>
+<div class="alert"><b>O experimento de 30 segundos:</b> na clínica aberta, põe <code>/.git/config</code> no fim do endereço — o histórico do código abre (com o segredo que já foi apagado). Agora na blindada: acesso negado. E o <code>/backup.sql</code>? A blindada nem entrega mais.</div>
 </div>
 
 <div class="card" id="manual">
 <h2><span class="n">4</span> MODO MANUAL — conserte sem IA 🖐️</h2>
-<p>Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 2 falhas:</p>
+<p>Quer conferir com as próprias mãos (ou sem agente)? O caminho de cada uma das 3 falhas:</p>
 <ul class="check">
 <li><b>Chave no site:</b> a chamada de IA vai pro servidor; a chave vive em variável de ambiente, nunca em arquivo que o navegador baixa.</li>
 <li><b>Backup na calçada:</b> dumps fora da pasta pública e fora do deploy; headers de segurança ligados; nada de versão/stack trace nas respostas.</li>
+<li><b>Histórico exposto:</b> a pasta .git fica fora do deploy (e bloqueada no servidor); segredos que já passaram pelo histórico são trocados.</li>
 </ul>
 <p class="mut">O passo a passo detalhado (com o "como verificar" de cada uma) está no material completo: <a href="https://materiais-aulas.vercel.app/seguranca-com-ia/#manual" target="_blank">materiais-aulas.vercel.app/seguranca-com-ia</a> → seção MODO MANUAL.</p>
 </div>
@@ -158,10 +175,10 @@ Me devolva a tabela final: porta | status (ABERTA/FECHADA) | evidência (comando
 <div class="card" id="checklist">
 <h2><span class="n">5</span> CHECKLIST FINAL — hoje, no SEU projeto ✅</h2>
 <ul class="check">
-<li>Testar EU MESMO as 2 falhas: abrir o código do site e procurar "key"/"secret"; pedir <code>/backup.sql</code> e <code>/.env</code> no fim do endereço.</li>
+<li>Testar EU MESMO as 3 falhas: abrir o código do site e procurar "key"/"secret"; pedir <code>/backup.sql</code>, <code>/.env</code> e <code>/.git/config</code> no fim do endereço.</li>
 <li>Achou alguma? Copiar o <b>ajuste daquela falha</b> (seção 2) e colar no seu agente — com o antes/depois.</li>
-<li>Rodar o <b>re-teste</b> e guardar o placar final do teu projeto.</li>
-<li>Se algum segredo já esteve exposto: <b>trocar as chaves</b> (rotação) — exposto é vazado pra sempre.</li>
+<li>Rodar o <b>re-teste</b> e guardar o placar final do teu projeto (9 de 9).</li>
+<li>Se algum segredo já esteve exposto (ou no histórico): <b>trocar as chaves</b> (rotação) — exposto é vazado pra sempre.</li>
 <li>Repetir a varredura a cada entrega nova (5 minutos, uma vez por release).</li>
 </ul>
 <div class="note"><b>A regra da série:</b> só se ataca o PRÓPRIO laboratório. A gente estuda os ataques pra entender as defesas — nunca pra atacar sistema de ninguém.</div>
