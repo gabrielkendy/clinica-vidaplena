@@ -14,3 +14,7 @@ AULA-*/01-ROTEIRO/**
 # deploy online (Vercel)
 .next/
 .vercel/
+
+# cache python
+__pycache__/
+*.pyc
