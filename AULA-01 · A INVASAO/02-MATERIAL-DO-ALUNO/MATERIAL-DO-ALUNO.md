@@ -20,7 +20,7 @@ Não foram 3 falhas soltas: foi **uma corrente**. Cada porta aberta entregava a 
  | 🪪 **O crachá achado**
 painel interno | Com o crachá na mão, abri o painel da equipe: **todos os pacientes** (CPF, telefone, plano) e o **faturamento do mês**. | **Prompt 3** — porteiro NO SERVIDOR em toda rota interna | acesso comum → **403** · equipe de verdade → **200**
  | 🧾 **A vida dos pacientes**
-ficha + exame | Troquei o número 101 pelo 103 e li a **ficha do Bruno** (com as anotações íntimas dele). E baixei o **exame dele** — sem senha dele, só pedindo. | **Prompt 2** — filtro de dono em TODA busca (dado E arquivo) | 103 → **404** · a ficha dela → **200**
+ficha + exame | Com a senha do banco que vazou no .env, li os logins direto no banco (a senha da Mariana tava lá, escrita). Logado como ela, troquei 101 por 103 e li a **ficha do Bruno** (as anotações íntimas dele). E baixei o **exame dele**. | **Prompt 2** — filtro de dono em TODA busca (dado E arquivo) | 103 → **404** · a ficha dela → **200**
 
 **A lição da corrente:** quem construiu foi a IA, e a IA só escreveu o caminho feliz. Os erros não são aleatórios: são SEMPRE os mesmos. E o que é previsível é treinável.
 

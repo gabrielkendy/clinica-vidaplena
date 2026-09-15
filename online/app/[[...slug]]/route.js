@@ -58,6 +58,19 @@ async function handle(request) {
     return json({ token: usr.token, nome: usr.nome });
   }
 
+  // ⚠️ FALHA 01b: o banco aceita consulta direta com a senha que vazou no .env (DB_PASSWORD).
+  // Quem tem a senha lê a tabela de pacientes — email, senha e token de TODO MUNDO.
+  if (p === "/api/db" && method === "GET") {
+    const senha = q.get("senha") || "";
+    if (senha !== "senha-de-exemplo-123") return json({ erro: "Acesso negado ao banco (senha incorreta)" }, 403);
+    return json({
+      banco: "vidaplena",
+      host: "db.vidaplena.local",
+      tabela: "pacientes",
+      linhas: db.pacientes.map((x) => ({ nome: x.nome, email: x.email, senha: x.senha, token: x.token, staff: x.staff })),
+    });
+  }
+
   // ⚠️ FALHA 04: SEM RATE LIMIT — tentativas ilimitadas
   if (p === "/api/login/codigo" && method === "POST") {
     const b = await request.json().catch(() => ({}));
