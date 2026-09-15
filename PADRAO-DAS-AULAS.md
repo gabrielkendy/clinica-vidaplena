@@ -32,9 +32,9 @@ AULA-0X · TEMA/
 
 1. **A invasão da aula** — o mapa em tabela: porta → ataque ao vivo → a correção (prompt) → o teste.
 2. **Testa no ar** — 🔴 `clinica-vidaplena.vercel.app` · 🟢 `clinica-vidaplena-blindado.vercel.app` · 💾 GitHub.
-3. **OS PROMPTS — 1 prompt pra CADA falha, COMPLETO e detalhado** — o material SEMPRE tem o bloco inteiro: **PROMPT MESTRE** (a auditoria) + os **8 prompts de correção** (um por falha, texto integral, botão **📋 Copiar** em cada) + **PROMPT DE RE-TESTE**. As falhas **do vídeo** daquela aula levam o selo `DO VÍDEO`; as outras ficam como "o mapa completo da série".
+3. **OS PROMPTS — 1 prompt pra CADA falha, COMPLETO e detalhado** — o material SEMPRE tem o bloco inteiro: **PROMPT MESTRE** (a auditoria) + os **9 prompts de correção** (um por falha, texto integral, botão **📋 Copiar** em cada) + **PROMPT DE RE-TESTE**. As falhas **do vídeo** daquela aula levam o selo `DO VÍDEO`; as outras ficam como "o mapa completo da série".
    - 🚨 **NUNCA cortar, resumir ou podar prompt.** O aluno copia e cola inteiro. (Correção do dono 14/09: "quero 1 prompt pra cada falha, completo e detalhado" — material resumido = fora do padrão.)
-4. **MODO MANUAL** — o conserto sem IA, porta por porta (as 8; as do vídeo em destaque).
+4. **MODO MANUAL** — o conserto sem IA, porta por porta (as 9; as do vídeo em destaque).
 5. **CHECKLIST** — o que o aluno faz no projeto DELE hoje.
 
 **Regras técnicas do material (validadas):**

@@ -17,12 +17,12 @@
 
 Essa chave pra mim vale dinheiro: é ela que paga as respostas da IA. Quem copiasse, usava na MINHA conta.
 
-E tinha mais: o backup do banco de dados jogado na pasta pública. Eu pedi a 'barra backup ponto sql' no endereço... e baixou o banco INTEIRO. Com nomes, telefones e senha.
+E tinha mais: o backup do banco de dados jogado na pasta pública. Eu pedi a 'barra backup ponto sql' no endereço... e baixou o banco INTEIRO. Com nomes, telefones e senha. E o pior de tudo: o histórico do código exposto. Pedi 'barra ponto git' e ele me entregou o segredo que eu já tinha apagado do código.
 
-A correção? Os dois com o mesmo prompt no agente: a chave foi pro cofre do servidor, e o backup saiu da vitrine. Testei: zero chaves no site. E olha o placar: oito portas, oito fechadas."
+A correção? Os três com o mesmo prompt no agente: a chave foi pro cofre do servidor, o backup saiu da vitrine e o histórico foi bloqueado. Testei: zero chaves no site. E olha o placar: nove portas, nove fechadas."
 
 **CTA DUPLO (40-50s)**
-"Comenta CHAVE que eu te mando os prompts que fecham essa e as outras sete falhas.
+"Comenta CHAVE que eu te mando os prompts que fecham as nove falhas.
 E me segue: a próxima série já tá no forno."
 
 ---
