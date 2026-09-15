@@ -81,6 +81,23 @@ details .copy{margin:0 12px 14px}
 <tr><td>🧾 <b>A vida dos pacientes</b><br><span class="mut">ficha + exame</span></td><td>Troquei o número 101 pelo 103 e li a <b>ficha do Bruno</b> (com as anotações íntimas dele). E baixei o <b>exame dele</b> — sem senha dele, só pedindo.</td><td><b>Prompt 2</b> — filtro de dono em TODA busca (dado E arquivo)</td><td>103 → <b>404</b> · a ficha dela → <b>200</b></td></tr>
 </table>
 <div class="note"><b>A lição da corrente:</b> quem construiu foi a IA, e a IA só escreveu o caminho feliz. Os erros não são aleatórios: são SEMPRE os mesmos. E o que é previsível é treinável.</div>
+
+<h3>🗺️ O .env não é uma lista — é um MAPA</h3>
+<p>O arquivo de senhas do vídeo tinha mais de vinte linhas, e cada uma é uma <b>seta pra outro lugar</b>. Foi assim que uma falha só virou a planta do castelo inteiro:</p>
+<table>
+<tr><th>Linha do .env</th><th>O que ela abre (pra onde leva)</th><th>Onde a gente explora</th></tr>
+<tr><td><code>DB_HOST</code> · <code>DB_PORT</code> · <code>DB_PASSWORD</code></td><td>O endereço + a senha do banco (pacientes, exames, agenda, financeiro)</td><td>a base de tudo</td></tr>
+<tr><td><code>EQUIPE_TOKEN</code></td><td>O painel interno da equipe</td><td><b>porta 2</b> desta aula</td></tr>
+<tr><td><code>JWT_SECRET</code></td><td>Forjar o login de qualquer pessoa</td><td>porta 3 (ficha + exame)</td></tr>
+<tr><td><code>BACKUP_DIR</code></td><td>O caminho exato da cópia do banco</td><td>aula 3 (backup)</td></tr>
+<tr><td><code>REDIS_URL</code></td><td>O cache que deveria travar tentativas de login</td><td>aula 2 (código sem limite)</td></tr>
+<tr><td><code>INTERNAL_API_URL</code></td><td>A API interna (máquina que só devia ser alcançada por dentro)</td><td>aula 2 (função espia)</td></tr>
+<tr><td><code>STORAGE_BUCKET</code></td><td>O cofre de exames</td><td>aula 2 (download)</td></tr>
+<tr><td><code>VIDA_AI_KEY</code></td><td>A assistente de IA (por conta da clínica)</td><td>aula 3 (chave no site)</td></tr>
+<tr><td><code>SENTRY_DSN</code> + <code>APP_DEBUG</code></td><td>Erros internos vazando + detalhe na tela</td><td>aula 3 (exposição)</td></tr>
+<tr><td><code>WHATSAPP_TOKEN</code> · <code>SMTP</code> · <code>PIX_CHAVE</code></td><td>O WhatsApp oficial, o e-mail e o PIX da clínica</td><td>se passar pela clínica</td></tr>
+</table>
+<p class="mut">A lição que fica: <b>o .env vazado não entrega uma senha — entrega o mapa de todas as outras portas.</b> É por isso que a regra número 1 da série é: segredo fora da pasta pública, e se vazou, troca TUDO.</p>
 </div>
 
 <div class="card" id="prompts">
